@@ -14,8 +14,32 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
 
     for _, row in df.iterrows():
 
-        home_prob = row["team_1_win_expectancy"]
-        away_prob = row["team_2_win_probability"]
+        base_home_prob = row["team_1_win_expectancy"]
+
+        form_adjustment = (
+            row["form_score_difference"] * 0.01
+        )
+
+        home_prob = (
+            base_home_prob + form_adjustment
+        )
+
+        # keep probabilities valid
+        home_prob = min(
+            max(home_prob, 0),
+            1
+        )
+
+        away_prob = (
+            1
+            - home_prob
+            - row["draw_probability"]
+        )
+
+        away_prob = min(
+            max(away_prob, 0),
+            1
+        )
 
         if home_prob >= 0.60:
             predicted_winner = row["team_1_name"]
