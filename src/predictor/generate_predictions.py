@@ -30,6 +30,11 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
             1
         )
 
+        # probability calibration
+        home_prob = 0.5 + (
+            (home_prob - 0.5) * 0.7
+        )
+
         away_prob = (
             1
             - home_prob
@@ -61,6 +66,22 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
             predicted_score = "1-1"
             confidence = "Low"
 
+        probability_gap = abs(
+            home_prob - away_prob
+        )
+
+        if probability_gap <= 0.05:
+            upset_risk = "EXTREME"
+
+        elif probability_gap <= 0.12:
+            upset_risk = "HIGH"
+
+        elif probability_gap <= 0.20:
+            upset_risk = "MEDIUM"
+
+        else:
+            upset_risk = "LOW"
+
         predictions.append({
             "match_date": row["match_date"],
             "team_1": row["team_1_name"],
@@ -70,7 +91,8 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
             "team_2_win_probability": round(away_prob, 3),
             "predicted_winner": predicted_winner,
             "predicted_score": predicted_score,
-            "confidence": confidence
+            "confidence": confidence,
+            "upset_risk": upset_risk
         })
 
     return pd.DataFrame(predictions)
