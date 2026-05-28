@@ -117,6 +117,18 @@ display_df.columns = [
     "Riesgo Batacazo"
 ]
 
+teams = sorted(
+    list(
+        set(display_df["Equipo 1"])
+        | set(display_df["Equipo 2"])
+    )
+)
+
+team_filter = st.selectbox(
+    "Filtrar por selección",
+    ["Todas"] + teams
+)
+
 display_df["Equipo 1"] = (
     display_df["Equipo 1"]
     .replace(TEAM_TRANSLATIONS)
@@ -175,6 +187,17 @@ if risk_filter != "Todos":
         display_df["Riesgo Batacazo"] == risk_filter
     ]
 
+if team_filter != "Todas":
+
+    display_df = display_df[
+        (
+            display_df["Equipo 1"] == team_filter
+        )
+        |
+        (
+            display_df["Equipo 2"] == team_filter
+        )
+    ]
 
 styled_df = (
     display_df.style
