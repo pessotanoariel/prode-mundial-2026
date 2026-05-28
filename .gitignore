@@ -11,3 +11,5 @@ data/output/*
 .env
 .DS_Store
 .ipynb_checkpoints/
+
+docs/ROADMAP.md
