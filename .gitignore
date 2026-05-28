@@ -2,14 +2,15 @@
 __pycache__/
 *.pyc
 
-data/raw/*
 data/processed/*
 data/output/*
 
-!.gitkeep
+!data/processed/.gitkeep
+!data/output/.gitkeep
 
 .env
 .DS_Store
 .ipynb_checkpoints/
 
 docs/ROADMAP.md
+docs/*.pdf

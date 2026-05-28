@@ -1,0 +1,60 @@
+group,country,country_code,host
+A,Mexico,MEX,1
+A,South Africa,RSA,0
+A,South Korea,KOR,0
+A,Czechia,CZE,0
+
+B,Canada,CAN,1
+B,Bosnia and Herzegovina,BIH,0
+B,Qatar,QAT,0
+B,Switzerland,SUI,0
+
+C,Brazil,BRA,0
+C,Morocco,MAR,0
+C,Haiti,HAI,0
+C,Scotland,SCO,0
+
+D,United States,USA,1
+D,Paraguay,PAR,0
+D,Australia,AUS,0
+D,Turkey,TUR,0
+
+E,Germany,GER,0
+E,Curaçao,CUW,0
+E,Ivory Coast,CIV,0
+E,Ecuador,ECU,0
+
+F,Netherlands,NED,0
+F,Japan,JPN,0
+F,Sweden,SWE,0
+F,Tunisia,TUN,0
+
+G,Belgium,BEL,0
+G,Egypt,EGY,0
+G,Iran,IRN,0
+G,New Zealand,NZL,0
+
+H,Spain,ESP,0
+H,Cape Verde,CPV,0
+H,Saudi Arabia,KSA,0
+H,Uruguay,URU,0
+
+I,France,FRA,0
+I,Senegal,SEN,0
+I,Iraq,IRQ,0
+I,Norway,NOR,0
+
+J,Argentina,ARG,0
+J,Algeria,ALG,0
+J,Austria,AUT,0
+J,Jordan,JOR,0
+
+K,Portugal,POR,0
+K,DR Congo,COD,0
+K,Uzbekistan,UZB,0
+K,Colombia,COL,0
+
+L,England,ENG,0
+L,Croatia,CRO,0
+L,Ghana,GHA,0
+L,Panama,PAN,0
