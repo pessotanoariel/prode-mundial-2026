@@ -129,6 +129,19 @@ team_filter = st.selectbox(
     ["Todas"] + teams
 )
 
+dates = sorted(
+    display_df["Fecha"].unique()
+)
+
+formatted_dates = pd.to_datetime(
+    dates
+).strftime("%d %b")
+
+date_filter = st.selectbox(
+    "Filtrar por fecha",
+    ["Todas"] + list(formatted_dates)
+)
+
 display_df["Equipo 1"] = (
     display_df["Equipo 1"]
     .replace(TEAM_TRANSLATIONS)
@@ -197,6 +210,12 @@ if team_filter != "Todas":
         (
             display_df["Equipo 2"] == team_filter
         )
+    ]
+
+if date_filter != "Todas":
+
+    display_df = display_df[
+        display_df["Fecha"] == date_filter
     ]
 
 styled_df = (
