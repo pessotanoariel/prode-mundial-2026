@@ -17,6 +17,9 @@ PREDICTIONS_PATH = Path(
     "data/output/predictions.csv"
 )
 
+GROUPS_PATH = Path(
+    "data/raw/world_cup_groups.csv"
+)
 
 st.set_page_config(
     page_title="Prode Mundial 2026",
@@ -33,6 +36,15 @@ def load_predictions():
 
 
 df = load_predictions()
+
+groups_df = pd.read_csv(GROUPS_PATH)
+
+group_mapping = (
+    groups_df
+    .groupby("group")["country"]
+    .apply(list)
+    .to_dict()
+)
 
 total_matches = len(df)
 
@@ -142,6 +154,11 @@ date_filter = st.selectbox(
     ["Todas"] + list(formatted_dates)
 )
 
+group_filter = st.selectbox(
+    "Filtrar por grupo",
+    ["Todos"] + sorted(group_mapping.keys())
+)
+
 display_df["Equipo 1"] = (
     display_df["Equipo 1"]
     .replace(TEAM_TRANSLATIONS)
@@ -216,6 +233,22 @@ if date_filter != "Todas":
 
     display_df = display_df[
         display_df["Fecha"] == date_filter
+    ]
+
+if group_filter != "Todos":
+
+    selected_teams = group_mapping[group_filter]
+
+    display_df = display_df[
+        (
+            display_df["Equipo 1"]
+            .isin(selected_teams)
+        )
+        &
+        (
+            display_df["Equipo 2"]
+            .isin(selected_teams)
+        )
     ]
 
 styled_df = (
