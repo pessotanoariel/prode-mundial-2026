@@ -14,6 +14,10 @@ OUTPUT_PATH = Path(
     "data/output/group_standings.csv"
 )
 
+QUALIFIED_PATH = Path(
+    "data/output/qualified_teams.csv"
+)
+
 def get_head_to_head_stats(
     predictions_df: pd.DataFrame,
     team_a: str,
@@ -280,6 +284,7 @@ def build_group_standings() -> pd.DataFrame:
     
     standings_df = standings_df.sort_values(
         by=[
+            "group",
             "PTS",
             "H2H_PTS",
             "H2H_DG",
@@ -287,13 +292,70 @@ def build_group_standings() -> pd.DataFrame:
             "DG",
             "GF"
         ],
-        ascending=False
+        ascending=[
+            True,
+            False,
+            False,
+            False,
+            False,
+            False,
+            False
+        ]   
+    )
+
+    standings_df["position"] = (
+        standings_df.groupby("group")
+        .cumcount()
+        + 1
+    )
+
+    third_place_df = standings_df[
+        standings_df["position"] == 3
+    ].copy()
+
+    third_place_df = third_place_df.sort_values(
+        by=[
+            "PTS",
+            "DG",
+            "GF"
+        ],
+        ascending=[
+            False,
+            False,
+            False
+        ]
+    )
+
+    best_thirds = third_place_df.head(8).copy()
+
+    qualified_teams = standings_df[
+        standings_df["position"] <= 2
+    ].copy()
+
+    qualified_teams = pd.concat(
+        [
+            qualified_teams,
+            best_thirds
+        ]
+    )
+
+    qualified_teams = qualified_teams.sort_values(
+    by=[
+        "group",
+        "position"
+    ]
     )
 
     standings_df.to_csv(
         OUTPUT_PATH,
         index=False
     )
+
+    qualified_teams.to_csv(
+        QUALIFIED_PATH,
+        index=False
+    )
+
     return standings_df
 
 def main() -> None:
