@@ -129,18 +129,6 @@ display_df.columns = [
     "Riesgo Batacazo"
 ]
 
-teams = sorted(
-    list(
-        set(display_df["Equipo 1"])
-        | set(display_df["Equipo 2"])
-    )
-)
-
-team_filter = st.selectbox(
-    "Filtrar por selección",
-    ["Todas"] + teams
-)
-
 dates = sorted(
     display_df["Fecha"].unique()
 )
@@ -172,6 +160,18 @@ display_df["Equipo 2"] = (
 display_df["Predicción"] = (
     display_df["Predicción"]
     .replace(TEAM_TRANSLATIONS)
+)
+
+teams = sorted(
+    list(
+        set(display_df["Equipo 1"])
+        | set(display_df["Equipo 2"])
+    )
+)
+
+team_filter = st.selectbox(
+    "Filtrar por selección",
+    ["Todas"] + teams
 )
 
 display_df["Fecha"] = pd.to_datetime(
@@ -239,6 +239,14 @@ if group_filter != "Todos":
 
     selected_teams = group_mapping[group_filter]
 
+    selected_teams = [
+        TEAM_TRANSLATIONS.get(
+            team,
+            team
+        )
+        for team in selected_teams
+   ]
+
     display_df = display_df[
         (
             display_df["Equipo 1"]
@@ -250,6 +258,10 @@ if group_filter != "Todos":
             .isin(selected_teams)
         )
     ]
+
+display_df = display_df.reset_index(
+    drop=True
+)
 
 styled_df = (
     display_df.style
