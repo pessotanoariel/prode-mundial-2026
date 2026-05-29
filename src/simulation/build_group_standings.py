@@ -14,6 +14,64 @@ OUTPUT_PATH = Path(
     "data/output/group_standings.csv"
 )
 
+def get_head_to_head_stats(
+    predictions_df: pd.DataFrame,
+    team_a: str,
+    team_b: str
+) -> dict:
+
+    h2h_match = predictions_df[
+        (
+            (predictions_df["team_1"] == team_a)
+            &
+            (predictions_df["team_2"] == team_b)
+        )
+        |
+        (
+            (predictions_df["team_1"] == team_b)
+            &
+            (predictions_df["team_2"] == team_a)
+        )
+    ]
+
+    if h2h_match.empty:
+
+        return {
+            "PTS": 0,
+            "DG": 0,
+            "GF": 0
+        }
+
+    match = h2h_match.iloc[0]
+
+    if match["team_1"] == team_a:
+
+        goals_for = match["team_1_goals"]
+        goals_against = match["team_2_goals"]
+
+    else:
+
+        goals_for = match["team_2_goals"]
+        goals_against = match["team_1_goals"]
+
+    if goals_for > goals_against:
+
+        points = 3
+
+    elif goals_for < goals_against:
+
+        points = 0
+
+    else:
+
+        points = 1
+
+    return {
+        "PTS": points,
+        "DG": goals_for - goals_against,
+        "GF": goals_for
+    }
+
 def build_group_standings() -> pd.DataFrame:
 
     predictions_df = pd.read_csv(PREDICTIONS_PATH)
@@ -64,7 +122,10 @@ def build_group_standings() -> pd.DataFrame:
         "GF": 0,
         "GC": 0,
         "DG": 0,
-        "PTS": 0
+        "PTS": 0,
+        "H2H_PTS": 0,
+        "H2H_DG": 0,
+        "H2H_GF": 0
     })
 
     for _, row in predictions_df.iterrows():
@@ -170,21 +231,69 @@ def build_group_standings() -> pd.DataFrame:
         - standings_df["GC"]
     )
 
-    standings_df = standings_df.sort_values(
-        by=[
-            "PTS",
-            "DG",
-            "GF"
-        ],
-        ascending=False
-    )
-
     standings_df = standings_df.merge(
         team_group_mapping,
         on="team",
         how="left"
     )
     
+    for group, group_df in standings_df.groupby("group"):
+
+        duplicated_points = group_df[
+            group_df["PTS"].duplicated(keep=False)
+        ]
+
+        if len(duplicated_points) == 2:
+
+            team_a = duplicated_points.iloc[0]["team"]
+            team_b = duplicated_points.iloc[1]["team"]
+
+            team_a_stats = get_head_to_head_stats(
+                predictions_df,
+                team_a,
+                team_b
+            )
+
+            team_b_stats = get_head_to_head_stats(
+                predictions_df,
+             team_b,
+                team_a
+            )
+
+            standings_df.loc[
+                standings_df["team"] == team_a,
+                ["H2H_PTS", "H2H_DG", "H2H_GF"]
+            ] = [
+                team_a_stats["PTS"],
+                team_a_stats["DG"],
+                team_a_stats["GF"]
+            ]
+
+            standings_df.loc[
+                standings_df["team"] == team_b,
+                ["H2H_PTS", "H2H_DG", "H2H_GF"]
+            ] = [
+                team_b_stats["PTS"],
+                team_b_stats["DG"],
+                team_b_stats["GF"]
+            ]
+    
+    standings_df = standings_df.sort_values(
+        by=[
+            "PTS",
+            "H2H_PTS",
+            "H2H_DG",
+            "H2H_GF",
+            "DG",
+            "GF"
+        ],
+        ascending=False
+    )
+
+    standings_df.to_csv(
+        OUTPUT_PATH,
+        index=False
+    )
     return standings_df
 
 def main() -> None:
