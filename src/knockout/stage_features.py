@@ -2,11 +2,6 @@ from pathlib import Path
 
 import pandas as pd
 
-
-ROUND_OF_32_PATH = Path(
-    "data/output/round_of_32_complete.csv"
-)
-
 TEAM_STRENGTH_PATH = Path(
     "data/processed/team_strength.csv"
 )
@@ -14,11 +9,6 @@ TEAM_STRENGTH_PATH = Path(
 RECENT_FORM_PATH = Path(
     "data/processed/recent_form.csv"
 )
-
-OUTPUT_PATH = Path(
-    "data/processed/round_of_32_features.csv"
-)
-
 
 def elo_expectancy(
     rating_1: float,
@@ -32,11 +22,14 @@ def elo_expectancy(
     )
 
 
-def build_round_of_32_features():
-
+def build_stage_features(
+    input_matches_path,
+    output_features_path,
+    stage_name
+):
     matches_df = pd.read_csv(
-        ROUND_OF_32_PATH
-    )
+    input_matches_path
+   )
 
     strength_df = pd.read_csv(
         TEAM_STRENGTH_PATH
@@ -108,7 +101,7 @@ def build_round_of_32_features():
         )
 
         rows.append({
-            "match_date": "Round of 32",
+            "match_date": stage_name,
             "team_1_name": team_1,
             "team_2_name": team_2,
             "team_1_rating": rating_1,
@@ -126,20 +119,25 @@ def build_round_of_32_features():
             )
         })
 
-    return pd.DataFrame(rows)
+    df = pd.DataFrame(rows)
+
+    df.to_csv(
+        output_features_path,
+        index=False
+    )
+
+    return df
 
 
 def main():
 
-    df = build_round_of_32_features()
-
-    df.to_csv(
-        OUTPUT_PATH,
-        index=False
+    df = build_stage_features(
+        "data/output/round_of_32_complete.csv",
+        "data/processed/round_of_32_features.csv",
+        "Round of 32"
     )
 
-    print(df)
-
+    print(df.head())
 
 if __name__ == "__main__":
     main()
