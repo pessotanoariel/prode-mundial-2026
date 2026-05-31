@@ -1,60 +1,24 @@
-import pandas as pd
+from src.knockout.build_next_stage import (
+    build_next_stage
+)
+
 from src.knockout.structures import (
     SEMIFINAL_STRUCTURE
 )
 
-INPUT_PATH = (
-    "data/output/quarterfinals_winners.csv"
-)
-
-OUTPUT_PATH = (
-    "data/output/semifinals.csv"
-)
 
 def build_semifinals():
 
-    winners_df = pd.read_csv(
-        INPUT_PATH
+    return build_next_stage(
+        "data/output/quarterfinals_winners.csv",
+        SEMIFINAL_STRUCTURE,
+        [97, 98, 99, 100],
+        "data/output/semifinals.csv"
     )
-
-    winners = winners_df[
-        "winner"
-    ].tolist()
-
-    winner_lookup = {
-        97: winners[0],
-        98: winners[1],
-        99: winners[2],
-        100: winners[3]
-    }
-
-    rows = []
-
-    for (
-        match_id,
-        previous_1,
-        previous_2
-    ) in SEMIFINAL_STRUCTURE:
-
-        rows.append({
-            "match_id": match_id,
-            "team_a": winner_lookup[
-                previous_1
-            ],
-            "team_b": winner_lookup[
-                previous_2
-            ]
-        })
-
-    df = pd.DataFrame(rows)
-
-    df.to_csv(
-        OUTPUT_PATH,
-        index=False
-    )
-
-    print(df)
 
 
 if __name__ == "__main__":
-    build_semifinals()
+
+    print(
+        build_semifinals()
+    )
