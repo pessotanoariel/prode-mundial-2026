@@ -26,6 +26,10 @@ from src.knockout.build_semifinals import (
     build_semifinals
 )
 
+from src.knockout.build_third_place import (
+    build_third_place
+)
+
 from src.knockout.build_final import (
     build_final
 )
@@ -107,6 +111,18 @@ def main():
         "data/processed/semifinals_features.csv",
         "data/output/semifinals_predictions.csv",
         "data/output/semifinals_winners.csv"
+    )
+
+    print("\n=== THIRD PLACE ===")
+
+    build_third_place()
+
+    run_stage(
+        "Third Place",
+        "data/output/third_place.csv",
+        "data/processed/third_place_features.csv",
+        "data/output/third_place_predictions.csv",
+        "data/output/third_place_winners.csv"
     )
 
     print("\n=== FINAL ===")

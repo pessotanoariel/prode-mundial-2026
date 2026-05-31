@@ -37,10 +37,17 @@ def resolve_knockout_winners(
             else:
                 resolution = "Penalties"
 
+        loser = (
+            row["team_2"]
+            if winner == row["team_1"]
+            else row["team_1"]
+        )
+
         rows.append({
             "team_1": row["team_1"],
             "team_2": row["team_2"],
             "winner": winner,
+            "loser": loser,
             "resolution": resolution
         })
 
