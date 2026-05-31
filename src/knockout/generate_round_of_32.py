@@ -1,6 +1,8 @@
 import pandas as pd
 
-from src.knockout.knockout_structure import ROUND_OF_32_STRUCTURE
+from src.knockout.structures import (
+    ROUND_OF_32_STRUCTURE
+)
 
 
 def generate_round_of_32_structure(output_path="data/processed/round_of_32_structure.csv"):
