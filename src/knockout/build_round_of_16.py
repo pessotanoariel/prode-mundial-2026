@@ -1,6 +1,8 @@
 from pathlib import Path
-
 import pandas as pd
+from src.knockout.structures import (
+    ROUND_OF_16_STRUCTURE
+)
 
 
 INPUT_PATH = Path(
@@ -10,19 +12,6 @@ INPUT_PATH = Path(
 OUTPUT_PATH = Path(
     "data/output/round_of_16.csv"
 )
-
-
-ROUND_OF_16_STRUCTURE = [
-    (89, 73, 74),
-    (90, 75, 76),
-    (91, 77, 78),
-    (92, 79, 80),
-    (93, 81, 82),
-    (94, 83, 84),
-    (95, 85, 86),
-    (96, 87, 88),
-]
-
 
 def build_round_of_16():
 

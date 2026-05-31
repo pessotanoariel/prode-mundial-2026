@@ -1,5 +1,7 @@
 import pandas as pd
-
+from src.knockout.structures import (
+    SEMIFINAL_STRUCTURE
+)
 
 INPUT_PATH = (
     "data/output/quarterfinals_winners.csv"
@@ -8,13 +10,6 @@ INPUT_PATH = (
 OUTPUT_PATH = (
     "data/output/semifinals.csv"
 )
-
-
-SEMIFINAL_STRUCTURE = [
-    (101, 97, 98),
-    (102, 99, 100)
-]
-
 
 def build_semifinals():
 
