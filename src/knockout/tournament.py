@@ -34,6 +34,32 @@ from src.knockout.build_final import (
     build_final
 )
 
+from src.knockout.paths import (
+    ROUND_OF_32_COMPLETE,
+    ROUND_OF_32_FEATURES,
+    ROUND_OF_32_PREDICTIONS,
+    ROUND_OF_32_WINNERS,
+    ROUND_OF_16,
+    ROUND_OF_16_FEATURES,
+    ROUND_OF_16_PREDICTIONS,
+    ROUND_OF_16_WINNERS,
+    QUARTERFINALS,
+    QUARTERFINALS_FEATURES,
+    QUARTERFINALS_PREDICTIONS,
+    QUARTERFINALS_WINNERS,
+    SEMIFINALS,
+    SEMIFINALS_FEATURES,
+    SEMIFINALS_PREDICTIONS,
+    SEMIFINALS_WINNERS,
+    THIRD_PLACE,
+    THIRD_PLACE_FEATURES,
+    THIRD_PLACE_PREDICTIONS,
+    THIRD_PLACE_WINNERS,
+    FINAL,
+    FINAL_FEATURES,
+    FINAL_PREDICTIONS
+)
+
 def run_stage(
     stage_name,
     matches_path,
@@ -71,10 +97,10 @@ def main():
 
     run_stage(
         "Round of 32",
-        "data/output/round_of_32_complete.csv",
-        "data/processed/round_of_32_features.csv",
-        "data/output/round_of_32_predictions.csv",
-        "data/output/round_of_32_winners.csv"
+        ROUND_OF_32_COMPLETE,
+        ROUND_OF_32_FEATURES,
+        ROUND_OF_32_PREDICTIONS,
+        ROUND_OF_32_WINNERS
     )
 
     print("\n=== ROUND OF 16 ===")
@@ -83,10 +109,10 @@ def main():
 
     run_stage(
         "Round of 16",
-        "data/output/round_of_16.csv",
-        "data/processed/round_of_16_features.csv",
-        "data/output/round_of_16_predictions.csv",
-        "data/output/round_of_16_winners.csv"
+        ROUND_OF_16,
+        ROUND_OF_16_FEATURES,
+        ROUND_OF_16_PREDICTIONS,
+        ROUND_OF_16_WINNERS
     )
 
     print("\n=== QUARTERFINALS ===")
@@ -95,10 +121,10 @@ def main():
 
     run_stage(
         "Quarterfinals",
-        "data/output/quarterfinals.csv",
-        "data/processed/quarterfinals_features.csv",
-        "data/output/quarterfinals_predictions.csv",
-        "data/output/quarterfinals_winners.csv"
+        QUARTERFINALS,
+        QUARTERFINALS_FEATURES,
+        QUARTERFINALS_PREDICTIONS,
+        QUARTERFINALS_WINNERS
     )
 
     print("\n=== SEMIFINALS ===")
@@ -107,10 +133,10 @@ def main():
 
     run_stage(
         "Semifinals",
-        "data/output/semifinals.csv",
-        "data/processed/semifinals_features.csv",
-        "data/output/semifinals_predictions.csv",
-        "data/output/semifinals_winners.csv"
+        SEMIFINALS,
+        SEMIFINALS_FEATURES,
+        SEMIFINALS_PREDICTIONS,
+        SEMIFINALS_WINNERS
     )
 
     print("\n=== THIRD PLACE ===")
@@ -119,10 +145,10 @@ def main():
 
     run_stage(
         "Third Place",
-        "data/output/third_place.csv",
-        "data/processed/third_place_features.csv",
-        "data/output/third_place_predictions.csv",
-        "data/output/third_place_winners.csv"
+        THIRD_PLACE,
+        THIRD_PLACE_FEATURES,
+        THIRD_PLACE_PREDICTIONS,
+        THIRD_PLACE_WINNERS
     )
 
     print("\n=== FINAL ===")
@@ -131,9 +157,9 @@ def main():
 
     run_stage(
         "Final",
-        "data/output/final.csv",
-        "data/processed/final_features.csv",
-        "data/output/final_predictions.csv",
+        FINAL,
+        FINAL_FEATURES,
+        FINAL_PREDICTIONS,
         None
     )
 
