@@ -21,6 +21,42 @@ def elo_expectancy(
         )
     )
 
+def get_team_strength(
+    strength_df,
+    team_name
+):
+
+    team_data = strength_df[
+        strength_df["team_name"] == team_name
+    ]
+
+    if team_data.empty:
+
+        raise ValueError(
+            f"Team not found in team_strength: {team_name}"
+        )
+
+    return team_data.iloc[0]
+
+def get_form_score(
+    form_df,
+    country_code
+):
+
+    form_data = form_df[
+        form_df["country_code"]
+        == country_code
+    ]
+
+    if form_data.empty:
+
+        raise ValueError(
+            f"Form score not found for country code: {country_code}"
+        )
+
+    return form_data[
+        "form_score"
+    ].iloc[0]
 
 def build_stage_features(
     input_matches_path,
@@ -46,13 +82,15 @@ def build_stage_features(
         team_1 = match["team_a"]
         team_2 = match["team_b"]
 
-        team_1_strength = strength_df[
-            strength_df["team_name"] == team_1
-        ].iloc[0]
+        team_1_strength = get_team_strength(
+            strength_df,
+            team_1
+        )
 
-        team_2_strength = strength_df[
-            strength_df["team_name"] == team_2
-        ].iloc[0]
+        team_2_strength = get_team_strength(
+            strength_df,
+            team_2
+        )
 
         team_1_code = team_1_strength[
             "country_code"
@@ -75,15 +113,15 @@ def build_stage_features(
             rating_2
         )
 
-        team_1_form = form_df[
-            form_df["country_code"]
-            == team_1_code
-        ]["form_score"].iloc[0]
+        team_1_form = get_form_score(
+            form_df,
+            team_1_code
+        )
 
-        team_2_form = form_df[
-            form_df["country_code"]
-            == team_2_code
-        ]["form_score"].iloc[0]
+        team_2_form = get_form_score(
+            form_df,
+            team_2_code
+        )
 
         form_difference = (
             team_1_form
