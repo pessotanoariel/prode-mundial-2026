@@ -10,6 +10,24 @@ RECENT_FORM_PATH = Path(
     "data/processed/recent_form.csv"
 )
 
+HOST_NATIONS = {
+    "Mexico",
+    "United States",
+    "Canada"
+}
+
+HOST_ADVANTAGE_ELO = 40
+
+def apply_host_advantage(
+    team_name,
+    rating
+):
+
+    if team_name in HOST_NATIONS:
+        return rating + HOST_ADVANTAGE_ELO
+
+    return rating
+
 def elo_expectancy(
     rating_1: float,
     rating_2: float
@@ -100,13 +118,15 @@ def build_stage_features(
             "country_code"
         ]
 
-        rating_1 = team_1_strength[
-            "rating"
-        ]
+        rating_1 = apply_host_advantage(
+            team_1,
+            team_1_strength["rating"]
+        )
 
-        rating_2 = team_2_strength[
-            "rating"
-        ]
+        rating_2 = apply_host_advantage(
+            team_2,
+            team_2_strength["rating"]
+        )
 
         expectancy = elo_expectancy(
             rating_1,

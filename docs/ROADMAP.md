@@ -98,17 +98,33 @@ Status: COMPLETED
 
 ## PHASE 3 — Advanced Modeling
 
-Status: FUTURE
+Status: IN PROGRESS
 
 ## Prediction Improvements
 
-* [ ] Host advantage boost
-* [ ] Elo dynamic updates after each match
-* [ ] Poisson score model
-* [ ] Monte Carlo tournament simulation
-* [ ] Form weighting improvements
-* [ ] Upset calibration tuning
-* [ ] Card simulation (for Fair Play)
+[X] Host advantage boost
+
+### Dynamic Elo System
+
+[X] Create Elo update engine
+[X] Add Elo update tests
+[ ] Create dynamic ratings lookup
+[ ] Update ratings after simulated matches
+[ ] Integrate dynamic Elo into knockout stages
+[ ] Integrate dynamic Elo into group stage
+[ ] Validate Elo evolution across tournament
+
+[ ] Poisson score model
+[ ] Monte Carlo tournament simulation
+
+### Existing Model Improvements
+
+[X] Validate form weighting
+[ ] Upset calibration tuning
+
+### Future Tournament Rules
+
+[ ] Card simulation (for Fair Play)
 
 ## Tournament Analytics
 
