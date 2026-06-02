@@ -1,247 +1,207 @@
-# Prode Mundial 2026 Predictor
+# Prode Mundial 2026
 
-A modular football prediction pipeline built for the FIFA World Cup 2026.
+Motor de simulación y predicción para la Copa Mundial de la FIFA 2026 desarrollado en Python.
 
-The project consumes live Elo-based football datasets, processes international team statistics, and generates automated match predictions for World Cup fixtures.
-
-Initially created as a hobby side-project for a workplace betting pool ("prode"), the project evolved into a small-scale sports analytics and data engineering experiment.
+El proyecto comenzó como una herramienta para participar en un prode entre compañeros de trabajo y evolucionó hacia un experimento de analítica deportiva e ingeniería de datos, incorporando simulación completa del torneo, clasificación de mejores terceros, implementación del Anexo C de FIFA y automatización de todas las rondas eliminatorias.
 
 ---
 
-## Features
+## Objetivos del proyecto
 
-## Current MVP
-
-- External football dataset ingestion
-- Automated TSV → CSV pipelines
-- Team strength dataset generation
-- World Cup fixture filtering
-- Hybrid Elo-based prediction engine
-- Match winner prediction
-- Basic score prediction
-- Confidence classification
+* Consumir y procesar datos internacionales de fútbol basados en Elo Ratings.
+* Generar predicciones de partidos utilizando métricas de fuerza relativa y forma reciente.
+* Simular la fase de grupos completa.
+* Determinar clasificados a eliminación directa según el formato oficial de FIFA 2026.
+* Construir automáticamente el cuadro eliminatorio utilizando las reglas oficiales del Anexo C.
+* Simular todas las rondas hasta la final y el partido por el tercer puesto.
+* Servir como proyecto práctico para profundizar conocimientos de Python, modelado de datos, testing y arquitectura de pipelines.
 
 ---
 
-## Project Structure
+## Características principales
+
+### Ingesta y procesamiento
+
+* Ingesta automatizada de datasets externos.
+* Conversión y normalización de archivos TSV.
+* Construcción de datasets procesados para análisis y simulación.
+* Cálculo de fuerza de selección mediante Elo Ratings.
+* Cálculo de forma reciente utilizando resultados históricos.
+
+### Predicción de partidos
+
+* Probabilidad de victoria basada en Elo.
+* Ajuste mediante forma reciente.
+* Probabilidad dinámica de empate.
+* Predicción de marcador.
+* Clasificación de confianza.
+* Clasificación de riesgo de sorpresa (upset risk).
+
+### Simulación del Mundial 2026
+
+* Simulación completa de fase de grupos.
+* Tabla de posiciones por grupo.
+* Clasificación de primeros y segundos.
+* Selección de los 8 mejores terceros.
+* Desempate por enfrentamiento directo entre dos equipos.
+* Implementación del formato oficial de 48 selecciones.
+
+### Eliminación directa
+
+* Implementación del Anexo C de FIFA.
+* Generación automática de dieciseisavos de final (Round of 32).
+* Simulación de octavos, cuartos, semifinales, tercer puesto y final.
+* Resolución de empates mediante tiempo suplementario o penales.
+* Orquestador único para ejecutar toda la simulación.
+
+### Calidad y mantenibilidad
+
+* Arquitectura modular.
+* Logging centralizado.
+* Validaciones y manejo de errores.
+* Tests automatizados con pytest.
+* Documentación técnica del pipeline.
+
+---
+
+## Estructura del proyecto
 
 ```text
-project/
+prode-mundial-2026/
 │
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   └── output/
 │
-├── src/
-│   ├── ingestion/
-│   ├── processing/
-│   └── predictor/
+├── docs/
+│   ├── annex_c.md
+│   └── knockout_pipeline.md
 │
-├── requirements.txt
-└── README.md
+├── src/
+│   ├── analysis/
+│   ├── ingestion/
+│   ├── knockout/
+│   ├── predictor/
+│   └── processing/
+│
+├── tests/
+│
+├── README.md
+├── README_EN.md
+└── requirements.txt
 ```
 
 ---
 
-## Data Sources
-
-The project currently uses public datasets from:
-
-- World Football Elo Ratings
-- TSV endpoints discovered through browser network inspection
-
-Main datasets:
-
-| Dataset | Purpose |
-
-|---|---|
-
-| `World.tsv` | Global Elo rankings and team statistics |
-| `en.teams.tsv` | Team name lookup |
-| `fixtures.tsv` | Upcoming fixtures and Elo probabilities |
-| `latest.tsv` | Recent international match results |
-
----
-
-## Pipeline Overview
+## Flujo de simulación
 
 ```text
-External TSV datasets
+Datasets externos
         ↓
-Ingestion scripts
+Ingesta
         ↓
-Raw CSV storage
+Procesamiento
         ↓
-Processing & feature engineering
+Fuerza de equipos y forma reciente
         ↓
-Prediction engine
+Predicciones de fase de grupos
         ↓
-World Cup predictions
+Clasificación
+        ↓
+Mejores terceros
+        ↓
+Anexo C FIFA
+        ↓
+Round of 32
+        ↓
+Round of 16
+        ↓
+Quarterfinals
+        ↓
+Semifinals
+        ↓
+Third Place Match
+        ↓
+Final
 ```
 
 ---
 
-## Current Prediction Logic
+## Ejecución
 
-The current MVP uses a hybrid heuristic model based on:
-
-- Elo expected win probability
-- Dynamic draw probability
-- Relative team strength
-- Simple confidence rules
-
-Example:
-
-| Match | Prediction |
-
-|---|---|
-
-| Brazil vs Morocco | Brazil 2-0 |
-| Japan vs Netherlands | Draw 1-1 |
-| Argentina vs Algeria | Argentina 2-1 |
-
----
-
-## How To Run
-
-## 1. Create virtual environment
+### Crear entorno virtual
 
 ```bash
 python -m venv .venv
 ```
 
-## 2. Activate environment
+### Activar entorno
 
-### Windows
+#### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### Linux / Mac
+#### Linux / Mac
 
 ```bash
 source .venv/bin/activate
 ```
 
-## 3. Install dependencies
+### Instalar dependencias
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Run Data Ingestion
+### Ejecutar simulación completa
 
 ```bash
-python -m src.ingestion.update_elo
-python -m src.ingestion.update_teams
-python -m src.ingestion.update_fixtures
-python -m src.ingestion.update_latest_results
+python -m src.knockout.tournament
 ```
 
 ---
 
-## Run Processing
+## Testing
+
+Ejecutar todos los tests:
 
 ```bash
-python -m src.processing.build_team_strength
-python -m src.processing.build_upcoming_matches
+pytest
 ```
+
+Actualmente se incluyen pruebas para:
+
+* Resolución de ganadores en eliminación directa.
+* Construcción de rondas posteriores.
+* Implementación del Anexo C de FIFA.
 
 ---
 
-## Generate Predictions
+## Documentación adicional
 
-```bash
-python -m src.predictor.generate_predictions
-```
-
-Predictions are exported to:
-
-```text
-data/output/predictions.csv
-```
-
----
-
-## Example Output
-
-| Match | Predicted Winner | Score | Confidence |
-
-|---|---|---|---|
-
-| Brazil vs Morocco | Brazil | 2-0 | High |
-| Australia vs Turkey | Turkey | 1-2 | Medium |
-| Japan vs Netherlands | Draw | 1-1 | Low |
+* `docs/knockout_pipeline.md`
+* `docs/annex_c.md`
 
 ---
 
 ## Roadmap
 
-## Near-Term Improvements
+### Mejoras futuras
 
-### V1.1 — Recent Form Adjustment
-
-- Last 5 matches
-- Momentum score
-- Recent win/loss streaks
-
-### V1.2 — Better Score Simulation
-
-- Poisson goal distribution
-- Expected goals estimation
-
-### V1.3 — Group Stage Simulation
-
-- Group standings
-- Qualification probabilities
-- Tournament progression
+* Desempates entre tres o más equipos.
+* Fair Play como criterio de desempate.
+* Ranking FIFA como criterio de desempate.
+* Actualización dinámica de Elo después de cada partido.
+* Modelo Poisson para simulación de resultados.
+* Simulaciones Monte Carlo.
+* Probabilidades de campeón.
+* Dashboard avanzado de análisis.
 
 ---
 
-## Mid-Term Improvements
+## Descargo
 
-### Monte Carlo Tournament Simulation
-
-- 1000+ tournament runs
-- Champion probabilities
-- Upset simulations
-
-### Streamlit Dashboard
-
-- Match explorer
-- Prediction viewer
-- Team analytics
-
----
-
-## Long-Term Ideas
-
-### ML-Based Predictor
-
-- Historical match training datasets
-- Feature engineering
-- Ensemble models
-- Automated calibration
-
----
-
-## Technical Notes
-
-This project intentionally prioritizes:
-
-- reproducibility
-- modular pipelines
-- simple architecture
-- incremental experimentation
-
-over heavy ML complexity in early stages.
-
----
-
-## Disclaimer
-
-Predictions are experimental and intended for educational and entertainment purposes only.
+Las predicciones generadas por el proyecto tienen fines educativos, experimentales y recreativos. No constituyen recomendaciones de apuestas ni garantías sobre resultados reales.

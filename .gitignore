@@ -12,5 +12,4 @@ data/output/*
 .DS_Store
 .ipynb_checkpoints/
 
-docs/ROADMAP.md
 docs/*.pdf
