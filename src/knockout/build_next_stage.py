@@ -2,11 +2,28 @@ from pathlib import Path
 
 import pandas as pd
 
+def extract_previous_match_ids(
+    structure
+):
+
+    previous_ids = []
+
+    for (
+        _,
+        previous_1,
+        previous_2
+    ) in structure:
+
+        previous_ids.extend([
+            previous_1,
+            previous_2
+        ])
+
+    return previous_ids
 
 def build_next_stage(
     winners_path,
     structure,
-    previous_match_ids,
     output_path
 ):
 
@@ -17,6 +34,12 @@ def build_next_stage(
     winners = winners_df[
         "winner"
     ].tolist()
+
+    previous_match_ids = (
+        extract_previous_match_ids(
+            structure
+        )
+    )
 
     winner_lookup = dict(
         zip(

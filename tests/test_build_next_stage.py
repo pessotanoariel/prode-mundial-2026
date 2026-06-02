@@ -38,7 +38,6 @@ def test_build_next_stage(tmp_path):
     result = build_next_stage(
         winners_path,
         structure,
-        previous_match_ids,
         output_path
     )
 

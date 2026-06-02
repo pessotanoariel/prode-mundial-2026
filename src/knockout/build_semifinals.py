@@ -12,7 +12,6 @@ def build_semifinals():
     return build_next_stage(
         "data/output/quarterfinals_winners.csv",
         SEMIFINAL_STRUCTURE,
-        [97, 98, 99, 100],
         "data/output/semifinals.csv"
     )
 

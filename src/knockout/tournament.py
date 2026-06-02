@@ -60,6 +60,10 @@ from src.knockout.paths import (
     FINAL_PREDICTIONS
 )
 
+from src.knockout.logger import (
+    logger
+)
+
 def run_stage(
     stage_name,
     matches_path,
@@ -67,14 +71,18 @@ def run_stage(
     predictions_path,
     winners_path=None
 ):
-    print(f"Building features: {stage_name}")
+    logger.info(
+        f"Building features: {stage_name}"
+    )
     build_stage_features(
         matches_path,
         features_path,
         stage_name
     )
 
-    print(f"Generating predictions: {stage_name}")
+    logger.info(
+        f"Generating predictions: {stage_name}"
+    )
     predict_stage(
         features_path,
         predictions_path
@@ -82,7 +90,9 @@ def run_stage(
 
     if winners_path:
 
-        print(f"Resolving winners: {stage_name}")
+        logger.info(
+            f"Resolving winners: {stage_name}"
+        )
 
         save_winners(
             predictions_path,
@@ -91,7 +101,9 @@ def run_stage(
 
 def main():
 
-    print("\n=== ROUND OF 32 ===")
+    logger.info(
+        "=== ROUND OF 32 ==="
+    )
 
     build_round_of_32_complete()
 
@@ -103,7 +115,9 @@ def main():
         ROUND_OF_32_WINNERS
     )
 
-    print("\n=== ROUND OF 16 ===")
+    logger.info(
+        "=== ROUND OF 16 ==="
+    )
 
     build_round_of_16()
 
@@ -115,7 +129,9 @@ def main():
         ROUND_OF_16_WINNERS
     )
 
-    print("\n=== QUARTERFINALS ===")
+    logger.info(
+        "=== QUARTERFINALS ==="
+    )
 
     build_quarterfinals()
 
@@ -127,7 +143,9 @@ def main():
         QUARTERFINALS_WINNERS
     )
 
-    print("\n=== SEMIFINALS ===")
+    logger.info(
+        "=== SEMIFINALS ==="
+    )
 
     build_semifinals()
 
@@ -139,7 +157,9 @@ def main():
         SEMIFINALS_WINNERS
     )
 
-    print("\n=== THIRD PLACE ===")
+    logger.info(
+        "=== THIRD PLACE ==="
+    )
 
     build_third_place()
 
@@ -151,7 +171,9 @@ def main():
         THIRD_PLACE_WINNERS
     )
 
-    print("\n=== FINAL ===")
+    logger.info(
+        "=== FINAL ==="
+    )
 
     build_final()
 
@@ -163,7 +185,9 @@ def main():
         None
     )
 
-    print("\nTournament simulation completed")
+    logger.info(
+        "Tournament simulation completed"
+    )
 
 if __name__ == "__main__":
     main()

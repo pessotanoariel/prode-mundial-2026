@@ -12,12 +12,6 @@ def build_round_of_16():
     return build_next_stage(
         "data/output/round_of_32_winners.csv",
         ROUND_OF_16_STRUCTURE,
-        [
-            73, 74, 75, 76,
-            77, 78, 79, 80,
-            81, 82, 83, 84,
-            85, 86, 87, 88
-        ],
         "data/output/round_of_16.csv"
     )
 
