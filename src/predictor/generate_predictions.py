@@ -95,7 +95,10 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
 
         predicted_score = predict_score(
             home_xg,
-            away_xg
+            away_xg,
+            predicted_winner,
+            row["team_1_name"],
+            row["team_2_name"]
         )
 
         predictions.append({
