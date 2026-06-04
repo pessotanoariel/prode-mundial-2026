@@ -128,8 +128,9 @@ Status: IN PROGRESS
 [X] Resolve simulated knockout draws
 [X] Monte Carlo tournament simulation
 [X] Champion probability table
+[X] Most likely finals
+
 [ ] Team progression probabilities
-[ ] Most likely finals
 
 [ ] Integrate dynamic Elo into group stage
 [ ] Validate Elo evolution across tournament
