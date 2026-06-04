@@ -95,7 +95,7 @@ def run_stage(
     logger.info(
         f"Generating predictions: {stage_name}"
     )
-    
+
     predict_stage(
         features_path,
         predictions_path,
@@ -122,7 +122,9 @@ def run_stage(
             ratings_lookup
         )
 
-def main():
+def main(
+    simulation_mode=False
+):
 
     ratings_lookup = (
         build_ratings_lookup()
@@ -140,7 +142,8 @@ def main():
         ROUND_OF_32_FEATURES,
         ROUND_OF_32_PREDICTIONS,
         ratings_lookup,
-        ROUND_OF_32_WINNERS
+        ROUND_OF_32_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
@@ -155,7 +158,8 @@ def main():
         ROUND_OF_16_FEATURES,
         ROUND_OF_16_PREDICTIONS,
         ratings_lookup,
-        ROUND_OF_16_WINNERS
+        ROUND_OF_16_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
@@ -170,7 +174,8 @@ def main():
         QUARTERFINALS_FEATURES,
         QUARTERFINALS_PREDICTIONS,
         ratings_lookup,
-        QUARTERFINALS_WINNERS
+        QUARTERFINALS_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
@@ -185,7 +190,8 @@ def main():
         SEMIFINALS_FEATURES,
         SEMIFINALS_PREDICTIONS,
         ratings_lookup,
-        SEMIFINALS_WINNERS
+        SEMIFINALS_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
@@ -200,7 +206,8 @@ def main():
         THIRD_PLACE_FEATURES,
         THIRD_PLACE_PREDICTIONS,
         ratings_lookup,
-        THIRD_PLACE_WINNERS
+        THIRD_PLACE_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
@@ -215,11 +222,18 @@ def main():
         FINAL_FEATURES,
         FINAL_PREDICTIONS,
         ratings_lookup,
-        FINAL_WINNERS
+        FINAL_WINNERS,
+        simulation_mode=simulation_mode
     )
 
     logger.info(
         "Tournament simulation completed"
+    )
+
+def simulation_main():
+
+    main(
+        simulation_mode=True
     )
 
 if __name__ == "__main__":

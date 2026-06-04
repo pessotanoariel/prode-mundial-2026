@@ -3,7 +3,7 @@ from collections import Counter
 import pandas as pd
 
 from src.knockout.tournament import (
-    main as run_tournament
+    simulation_main
 )
 
 
@@ -11,6 +11,7 @@ FINAL_WINNERS_PATH = (
     "data/output/final_winners.csv"
 )
 
+DEFAULT_SIMULATIONS = 100
 
 def get_champion():
 
@@ -22,7 +23,7 @@ def get_champion():
 
 
 def run_monte_carlo(
-    simulations=10
+    simulations=DEFAULT_SIMULATIONS
 ):
 
     champions = Counter()
@@ -35,7 +36,7 @@ def run_monte_carlo(
             f"Simulation {simulation + 1}/{simulations}"
         )
 
-        run_tournament()
+        simulation_main()
 
         champion = get_champion()
 
@@ -43,13 +44,49 @@ def run_monte_carlo(
             champion
         ] += 1
 
+    rows = []
+
+    for team, count in (
+        champions.items()
+    ):
+
+        rows.append({
+            "team": team,
+            "championships": count,
+            "probability": round(
+                count / simulations,
+                4
+            )
+        })
+
+    probabilities_df = (
+        pd.DataFrame(rows)
+        .sort_values(
+            "championships",
+            ascending=False
+        )
+    )
+
+    probabilities_df.to_csv(
+        "data/output/champion_probabilities.csv",
+        index=False
+    )
+
+    print(
+    "\nChampion Probabilities\n"
+    )
+
+    print(
+        probabilities_df
+    )
+
     return champions
 
 
 def main():
 
     champions = run_monte_carlo(
-        simulations=10
+        simulations=DEFAULT_SIMULATIONS
     )
 
     print("\nChampion Counts\n")

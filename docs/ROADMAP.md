@@ -126,8 +126,8 @@ Status: IN PROGRESS
 [X] Enable stochastic score generation
 [X] Derive winner from simulated score
 [X] Resolve simulated knockout draws
-[ ] Monte Carlo tournament simulation
-[ ] Champion probability table
+[X] Monte Carlo tournament simulation
+[X] Champion probability table
 [ ] Team progression probabilities
 [ ] Most likely finals
 
