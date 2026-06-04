@@ -57,7 +57,8 @@ from src.knockout.paths import (
     THIRD_PLACE_WINNERS,
     FINAL,
     FINAL_FEATURES,
-    FINAL_PREDICTIONS
+    FINAL_PREDICTIONS,
+    FINAL_WINNERS
 )
 
 from src.knockout.logger import (
@@ -78,7 +79,8 @@ def run_stage(
     features_path,
     predictions_path,
     ratings_lookup,
-    winners_path=None
+    winners_path=None,
+    simulation_mode=False
 ):
     logger.info(
         f"Building features: {stage_name}"
@@ -93,9 +95,11 @@ def run_stage(
     logger.info(
         f"Generating predictions: {stage_name}"
     )
+    
     predict_stage(
         features_path,
-        predictions_path
+        predictions_path,
+        simulation_mode
     )
 
     if winners_path:
@@ -210,7 +214,8 @@ def main():
         FINAL,
         FINAL_FEATURES,
         FINAL_PREDICTIONS,
-        ratings_lookup
+        ratings_lookup,
+        FINAL_WINNERS
     )
 
     logger.info(

@@ -2,6 +2,10 @@ from src.predictor.poisson_model import (
     most_likely_goals
 )
 
+from src.predictor.poisson_model import (
+    sample_goals
+)
+
 
 def predict_score(
     home_xg,
@@ -41,4 +45,22 @@ def predict_score(
 
     return (
         f"{home_goals}-{away_goals}"
+    )
+
+def simulate_score(
+    home_xg,
+    away_xg
+):
+
+    home_goals = sample_goals(
+        home_xg
+    )
+
+    away_goals = sample_goals(
+        away_xg
+    )
+
+    return (
+        home_goals,
+        away_goals
     )

@@ -7,9 +7,11 @@ from src.predictor.generate_predictions import (
 )
 
 
+
 def predict_stage(
     input_features_path,
-    output_predictions_path
+    output_predictions_path,
+    simulation_mode=False
 ):
 
     features_df = pd.read_csv(
@@ -17,7 +19,8 @@ def predict_stage(
     )
 
     predictions_df = generate_predictions(
-        features_df
+        features_df,
+        simulation_mode
     )
 
     predictions_df.to_csv(

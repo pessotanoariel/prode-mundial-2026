@@ -1,6 +1,16 @@
 from math import exp
 from math import factorial
+import numpy as np
 
+def sample_goals(
+    expected_goals
+):
+
+    return int(
+        np.random.poisson(
+            expected_goals
+        )
+    )
 
 def poisson_probability(
     goals,

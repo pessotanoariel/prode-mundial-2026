@@ -3,20 +3,20 @@ from pathlib import Path
 import pandas as pd
 
 from src.predictor.score_model import (
-    predict_score
+    predict_score,
+    simulate_score
 )
 
 from src.predictor.expected_goals import (
     estimate_expected_goals
 )
 
-
 INPUT_PATH = Path("data/processed/upcoming_matches.csv")
 
 OUTPUT_PATH = Path("data/output/predictions.csv")
 
 
-def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
+def generate_predictions(df: pd.DataFrame, simulation_mode=False) -> pd.DataFrame:
 
     predictions = []
 
@@ -93,13 +93,46 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
             )
         )
 
-        predicted_score = predict_score(
-            home_xg,
-            away_xg,
-            predicted_winner,
-            row["team_1_name"],
-            row["team_2_name"]
-        )
+        if simulation_mode:
+
+            print("SIMULATION MODE ACTIVE")
+
+            home_goals, away_goals = (
+                simulate_score(
+                    home_xg,
+                    away_xg
+                )
+            )
+
+            predicted_score = (
+                f"{home_goals}-{away_goals}"
+            )
+
+            if home_goals > away_goals:
+
+                predicted_winner = (
+                    row["team_1_name"]
+                )
+
+            elif away_goals > home_goals:
+
+                predicted_winner = (
+                    row["team_2_name"]
+                )
+
+            else:
+
+                predicted_winner = "Draw"
+
+        else:
+
+            predicted_score = predict_score(
+                home_xg,
+                away_xg,
+                predicted_winner,
+                row["team_1_name"],
+                row["team_2_name"]
+            )
 
         predictions.append({
             "match_date": row["match_date"],

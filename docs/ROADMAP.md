@@ -47,12 +47,6 @@ Status: COMPLETED
 * [X] Head-to-head tie breaker (2-team ties)
 * [X] Export qualified teams dataset
 
-### Future Improvements
-
-* [ ] Head-to-head tie breaker (3+ team ties)
-* [ ] Fair Play tie breaker
-* [ ] FIFA Ranking tie breaker
-
 ## Knockout Stage
 
 * [X] Create knockout structure dataset
@@ -115,9 +109,6 @@ Status: IN PROGRESS
 [X] Create stage ratings updater
 [X] Integrate dynamic Elo into knockout stages
 
-[ ] Integrate dynamic Elo into group stage
-[ ] Validate Elo evolution across tournament
-
 ### Score Modeling
 
 [X] Decouple score prediction from winner prediction
@@ -125,10 +116,23 @@ Status: IN PROGRESS
 [X] Create Poisson Probability Model
 [X] Integrate Poisson into score prediction
 [X] Align score prediction with winner prediction
+[X] Export tournament champion
 
 ### Tournament Simulation
 
+[X] Create stochastic Poisson sampler
+[X] Create stochastic score simulator
+[X] Route simulation_mode through pipeline
+[X] Enable stochastic score generation
+[X] Derive winner from simulated score
+
 [ ] Monte Carlo tournament simulation
+[ ] Champion probability table
+[ ] Team progression probabilities
+[ ] Most likely finals
+
+[ ] Integrate dynamic Elo into group stage
+[ ] Validate Elo evolution across tournament
 
 ### Existing Model Improvements
 
@@ -138,6 +142,12 @@ Status: IN PROGRESS
 ### Future Tournament Rules
 
 [ ] Card simulation (for Fair Play)
+
+### FIFA Rules Backlog
+
+* [ ] Head-to-head tie breaker (3+ team ties)
+* [ ] Fair Play tie breaker
+* [ ] FIFA Ranking tie breaker
 
 ---
 
