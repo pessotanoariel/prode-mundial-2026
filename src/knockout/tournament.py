@@ -64,11 +64,16 @@ from src.knockout.logger import (
     logger
 )
 
+from src.predictor.ratings_lookup import (
+    build_ratings_lookup
+)
+
 def run_stage(
     stage_name,
     matches_path,
     features_path,
     predictions_path,
+    ratings_lookup,
     winners_path=None
 ):
     logger.info(
@@ -77,7 +82,8 @@ def run_stage(
     build_stage_features(
         matches_path,
         features_path,
-        stage_name
+        stage_name,
+        ratings_lookup
     )
 
     logger.info(
@@ -101,6 +107,10 @@ def run_stage(
 
 def main():
 
+    ratings_lookup = (
+        build_ratings_lookup()
+    )
+
     logger.info(
         "=== ROUND OF 32 ==="
     )
@@ -112,6 +122,7 @@ def main():
         ROUND_OF_32_COMPLETE,
         ROUND_OF_32_FEATURES,
         ROUND_OF_32_PREDICTIONS,
+        ratings_lookup,
         ROUND_OF_32_WINNERS
     )
 
@@ -126,6 +137,7 @@ def main():
         ROUND_OF_16,
         ROUND_OF_16_FEATURES,
         ROUND_OF_16_PREDICTIONS,
+        ratings_lookup,
         ROUND_OF_16_WINNERS
     )
 
@@ -140,6 +152,7 @@ def main():
         QUARTERFINALS,
         QUARTERFINALS_FEATURES,
         QUARTERFINALS_PREDICTIONS,
+        ratings_lookup,
         QUARTERFINALS_WINNERS
     )
 
@@ -154,6 +167,7 @@ def main():
         SEMIFINALS,
         SEMIFINALS_FEATURES,
         SEMIFINALS_PREDICTIONS,
+        ratings_lookup,
         SEMIFINALS_WINNERS
     )
 
@@ -168,6 +182,7 @@ def main():
         THIRD_PLACE,
         THIRD_PLACE_FEATURES,
         THIRD_PLACE_PREDICTIONS,
+        ratings_lookup,
         THIRD_PLACE_WINNERS
     )
 
@@ -182,7 +197,7 @@ def main():
         FINAL,
         FINAL_FEATURES,
         FINAL_PREDICTIONS,
-        None
+        ratings_lookup
     )
 
     logger.info(
