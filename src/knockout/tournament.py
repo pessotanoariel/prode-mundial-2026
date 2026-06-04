@@ -68,6 +68,10 @@ from src.predictor.ratings_lookup import (
     build_ratings_lookup
 )
 
+from src.predictor.update_stage_ratings import (
+    update_stage_ratings
+)
+
 def run_stage(
     stage_name,
     matches_path,
@@ -103,6 +107,15 @@ def run_stage(
         save_winners(
             predictions_path,
             winners_path
+        )
+
+        logger.info(
+            f"Updating Elo ratings: {stage_name}"
+        )
+
+        update_stage_ratings(
+            winners_path,
+            ratings_lookup
         )
 
 def main():

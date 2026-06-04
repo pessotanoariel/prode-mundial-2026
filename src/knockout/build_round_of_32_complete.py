@@ -4,6 +4,10 @@ from src.knockout.slot_mapping import build_slot_mapping
 from src.knockout.best_third_teams import get_best_third_teams
 from src.knockout.annex_c import get_annex_c_matchups
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def build_round_of_32_complete():
 
@@ -57,8 +61,8 @@ def build_round_of_32_complete():
         index=False
     )
 
-    print(
-        f"✅ Exported {output_path}"
+    logger.info(
+        f"Exported {output_path}"
     )
 
 
