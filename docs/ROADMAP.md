@@ -121,6 +121,7 @@ Status: IN PROGRESS
 ### Score Modeling
 
 [X] Decouple score prediction from winner prediction
+[ ] Create Expected Goals Model
 [ ] Implement Poisson score model
 
 ### Tournament Simulation
