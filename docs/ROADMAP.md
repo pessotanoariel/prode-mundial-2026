@@ -92,7 +92,7 @@ Status: COMPLETED
 
 ## PHASE 3 — Advanced Modeling
 
-Status: IN PROGRESS
+Status: COMPLETED
 
 ### Host Advantage
 
@@ -117,6 +117,7 @@ Status: IN PROGRESS
 [X] Integrate Poisson into score prediction
 [X] Align score prediction with winner prediction
 [X] Export tournament champion
+[X] Validate form weighting
 
 ### Tournament Simulation
 
@@ -131,13 +132,7 @@ Status: IN PROGRESS
 [X] Most likely finals
 [X] Team progression probabilities
 
-[ ] Integrate dynamic Elo into group stage
-[ ] Validate Elo evolution across tournament
-
 ### Existing Model Improvements
-
-[X] Validate form weighting
-[ ] Upset calibration tuning
 
 ### FIFA Rules Backlog
 
@@ -147,23 +142,32 @@ Status: IN PROGRESS
 
 ### Future Improvement
 
+[ ] Upset calibration tuning
 [ ] Track actual finalists instead of final winners
+[ ] Integrate dynamic Elo into group stage
+[ ] Validate Elo evolution across tournament
+[ ] Hybrid tournament simulation
 
 ---
 
 ## PHASE 4 — UX / Product
 
-Status: FUTURE
+Status: IN PROGRESS
 
 ## Dashboard Improvements
 
-* [ ] Group tabs
 * [ ] Cards instead of plain table
+* [ ] Charts and analytics
+
+### Navigation
+
+* [ ] Group tabs
+* [ ] Match cards
+
+### Tournament Views
+
 * [ ] Bracket visualization
 * [ ] Tournament timeline
-* [ ] Match cards
-* [ ] Retro World Cup styling
-* [ ] Mobile responsiveness
 
 ## Visual Features
 
@@ -171,7 +175,11 @@ Status: FUTURE
 * [ ] Stadium visualization
 * [ ] Host cities
 * [ ] Heatmaps
-* [ ] Charts and analytics
+
+## Styling
+
+* [ ] Retro World Cup styling
+* [ ] Mobile responsiveness
 
 ---
 

@@ -77,6 +77,54 @@ most_unbalanced_label = (
 st.title("⚽ Prode Mundial 2026")
 st.subheader("Predicciones IA del Mundial")
 
+st.header(
+    "🏆 Pronóstico del Torneo"
+)
+
+champions_df = pd.read_csv(
+    "data/output/champion_probabilities.csv"
+)
+
+top_3 = champions_df.head(3)
+
+col1, col2, col3 = st.columns(3)
+
+col1.metric(
+    "🥇 Favorito",
+    TEAM_TRANSLATIONS.get(
+        top_3.iloc[0]["team"],
+        top_3.iloc[0]["team"]
+    ),
+    f"{top_3.iloc[0]['probability']:.0%}"
+)
+
+col2.metric(
+    "🥈 Segundo",
+    TEAM_TRANSLATIONS.get(
+        top_3.iloc[1]["team"],
+        top_3.iloc[1]["team"]
+    ),
+    f"{top_3.iloc[1]['probability']:.0%}"
+)
+
+col3.metric(
+    "🥉 Tercero",
+    TEAM_TRANSLATIONS.get(
+        top_3.iloc[2]["team"],
+        top_3.iloc[2]["team"]
+    ),
+    f"{top_3.iloc[2]['probability']:.0%}"
+)
+
+st.subheader(
+    "🏆 Probabilidades de Campeón"
+)
+
+st.bar_chart(
+    champions_df.set_index("team")
+    ["probability"]
+)
+
 col1, col2, col3 = st.columns(3)
 
 col1.metric(
