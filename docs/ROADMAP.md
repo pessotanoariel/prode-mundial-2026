@@ -100,7 +100,7 @@ Status: COMPLETED
 
 Status: IN PROGRESS
 
-## Prediction Improvements
+### Host Advantage
 
 [X] Host advantage boost
 
@@ -114,10 +114,17 @@ Status: IN PROGRESS
 [X] Integrate ratings lookup into tournament pipeline
 [X] Create stage ratings updater
 [X] Integrate dynamic Elo into knockout stages
+
 [ ] Integrate dynamic Elo into group stage
 [ ] Validate Elo evolution across tournament
 
-[ ] Poisson score model
+### Score Modeling
+
+[X] Decouple score prediction from winner prediction
+[ ] Implement Poisson score model
+
+### Tournament Simulation
+
 [ ] Monte Carlo tournament simulation
 
 ### Existing Model Improvements
@@ -128,14 +135,6 @@ Status: IN PROGRESS
 ### Future Tournament Rules
 
 [ ] Card simulation (for Fair Play)
-
-## Tournament Analytics
-
-* [ ] Champion probability table
-* [ ] Surprise team ranking
-* [ ] Hardest groups ranking
-* [ ] Most likely finals
-* [ ] Team progression probabilities
 
 ---
 

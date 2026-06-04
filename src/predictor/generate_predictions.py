@@ -2,6 +2,10 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.predictor.score_model import (
+    predict_score
+)
+
 
 INPUT_PATH = Path("data/processed/upcoming_matches.csv")
 
@@ -48,22 +52,18 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
 
         if home_prob >= 0.60:
             predicted_winner = row["team_1_name"]
-            predicted_score = "2-0"
             confidence = "High"
 
         elif home_prob >= 0.45:
             predicted_winner = row["team_1_name"]
-            predicted_score = "2-1"
             confidence = "Medium"
 
         elif away_prob >= 0.45:
             predicted_winner = row["team_2_name"]
-            predicted_score = "1-2"
             confidence = "Medium"
 
         else:
             predicted_winner = "Draw"
-            predicted_score = "1-1"
             confidence = "Low"
 
         probability_gap = abs(
@@ -81,6 +81,11 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
 
         else:
             upset_risk = "LOW"
+
+        predicted_score = predict_score(
+            home_prob,
+            away_prob
+        )
 
         predictions.append({
             "match_date": row["match_date"],
