@@ -129,8 +129,7 @@ Status: IN PROGRESS
 [X] Monte Carlo tournament simulation
 [X] Champion probability table
 [X] Most likely finals
-
-[ ] Team progression probabilities
+[X] Team progression probabilities
 
 [ ] Integrate dynamic Elo into group stage
 [ ] Validate Elo evolution across tournament
@@ -145,6 +144,10 @@ Status: IN PROGRESS
 * [ ] Head-to-head tie breaker (3+ team ties)
 * [ ] Fair Play tie breaker
 * [ ] FIFA Ranking tie breaker
+
+### Future Improvement
+
+[ ] Track actual finalists instead of final winners
 
 ---
 

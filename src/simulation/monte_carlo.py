@@ -6,6 +6,14 @@ from src.knockout.tournament import (
     simulation_main
 )
 
+from collections import defaultdict
+
+from src.knockout.paths import (
+    QUARTERFINALS_WINNERS,
+    SEMIFINALS_WINNERS,
+    FINAL_WINNERS
+)
+
 
 FINAL_WINNERS_PATH = (
     "data/output/final_winners.csv"
@@ -36,6 +44,17 @@ def get_final_matchup():
         )
     )
 
+def get_stage_teams(
+    winners_path
+):
+
+    df = pd.read_csv(
+        winners_path
+    )
+
+    return df["winner"].tolist()
+
+
 
 def run_monte_carlo(
     simulations=DEFAULT_SIMULATIONS
@@ -44,6 +63,15 @@ def run_monte_carlo(
     champions = Counter()
 
     finals = Counter()
+
+    progression = defaultdict(
+        lambda: {
+            "qf": 0,
+            "sf": 0,
+            "final": 0,
+            "champion": 0
+        }
+    )
 
     for simulation in range(
         simulations
@@ -68,6 +96,49 @@ def run_monte_carlo(
         champions[
             champion
         ] += 1
+
+        quarterfinalists = (
+            get_stage_teams(
+                QUARTERFINALS_WINNERS
+            )
+        )
+
+        semifinalists = (
+            get_stage_teams(
+                SEMIFINALS_WINNERS
+            )
+        )
+
+        finalists = (
+            get_stage_teams(
+                FINAL_WINNERS
+            )
+        )
+
+        for team in quarterfinalists:
+
+            progression[
+                team
+            ]["qf"] += 1
+
+
+        for team in semifinalists:
+
+            progression[
+                team
+            ]["sf"] += 1
+
+
+        for team in finalists:
+
+            progression[
+                team
+            ]["final"] += 1
+
+
+        progression[
+            champion
+        ]["champion"] += 1
 
     rows = []
 
@@ -142,6 +213,55 @@ def run_monte_carlo(
 
     print(
         finals_df.head(10)
+    )
+
+    progression_rows = []
+
+    for team, stats in (
+        progression.items()
+    ):
+
+        progression_rows.append({
+            "team": team,
+            "qf": round(
+                stats["qf"] / simulations,
+                4
+            ),
+            "sf": round(
+                stats["sf"] / simulations,
+                4
+            ),
+            "final": round(
+                stats["final"] / simulations,
+                4
+            ),
+            "champion": round(
+                stats["champion"] / simulations,
+                4
+            )
+        })
+
+    progression_df = (
+        pd.DataFrame(
+            progression_rows
+        )
+        .sort_values(
+            "champion",
+            ascending=False
+        )
+    )
+
+    progression_df.to_csv(
+        "data/output/team_progression_probabilities.csv",
+        index=False
+    )
+
+    print(
+        "\nTeam Progression Probabilities\n"
+    )
+
+    print(
+        progression_df.head(20)
     )
 
     return champions
