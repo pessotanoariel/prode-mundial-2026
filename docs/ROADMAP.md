@@ -125,7 +125,7 @@ Status: IN PROGRESS
 [X] Route simulation_mode through pipeline
 [X] Enable stochastic score generation
 [X] Derive winner from simulated score
-
+[ ] Resolve simulated knockout draws
 [ ] Monte Carlo tournament simulation
 [ ] Champion probability table
 [ ] Team progression probabilities
