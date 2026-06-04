@@ -6,6 +6,10 @@ from src.predictor.score_model import (
     predict_score
 )
 
+from src.predictor.expected_goals import (
+    estimate_expected_goals
+)
+
 
 INPUT_PATH = Path("data/processed/upcoming_matches.csv")
 
@@ -82,9 +86,16 @@ def generate_predictions(df: pd.DataFrame) -> pd.DataFrame:
         else:
             upset_risk = "LOW"
 
+        home_xg, away_xg = (
+            estimate_expected_goals(
+                home_prob,
+                away_prob
+            )
+        )
+
         predicted_score = predict_score(
-            home_prob,
-            away_prob
+            home_xg,
+            away_xg
         )
 
         predictions.append({

@@ -1,25 +1,21 @@
+from src.predictor.poisson_model import (
+    most_likely_goals
+)
+
+
 def predict_score(
-    home_prob,
-    away_prob
+    home_xg,
+    away_xg
 ):
 
-    if home_prob >= 0.75:
-        return "3-0"
+    home_goals = most_likely_goals(
+        home_xg
+    )
 
-    elif home_prob >= 0.65:
-        return "2-0"
+    away_goals = most_likely_goals(
+        away_xg
+    )
 
-    elif home_prob >= 0.55:
-        return "2-1"
-
-    elif away_prob >= 0.75:
-        return "0-3"
-
-    elif away_prob >= 0.65:
-        return "0-2"
-
-    elif away_prob >= 0.55:
-        return "1-2"
-
-    else:
-        return "1-1"
+    return (
+        f"{home_goals}-{away_goals}"
+    )
