@@ -79,7 +79,8 @@ def get_form_score(
 def build_stage_features(
     input_matches_path,
     output_features_path,
-    stage_name
+    stage_name,
+    ratings_lookup=None
 ):
     matches_df = pd.read_csv(
     input_matches_path
@@ -118,16 +119,36 @@ def build_stage_features(
             "country_code"
         ]
 
+        if ratings_lookup:
+
+            rating_1 = ratings_lookup[
+                team_1
+            ]
+
+            rating_2 = ratings_lookup[
+                team_2
+            ]
+
+        else:
+
+            rating_1 = team_1_strength[
+                "rating"
+            ]
+
+            rating_2 = team_2_strength[
+                "rating"
+            ]
+
         rating_1 = apply_host_advantage(
             team_1,
-            team_1_strength["rating"]
+            rating_1
         )
 
         rating_2 = apply_host_advantage(
             team_2,
-            team_2_strength["rating"]
+            rating_2
         )
-
+        
         expectancy = elo_expectancy(
             rating_1,
             rating_2

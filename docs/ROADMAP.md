@@ -108,8 +108,9 @@ Status: IN PROGRESS
 
 [X] Create Elo update engine
 [X] Add Elo update tests
-[ ] Create dynamic ratings lookup
-[ ] Update ratings after simulated matches
+[X] Create dynamic ratings lookup
+[X] Update ratings after simulated matches
+[X] Prepare feature generation for dynamic ratings
 [ ] Integrate dynamic Elo into knockout stages
 [ ] Integrate dynamic Elo into group stage
 [ ] Validate Elo evolution across tournament
