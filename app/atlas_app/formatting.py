@@ -2,6 +2,9 @@ from config.translations import TEAM_TRANSLATIONS
 
 
 def translate_team(team: str) -> str:
+    if team is None:
+        return "TBD"
+
     return TEAM_TRANSLATIONS.get(
         team,
         team
@@ -9,5 +12,7 @@ def translate_team(team: str) -> str:
 
 
 def format_percent(value: float) -> str:
-    return f"{value:.0%}"
+    if value is None:
+        return "N/A"
 
+    return f"{value:.0%}"

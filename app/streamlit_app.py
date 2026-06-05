@@ -29,13 +29,22 @@ PAGES = {
 
 
 def render_navigation() -> str:
-    st.sidebar.title("Forecast Atlas 2026")
-    st.sidebar.caption("A simulated tournament magazine")
+    st.sidebar.markdown(
+        """
+        <div class="atlas-sidebar-brand">
+            <div class="atlas-sidebar-kicker">World Cup</div>
+            <div class="atlas-sidebar-title">Forecast<br>Atlas</div>
+            <div class="atlas-sidebar-year">2026</div>
+            <div class="atlas-sidebar-deck">A simulated tournament magazine</div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     return st.sidebar.radio(
         "Sections",
         list(PAGES.keys()),
-        label_visibility="collapsed"
+        label_visibility="visible"
     )
 
 

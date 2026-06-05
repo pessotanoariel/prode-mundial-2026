@@ -26,6 +26,9 @@ CSV_PATHS = {
 
 @st.cache_data
 def load_csv(path: str) -> pd.DataFrame:
+    if not Path(path).exists():
+        return pd.DataFrame()
+
     return pd.read_csv(path)
 
 
@@ -36,4 +39,3 @@ def load_atlas_data() -> dict[str, pd.DataFrame]:
         data[name] = load_csv(str(path))
 
     return data
-
