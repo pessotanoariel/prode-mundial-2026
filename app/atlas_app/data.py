@@ -12,6 +12,7 @@ CSV_PATHS = {
     "predictions": OUTPUT_DIR / "predictions.csv",
     "champions": OUTPUT_DIR / "champion_probabilities.csv",
     "finals": OUTPUT_DIR / "most_likely_finals.csv",
+    "progression": OUTPUT_DIR / "team_progression_probabilities.csv",
     "groups": RAW_DIR / "world_cup_groups.csv",
     "standings": OUTPUT_DIR / "group_standings.csv",
     "qualified": OUTPUT_DIR / "qualified_teams.csv",
