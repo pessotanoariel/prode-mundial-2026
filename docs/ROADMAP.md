@@ -1,8 +1,10 @@
 # Prode Mundial 2026 — Internal Roadmap
 
+---
+
 ## Current Branch
 
-`feature/streamlit-dashboard`
+`main`
 
 ---
 
@@ -10,7 +12,7 @@
 
 Status: COMPLETED
 
-## Completed
+### Completed
 
 * [x] Elo data ingestion
 * [x] Teams lookup ingestion
@@ -35,29 +37,29 @@ Status: COMPLETED
 
 Status: COMPLETED
 
-## Group Stage
+### Group Stage
 
-* [X] Generate group standings table
-* [X] Calculate points
-* [X] Calculate goals for / against
-* [X] Calculate goal difference
-* [X] Simulate all group matches
-* [X] Determine top 2 teams
-* [X] Determine best 3rd placed teams
-* [X] Head-to-head tie breaker (2-team ties)
-* [X] Export qualified teams dataset
+* [x] Generate group standings table
+* [x] Calculate points
+* [x] Calculate goals for / against
+* [x] Calculate goal difference
+* [x] Simulate all group matches
+* [x] Determine top 2 teams
+* [x] Determine best 3rd placed teams
+* [x] Head-to-head tie breaker (2-team ties)
+* [x] Export qualified teams dataset
 
-## Knockout Stage
+### Knockout Stage
 
-* [X] Create knockout structure dataset
-* [X] Implement FIFA Annex C combinations (495 scenarios)
-* [X] Build Round of 32 simulation
-* [X] Build Round of 16 simulation
-* [X] Build Quarterfinal simulation
-* [X] Build Semifinal simulation
-* [X] Build Third Place simulation
-* [X] Build Final simulation
-* [X] Generate champion probability
+* [x] Create knockout structure dataset
+* [x] Implement FIFA Annex C combinations (495 scenarios)
+* [x] Build Round of 32 simulation
+* [x] Build Round of 16 simulation
+* [x] Build Quarterfinal simulation
+* [x] Build Semifinal simulation
+* [x] Build Third Place simulation
+* [x] Build Final simulation
+* [x] Generate champion probability
 
 ---
 
@@ -67,26 +69,26 @@ Status: COMPLETED
 
 ### Architecture
 
-* [X] Remove duplicated knockout scripts
-* [X] Create generic build_next_stage()
-* [X] Centralize stage structures
-* [X] Generate round_of_32_winners.csv before Round of 16
-* [X] Create tournament orchestrator
-* [X] Remove hardcoded match mappings
-* [X] Standardize input/output paths
+* [x] Remove duplicated knockout scripts
+* [x] Create generic build_next_stage()
+* [x] Centralize stage structures
+* [x] Generate round_of_32_winners.csv before Round of 16
+* [x] Create tournament orchestrator
+* [x] Remove hardcoded match mappings
+* [x] Standardize input/output paths
 
 ### Code Quality
 
-* [X] Add validation tests
-* [X] Add logging
-* [X] Improve error handling
-* [X] Review naming consistency
+* [x] Add validation tests
+* [x] Add logging
+* [x] Improve error handling
+* [x] Review naming consistency
 
 ### Documentation
 
-* [X] Update README architecture section
-* [X] Document FIFA Annex C implementation
-* [X] Document knockout pipeline
+* [x] Update README architecture section
+* [x] Document FIFA Annex C implementation
+* [x] Document knockout pipeline
 
 ---
 
@@ -96,43 +98,41 @@ Status: COMPLETED
 
 ### Host Advantage
 
-[X] Host advantage boost
+* [x] Host advantage boost
 
 ### Dynamic Elo System
 
-[X] Create Elo update engine
-[X] Add Elo update tests
-[X] Create dynamic ratings lookup
-[X] Update ratings after simulated matches
-[X] Prepare feature generation for dynamic ratings
-[X] Integrate ratings lookup into tournament pipeline
-[X] Create stage ratings updater
-[X] Integrate dynamic Elo into knockout stages
+* [x] Create Elo update engine
+* [x] Add Elo update tests
+* [x] Create dynamic ratings lookup
+* [x] Update ratings after simulated matches
+* [x] Prepare feature generation for dynamic ratings
+* [x] Integrate ratings lookup into tournament pipeline
+* [x] Create stage ratings updater
+* [x] Integrate dynamic Elo into knockout stages
 
 ### Score Modeling
 
-[X] Decouple score prediction from winner prediction
-[X] Create Expected Goals Model
-[X] Create Poisson Probability Model
-[X] Integrate Poisson into score prediction
-[X] Align score prediction with winner prediction
-[X] Export tournament champion
-[X] Validate form weighting
+* [x] Decouple score prediction from winner prediction
+* [x] Create Expected Goals Model
+* [x] Create Poisson Probability Model
+* [x] Integrate Poisson into score prediction
+* [x] Align score prediction with winner prediction
+* [x] Export tournament champion
+* [x] Validate form weighting
 
 ### Tournament Simulation
 
-[X] Create stochastic Poisson sampler
-[X] Create stochastic score simulator
-[X] Route simulation_mode through pipeline
-[X] Enable stochastic score generation
-[X] Derive winner from simulated score
-[X] Resolve simulated knockout draws
-[X] Monte Carlo tournament simulation
-[X] Champion probability table
-[X] Most likely finals
-[X] Team progression probabilities
-
-### Existing Model Improvements
+* [x] Create stochastic Poisson sampler
+* [x] Create stochastic score simulator
+* [x] Route simulation_mode through pipeline
+* [x] Enable stochastic score generation
+* [x] Derive winner from simulated score
+* [x] Resolve simulated knockout draws
+* [x] Monte Carlo tournament simulation
+* [x] Champion probability table
+* [x] Most likely finals
+* [x] Team progression probabilities
 
 ### FIFA Rules Backlog
 
@@ -140,76 +140,121 @@ Status: COMPLETED
 * [ ] Fair Play tie breaker
 * [ ] FIFA Ranking tie breaker
 
-### Future Improvement
+### Future Improvements
 
-[ ] Upset calibration tuning
-[ ] Track actual finalists instead of final winners
-[ ] Integrate dynamic Elo into group stage
-[ ] Validate Elo evolution across tournament
-[ ] Hybrid tournament simulation
-[ ] Correct knockout progression probabilities
-
----
-
-## PHASE 4 — UX / Product
-
-Status: IN PROGRESS
-
-## Dashboard Improvements
-
-* [X] Cards instead of plain table
-* [X] Charts and analytics
-
-### Navigation
-
-* [x] Group tabs
-* [X] Match cards
-
-### Tournament Views
-
-* [x] Bracket visualization
-* [ ] Tournament timeline (v1)
-* [ ] Interactive bracket
-
-### Group Stages
-
-* [X] Group standings table
-* [ ] Qualified teams summary
-* [ ] Best third places visualization
-
-### Visual Features
-
-* [ ] Flags support
-* [ ] Stadium visualization
-* [ ] Host cities
-* [ ] Heatmaps
-
-### Styling
-
-* [ ] Retro World Cup styling
-* [ ] Mobile responsiveness
+* [ ] Upset calibration tuning
+* [ ] Track actual finalists instead of final winners
+* [ ] Integrate dynamic Elo into group stage
+* [ ] Validate Elo evolution across tournament
+* [ ] Hybrid tournament simulation
+* [ ] Correct knockout progression probabilities
 
 ---
 
-## PHASE 5 — Deployment
+## PHASE 4 — Editorial Atlas Experience
+
+Status: COMPLETED
+
+### Editorial Product
+
+* [x] Editorial Cover page
+* [x] Tournament Atlas page
+* [x] Groups magazine section
+* [x] Knockout wall chart
+* [x] Match archive
+* [x] Methodology section
+* [x] Unified navigation
+* [x] Editorial visual system
+* [x] Spanish localization
+* [x] Responsive desktop experience
+
+### Visual Storytelling
+
+* [x] Champion probability narratives
+* [x] Most likely final visualization
+* [x] Group qualification storytelling
+* [x] Third-place qualification race
+* [x] Knockout path visualization
+* [x] Editorial tournament notes
+
+---
+
+## PHASE 5 — Release Preparation
+
+Status: NEXT
+
+### Documentation review
+
+* [ ] Rewrite README
+* [ ] Create screenshots gallery
+* [ ] Document simulation methodology
+* [ ] Update architecture diagrams
+* [ ] Create installation guide
+
+### Quality Assurance
+
+* [ ] Full tournament regression test
+* [ ] Verify FIFA Annex C outputs
+* [ ] Verify progression probabilities
+* [ ] Verify champion probabilities
+* [ ] Review translations and editorial copy
+
+### Deployment
+
+* [ ] Streamlit Cloud deployment
+* [ ] Production configuration
+* [ ] Environment variables
+* [ ] Public URL
+
+---
+
+## PHASE 6 — Simulation Improvements
 
 Status: FUTURE
 
-## Infrastructure
+### FIFA Rules
 
-* [ ] Streamlit Cloud deployment
-* [ ] Environment configs
-* [ ] Scheduled automatic data refresh
-* [ ] Logging system
+* [ ] Head-to-head tie breaker (3+ teams)
+* [ ] Fair Play tie breaker
+* [ ] FIFA Ranking tie breaker
 
-### Data Refresh
+### Model Improvements
 
-* [ ] Automated Elo ratings update
-* [ ] Automated fixtures update
-* [ ] Automated results ingestion
-* [ ] Daily simulation refresh
+* [ ] Dynamic Elo in group stage
+* [ ] Upset calibration
+* [ ] Finalist tracking
+* [ ] Probability calibration
+* [ ] Elo evolution validation
 
-### Frontend Evolution
+### Tournament Analytics
+
+* [ ] Team path analysis
+* [ ] Elimination probability analysis
+* [ ] Scenario explorer
+* [ ] Sensitivity testing
+
+---
+
+## PHASE 7 — Product Expansion
+
+Status: IDEAS
+
+### Product Features
+
+* [ ] Interactive bracket
+* [ ] Tournament timeline
+* [ ] Flags support
+* [ ] Stadium information
+* [ ] Host city profiles
+
+### Community Features
+
+* [ ] User predictions
+* [ ] Leaderboards
+* [ ] Shareable forecasts
+* [ ] AI vs user predictions
+
+### Long-Term Platform
 
 * [ ] Next.js frontend
 * [ ] API layer
@@ -218,37 +263,11 @@ Status: FUTURE
 
 ---
 
-## PHASE 6 — Community / Game Features
+### Notes
 
-Status: IDEAS
-
-### User Features
-
-* [ ] User predictions
-* [ ] IA vs users
-* [ ] Leaderboards
-* [ ] Shareable predictions
-
-### Simulation Features
-
-* [ ] Daily simulations
-* [ ] Historical World Cup mode
-* [ ] Alternate universe simulations
-
-### Advanced Features
-
-* [ ] Custom tournament simulations
-* [ ] What-if scenarios
-* [ ] Team comparison tool
-* [ ] Live tournament tracking
-
----
-
-## Notes
-
-* Current focus: UX improvements and tournament visualization.
 * Simulation engine is considered feature-complete for v1.
-* Avoid premature frontend complexity.
-* Prioritize simulation correctness over visuals.
-* Streamlit remains the main prototype environment.
-* Next.js will become the long-term frontend solution.
+* Editorial Atlas experience is considered complete for v1.
+* Current priority is documentation, deployment, and release preparation.
+* Streamlit remains the primary platform for v1.
+* Future work should prioritize simulation correctness over new visual features.
+* Next.js remains a possible long-term evolution, not a short-term priority.
