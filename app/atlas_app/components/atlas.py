@@ -34,9 +34,9 @@ def render_editorial_hero(
     favorite = _first_row(champions_df)
     final = _first_row(finals_df)
 
-    favorite_team = "Simulation pending"
+    favorite_team = "Simulación pendiente"
     favorite_probability = "N/A"
-    final_text = "Final matchup pending"
+    final_text = "Final pendiente"
 
     if favorite is not None:
         favorite_team = translate_team(favorite["team"])
@@ -51,20 +51,20 @@ def render_editorial_hero(
     st.markdown(
         f"""
         <section class="atlas-analysis-hero">
-            <div class="atlas-kicker">02 / Tournament Atlas</div>
-            <h1>The Shape of the Forecast</h1>
+            <div class="atlas-kicker">02 / WORLD CUP FORECAST ATLAS</div>
+            <h1>El mapa del torneo</h1>
             <p>
-                The analytical center of the magazine: title gravity,
-                projected finals, and the teams gathering momentum.
+                El centro analítico de la revista: gravedad de campeón,
+                finales proyectadas y selecciones que empiezan a tomar forma.
             </p>
             <div class="atlas-analysis-hero-grid">
                 <div>
-                    <div class="atlas-small-label">Current favorite</div>
+                    <div class="atlas-small-label">Favorito actual</div>
                     <div class="atlas-analysis-team">{favorite_team}</div>
                     <div class="atlas-analysis-percent">{favorite_probability}</div>
                 </div>
                 <div>
-                    <div class="atlas-small-label">Most likely final</div>
+                    <div class="atlas-small-label">Final más probable</div>
                     <h3>{final_text}</h3>
                 </div>
             </div>
@@ -79,10 +79,10 @@ def render_championship_orbit(champions_df) -> None:
         '<div class="atlas-section-number">01</div>',
         unsafe_allow_html=True
     )
-    st.header("Championship Orbit")
+    st.header("Órbita del campeonato")
 
     if _is_empty(champions_df):
-        st.info("Champion probabilities are not available yet.")
+        st.info("Las probabilidades de campeón todavía no están disponibles.")
         return
 
     top_10 = champions_df.head(10).reset_index(drop=True)
@@ -118,10 +118,10 @@ def render_finals_from_future(finals_df) -> None:
         '<div class="atlas-section-number">02</div>',
         unsafe_allow_html=True
     )
-    st.header("Finals From The Future")
+    st.header("Finales del futuro")
 
     if _is_empty(finals_df):
-        st.info("Most likely finals are not available yet.")
+        st.info("Las finales más probables todavía no están disponibles.")
         return
 
     top_finals = finals_df.head(6).reset_index(drop=True)
@@ -136,9 +136,9 @@ def render_finals_from_future(finals_df) -> None:
                 st.markdown(
                     f"""
                     <article class="atlas-final-card">
-                        <div class="atlas-small-label">Projected final #{start + offset + 1}</div>
+                        <div class="atlas-small-label">Final proyectada #{start + offset + 1}</div>
                         <h3>{translate_team(row['team_1'])}<br>vs<br>{translate_team(row['team_2'])}</h3>
-                        <p>{format_percent(row['probability'])} of simulated finals</p>
+                        <p>{format_percent(row['probability'])} de las finales simuladas</p>
                     </article>
                     """,
                     unsafe_allow_html=True
@@ -150,10 +150,10 @@ def render_contenders_and_challengers(champions_df) -> None:
         '<div class="atlas-section-number">03</div>',
         unsafe_allow_html=True
     )
-    st.header("Contenders And Challengers")
+    st.header("Favoritos y perseguidores")
 
     if _is_empty(champions_df):
-        st.info("Contender data is not available yet.")
+        st.info("Los datos de favoritos todavía no están disponibles.")
         return
 
     contenders = champions_df.head(3)
@@ -163,14 +163,15 @@ def render_contenders_and_challengers(champions_df) -> None:
 
     with contenders_col:
         st.markdown(
-            '<div class="atlas-kicker">Title favorites</div>',
+            '<div class="atlas-kicker">Favoritos al título</div>',
             unsafe_allow_html=True
         )
 
-        for _, row in contenders.iterrows():
+        for index, row in contenders.reset_index(drop=True).iterrows():
             st.markdown(
                 f"""
-                <div class="atlas-tier-row">
+                <div class="atlas-tier-row atlas-tier-row-featured">
+                    <em>{index + 1:02d}</em>
                     <strong>{translate_team(row['team'])}</strong>
                     <span>{format_percent(row['probability'])}</span>
                 </div>
@@ -180,12 +181,12 @@ def render_contenders_and_challengers(champions_df) -> None:
 
     with challengers_col:
         st.markdown(
-            '<div class="atlas-kicker">Second tier</div>',
+            '<div class="atlas-kicker">Segunda línea</div>',
             unsafe_allow_html=True
         )
 
         if challengers.empty:
-            st.caption("No challenger tier available yet.")
+            st.caption("No hay perseguidores disponibles todavía.")
             return
 
         for _, row in challengers.iterrows():
@@ -210,20 +211,20 @@ def render_tournament_narrative(
         '<div class="atlas-section-number">04</div>',
         unsafe_allow_html=True
     )
-    st.header("Tournament Narrative")
+    st.header("Narrativa del torneo")
 
     notes = []
     favorite = _first_row(champions_df)
 
     if favorite is not None:
         notes.append(
-            f"{translate_team(favorite['team'])} enters as the simulation favorite at {format_percent(favorite['probability'])}."
+            f"{translate_team(favorite['team'])} aparece como favorito de la simulación con {format_percent(favorite['probability'])}."
         )
 
     if not _is_empty(champions_df) and len(champions_df) > 1:
         second = champions_df.iloc[1]
         notes.append(
-            f"{translate_team(second['team'])} remains within striking distance at {format_percent(second['probability'])}."
+            f"{translate_team(second['team'])} queda a tiro, todavía dentro del primer anillo de candidatos."
         )
 
     if not _is_empty(finals_df):
@@ -235,7 +236,7 @@ def render_tournament_narrative(
 
         recurring_team, appearances = teams.most_common(1)[0]
         notes.append(
-            f"{translate_team(recurring_team)} appears in {appearances} of the ten most common projected finals."
+            f"{translate_team(recurring_team)} se repite en {appearances} de las diez finales proyectadas más frecuentes."
         )
 
     if not _is_empty(progression_df):
@@ -245,18 +246,18 @@ def render_tournament_narrative(
             .iloc[0]
         )
         notes.append(
-            f"{translate_team(finalist['team'])} owns the strongest current final-reaching profile at {format_percent(finalist['final'])}."
+            f"{translate_team(finalist['team'])} muestra el perfil más fuerte para llegar a la final: {format_percent(finalist['final'])}."
         )
 
     final = _first_row(final_predictions_df)
 
     if final is not None:
         notes.append(
-            f"The current bracket path lands on {translate_team(final['team_1'])} vs {translate_team(final['team_2'])}."
+            f"El cuadro actual desemboca en una final {translate_team(final['team_1'])} vs {translate_team(final['team_2'])}."
         )
 
     if not notes:
-        st.info("Narrative outputs are not available yet.")
+        st.info("Las notas narrativas todavía no están disponibles.")
         return
 
     for note in notes[:5]:
@@ -275,15 +276,15 @@ def render_forecast_notes() -> None:
         '<div class="atlas-section-number">05</div>',
         unsafe_allow_html=True
     )
-    st.header("Forecast Notes")
+    st.header("Notas metodológicas")
     st.markdown(
         """
         <div class="atlas-forecast-note">
-            These readings come from the current forecast outputs:
-            champion probabilities, likely finals, progression probabilities
-            when available, and the latest simulated final. They are a
-            tournament simulation layer for exploration and storytelling,
-            not betting advice or live-score coverage.
+            Estas lecturas salen de los outputs actuales del pronóstico:
+            probabilidades de campeón, finales probables, progresión por ronda
+            cuando está disponible y la última final simulada. Es una capa de
+            simulación para explorar el torneo y construir relato, no una
+            recomendación de apuestas ni una cobertura de resultados en vivo.
         </div>
         """,
         unsafe_allow_html=True

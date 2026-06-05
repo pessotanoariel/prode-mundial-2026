@@ -144,13 +144,13 @@ def apply_global_styles() -> None:
         .atlas-analysis-hero-grid {
             display: grid;
             gap: 1rem;
-            grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
             margin-top: 1.2rem;
         }
 
         .atlas-analysis-hero-grid > div {
             border: 2px solid var(--atlas-ink);
-            padding: 1rem;
+            padding: 1.15rem;
         }
 
         .atlas-analysis-hero-grid > div:first-child {
@@ -164,7 +164,7 @@ def apply_global_styles() -> None:
 
         .atlas-analysis-team {
             color: var(--atlas-ink);
-            font-size: clamp(2rem, 4vw, 3.75rem);
+            font-size: clamp(2.45rem, 5vw, 4.65rem);
             font-weight: 950;
             line-height: 0.96;
             margin-top: 0.35rem;
@@ -173,7 +173,7 @@ def apply_global_styles() -> None:
 
         .atlas-analysis-percent {
             color: var(--atlas-red);
-            font-size: clamp(1.7rem, 3vw, 2.7rem);
+            font-size: clamp(2.05rem, 3.8vw, 3.4rem);
             font-weight: 950;
             line-height: 1;
             margin-top: 0.25rem;
@@ -238,9 +238,9 @@ def apply_global_styles() -> None:
 
         .atlas-final-card h3 {
             color: var(--atlas-ink);
-            font-size: 1.35rem;
+            font-size: clamp(1.55rem, 2.6vw, 2.25rem);
             font-weight: 950;
-            line-height: 1.05;
+            line-height: 0.98;
             margin: 0.45rem 0;
             text-transform: uppercase;
         }
@@ -255,6 +255,7 @@ def apply_global_styles() -> None:
             align-items: center;
             border-bottom: 2px solid var(--atlas-ink);
             display: flex;
+            gap: 0.75rem;
             justify-content: space-between;
             padding: 0.7rem 0;
         }
@@ -265,8 +266,23 @@ def apply_global_styles() -> None:
             font-size: 1.05rem;
         }
 
+        .atlas-tier-row em {
+            color: var(--atlas-red);
+            font-size: 1.65rem;
+            font-style: normal;
+            font-weight: 950;
+            line-height: 1;
+        }
+
         .atlas-tier-row strong {
+            flex: 1;
             text-transform: uppercase;
+        }
+
+        .atlas-tier-row-featured strong,
+        .atlas-tier-row-featured span {
+            font-size: 1.2rem;
+            font-weight: 950;
         }
 
         .atlas-tier-row-muted strong,
