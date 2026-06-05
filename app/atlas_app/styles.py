@@ -647,6 +647,184 @@ def apply_global_styles() -> None:
             text-transform: uppercase;
         }
 
+        .bracket-hero {
+            border-bottom: 3px solid var(--atlas-ink);
+            border-top: 3px solid var(--atlas-ink);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 0 1.5rem;
+        }
+
+        .bracket-hero h1 {
+            color: var(--atlas-ink);
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 950;
+            letter-spacing: 0;
+            line-height: 0.9;
+            margin: 0.25rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .bracket-hero p {
+            color: var(--atlas-ink);
+            font-size: 1.05rem;
+            max-width: 52rem;
+        }
+
+        .bracket-hero-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.35fr) minmax(0, 0.7fr);
+            margin-top: 1.2rem;
+        }
+
+        .bracket-hero-grid > div {
+            border: 2px solid var(--atlas-ink);
+            padding: 1rem;
+        }
+
+        .bracket-hero-grid strong,
+        .bracket-hero-grid span {
+            color: var(--atlas-ink);
+            display: block;
+            font-size: clamp(1.45rem, 3vw, 2.6rem);
+            font-weight: 950;
+            line-height: 0.98;
+            margin-top: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .bracket-round-title {
+            background: var(--atlas-yellow);
+            border: 2px solid var(--atlas-ink);
+            margin-bottom: 0.7rem;
+            padding: 0.45rem 0.55rem;
+        }
+
+        .bracket-round-title span {
+            color: var(--atlas-ink);
+            font-size: 0.88rem;
+            font-weight: 950;
+            letter-spacing: 0.04rem;
+            text-transform: uppercase;
+        }
+
+        .bracket-match-card {
+            background: rgba(255, 255, 255, 0.16);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 9.35rem;
+            justify-content: space-between;
+            margin-bottom: 0.65rem;
+            overflow: hidden;
+            padding: 0.7rem;
+        }
+
+        .bracket-card-teams {
+            color: var(--atlas-ink);
+            font-size: 0.92rem;
+            font-weight: 950;
+            line-height: 1.08;
+            text-transform: uppercase;
+        }
+
+        .bracket-card-teams div {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bracket-card-teams span {
+            color: var(--atlas-red);
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 950;
+            margin: 0.12rem 0;
+        }
+
+        .bracket-card-footer {
+            border-top: 1px solid rgba(23, 20, 18, 0.38);
+            display: grid;
+            gap: 0.3rem;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            padding-top: 0.45rem;
+        }
+
+        .bracket-card-footer strong {
+            color: var(--atlas-red);
+            font-size: 1.15rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .bracket-card-footer span {
+            color: var(--atlas-ink);
+            font-size: 0.76rem;
+            font-weight: 900;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .bracket-card-footer em {
+            color: var(--atlas-ink);
+            font-size: 0.68rem;
+            font-style: normal;
+            font-weight: 950;
+            text-transform: uppercase;
+        }
+
+        .bracket-final-poster {
+            background: var(--atlas-violet);
+            border: 3px solid var(--atlas-ink);
+            color: var(--atlas-paper);
+            margin-bottom: 1rem;
+            padding: 1.25rem;
+        }
+
+        .bracket-final-poster h2 {
+            color: var(--atlas-paper);
+            font-size: clamp(2.6rem, 7vw, 6rem);
+            font-weight: 950;
+            line-height: 0.9;
+            margin: 0.4rem 0;
+            text-transform: uppercase;
+        }
+
+        .bracket-final-poster h2 span {
+            color: var(--atlas-yellow);
+            display: block;
+            font-size: 1.2rem;
+            letter-spacing: 0.1rem;
+            margin: 0.35rem 0;
+        }
+
+        .bracket-final-score {
+            color: var(--atlas-yellow);
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .bracket-champion-call {
+            border-top: 2px solid var(--atlas-paper);
+            font-size: 1.1rem;
+            font-weight: 850;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+        }
+
+        .bracket-champion-call strong {
+            color: var(--atlas-yellow);
+            text-transform: uppercase;
+        }
+
+        .bracket-third-place {
+            max-width: 28rem;
+        }
+
         .atlas-rank {
             align-items: baseline;
             border-bottom: 2px solid var(--atlas-ink);
@@ -808,6 +986,10 @@ def apply_global_styles() -> None:
 
             .groups-hero-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .bracket-hero-grid {
+                grid-template-columns: 1fr;
             }
         }
         </style>
