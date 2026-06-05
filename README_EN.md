@@ -1,4 +1,15 @@
-# Prode Mundial 2026 Predictor
+# ⚠️ README_EN pending update
+
+Current implementation includes:
+
+- Full World Cup 2026 simulation
+- FIFA Annex C implementation
+- Dynamic Elo ratings
+- Poisson score model
+- Monte Carlo tournament simulation
+- Streamlit dashboard
+
+## Prode Mundial 2026 Predictor
 
 A modular football prediction pipeline built for the FIFA World Cup 2026.
 

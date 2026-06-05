@@ -147,6 +147,7 @@ Status: COMPLETED
 [ ] Integrate dynamic Elo into group stage
 [ ] Validate Elo evolution across tournament
 [ ] Hybrid tournament simulation
+[ ] Correct knockout progression probabilities
 
 ---
 
@@ -156,27 +157,34 @@ Status: IN PROGRESS
 
 ## Dashboard Improvements
 
-* [ ] Cards instead of plain table
-* [ ] Charts and analytics
+* [X] Cards instead of plain table
+* [X] Charts and analytics
 
 ### Navigation
 
-* [ ] Group tabs
-* [ ] Match cards
+* [x] Group tabs
+* [X] Match cards
 
 ### Tournament Views
 
-* [ ] Bracket visualization
-* [ ] Tournament timeline
+* [x] Bracket visualization
+* [ ] Tournament timeline (v1)
+* [ ] Interactive bracket
 
-## Visual Features
+### Group Stages
+
+* [X] Group standings table
+* [ ] Qualified teams summary
+* [ ] Best third places visualization
+
+### Visual Features
 
 * [ ] Flags support
 * [ ] Stadium visualization
 * [ ] Host cities
 * [ ] Heatmaps
 
-## Styling
+### Styling
 
 * [ ] Retro World Cup styling
 * [ ] Mobile responsiveness
@@ -194,7 +202,14 @@ Status: FUTURE
 * [ ] Scheduled automatic data refresh
 * [ ] Logging system
 
-## Frontend Evolution
+### Data Refresh
+
+* [ ] Automated Elo ratings update
+* [ ] Automated fixtures update
+* [ ] Automated results ingestion
+* [ ] Daily simulation refresh
+
+### Frontend Evolution
 
 * [ ] Next.js frontend
 * [ ] API layer
@@ -207,19 +222,33 @@ Status: FUTURE
 
 Status: IDEAS
 
+### User Features
+
 * [ ] User predictions
 * [ ] IA vs users
 * [ ] Leaderboards
 * [ ] Shareable predictions
+
+### Simulation Features
+
 * [ ] Daily simulations
 * [ ] Historical World Cup mode
 * [ ] Alternate universe simulations
+
+### Advanced Features
+
+* [ ] Custom tournament simulations
+* [ ] What-if scenarios
+* [ ] Team comparison tool
+* [ ] Live tournament tracking
 
 ---
 
 ## Notes
 
-* Current focus: build solid tournament simulation core.
+* Current focus: UX improvements and tournament visualization.
+* Simulation engine is considered feature-complete for v1.
 * Avoid premature frontend complexity.
 * Prioritize simulation correctness over visuals.
 * Streamlit remains the main prototype environment.
+* Next.js will become the long-term frontend solution.

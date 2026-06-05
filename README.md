@@ -191,14 +191,15 @@ Actualmente se incluyen pruebas para:
 
 ### Mejoras futuras
 
+### Próximas mejoras
+
 * Desempates entre tres o más equipos.
 * Fair Play como criterio de desempate.
 * Ranking FIFA como criterio de desempate.
-* Actualización dinámica de Elo después de cada partido.
-* Modelo Poisson para simulación de resultados.
-* Simulaciones Monte Carlo.
-* Probabilidades de campeón.
-* Dashboard avanzado de análisis.
+* Integración de Elo dinámico en fase de grupos.
+* Actualización automática diaria de datasets.
+* Visualización avanzada del cuadro eliminatorio.
+* Frontend Next.js.
 
 ---
 
