@@ -308,6 +308,345 @@ def apply_global_styles() -> None:
             padding: 1rem;
         }
 
+        .groups-hero {
+            border-bottom: 3px solid var(--atlas-ink);
+            border-top: 3px solid var(--atlas-ink);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 0 1.5rem;
+        }
+
+        .groups-hero h1 {
+            color: var(--atlas-ink);
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 950;
+            letter-spacing: 0;
+            line-height: 0.9;
+            margin: 0.25rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .groups-hero p {
+            color: var(--atlas-ink);
+            font-size: 1.05rem;
+            max-width: 50rem;
+        }
+
+        .groups-hero-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            margin-top: 1.2rem;
+        }
+
+        .groups-hero-grid > div {
+            border: 2px solid var(--atlas-ink);
+            padding: 0.9rem;
+        }
+
+        .groups-hero-grid strong {
+            color: var(--atlas-red);
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 950;
+            line-height: 1;
+            margin-top: 0.35rem;
+        }
+
+        .groups-hero-grid span {
+            color: var(--atlas-ink);
+            display: block;
+            font-weight: 850;
+            line-height: 1.15;
+            margin-top: 0.35rem;
+        }
+
+        .groups-dispatch-card {
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 12.75rem;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            padding: 0.8rem;
+        }
+
+        .groups-dispatch-letter {
+            color: var(--atlas-red);
+            font-size: 2.25rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .groups-dispatch-card h3 {
+            color: var(--atlas-ink);
+            font-size: 1rem;
+            font-weight: 950;
+            line-height: 1.1;
+            margin: 0.2rem 0 0.45rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .groups-dispatch-card ul {
+            font-size: 0.8rem;
+            line-height: 1.12;
+            list-style: none;
+            margin: 0.2rem 0 0;
+            padding: 0;
+        }
+
+        .groups-dispatch-card li {
+            color: var(--atlas-ink);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .groups-spread {
+            border-top: 3px solid var(--atlas-ink);
+            margin-top: 1.75rem;
+            padding-top: 0.9rem;
+        }
+
+        .groups-spread-heading {
+            align-items: baseline;
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .groups-spread-heading span {
+            color: var(--atlas-red);
+            font-size: 0.86rem;
+            font-weight: 950;
+            letter-spacing: 0.08rem;
+        }
+
+        .groups-spread-heading strong {
+            color: var(--atlas-ink);
+            font-size: 3.4rem;
+            font-weight: 950;
+            line-height: 0.9;
+        }
+
+        [data-testid="stRadio"] {
+            margin-bottom: 0.85rem;
+        }
+
+        [data-testid="stRadio"] label {
+            color: var(--atlas-ink);
+            font-weight: 950;
+        }
+
+        [data-testid="stRadio"] div[role="radiogroup"] {
+            gap: 0.45rem;
+        }
+
+        [data-testid="stRadio"] div[role="radiogroup"] label {
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid var(--atlas-ink);
+            color: var(--atlas-ink);
+            padding: 0.15rem 0.45rem;
+        }
+
+        [data-testid="stRadio"] div[role="radiogroup"] label p,
+        [data-testid="stRadio"] div[role="radiogroup"] label span {
+            color: var(--atlas-ink);
+            font-weight: 950;
+        }
+
+        .groups-standings,
+        .third-race-ranking {
+            background: rgba(255, 255, 255, 0.14);
+            border-top: 2px solid var(--atlas-ink);
+            color: var(--atlas-ink);
+            width: 100%;
+        }
+
+        .groups-standing-header,
+        .groups-standing-row {
+            align-items: center;
+            display: grid;
+            gap: 0.65rem;
+            grid-template-columns: 2.5rem minmax(0, 1fr) 2.25rem 2.25rem 2.75rem;
+        }
+
+        .groups-standing-header,
+        .third-race-header {
+            border-bottom: 2px solid var(--atlas-ink);
+            color: var(--atlas-red);
+            font-size: 0.72rem;
+            font-weight: 950;
+            letter-spacing: 0.05rem;
+            padding: 0.55rem 0.45rem;
+            text-transform: uppercase;
+        }
+
+        .groups-standing-row {
+            border-bottom: 1px solid rgba(23, 20, 18, 0.3);
+            font-size: 1rem;
+            padding: 0.68rem 0.45rem;
+        }
+
+        .groups-standing-rank {
+            color: var(--atlas-red);
+            font-size: 1.25rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .groups-standing-team {
+            font-weight: 950;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .groups-table,
+        .third-race-table {
+            border-collapse: collapse;
+            color: var(--atlas-ink);
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .groups-table th,
+        .groups-table td,
+        .third-race-table th,
+        .third-race-table td {
+            border-bottom: 1px solid rgba(23, 20, 18, 0.35);
+            padding: 0.62rem 0.5rem;
+            text-align: left;
+        }
+
+        .groups-table th,
+        .third-race-table th {
+            color: var(--atlas-red);
+            font-size: 0.72rem;
+            font-weight: 950;
+            letter-spacing: 0.05rem;
+            text-transform: uppercase;
+        }
+
+        .groups-qualified-row {
+            background: rgba(0, 140, 69, 0.14);
+            font-weight: 850;
+        }
+
+        .groups-third-row {
+            background: rgba(242, 194, 48, 0.22);
+            font-weight: 800;
+        }
+
+        .groups-qualifier-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .groups-qualifier-list li {
+            border-bottom: 1px solid rgba(23, 20, 18, 0.35);
+            padding: 0.55rem 0;
+        }
+
+        .groups-qualifier-list strong {
+            color: var(--atlas-ink);
+            display: block;
+            font-weight: 950;
+            text-transform: uppercase;
+        }
+
+        .groups-qualifier-list span {
+            color: var(--atlas-red);
+            font-size: 0.75rem;
+            font-weight: 850;
+            text-transform: uppercase;
+        }
+
+        .groups-match-card {
+            border-bottom: 2px solid var(--atlas-ink);
+            padding: 0.7rem 0;
+        }
+
+        .groups-match-card h4 {
+            color: var(--atlas-ink);
+            font-size: 1.12rem;
+            font-weight: 950;
+            line-height: 1.1;
+            margin: 0.28rem 0;
+            text-transform: uppercase;
+        }
+
+        .groups-match-card p {
+            color: var(--atlas-ink);
+            margin: 0;
+        }
+
+        .third-qualified {
+            background: rgba(0, 140, 69, 0.14);
+            font-weight: 850;
+        }
+
+        .third-eliminated {
+            color: rgba(23, 20, 18, 0.58);
+        }
+
+        .third-race-header,
+        .third-race-row {
+            align-items: center;
+            display: grid;
+            gap: 0.8rem;
+            grid-template-columns: 4rem minmax(0, 1fr) 5.5rem 6.5rem;
+        }
+
+        .third-race-row {
+            border-bottom: 1px solid rgba(23, 20, 18, 0.3);
+            padding: 0.65rem 0.5rem;
+        }
+
+        .third-race-rank {
+            color: var(--atlas-red);
+            font-size: 1.45rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .third-race-team {
+            font-size: 1rem;
+            font-weight: 950;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .third-race-points {
+            font-weight: 900;
+        }
+
+        .third-race-status {
+            font-size: 0.76rem;
+            font-weight: 950;
+            letter-spacing: 0.04rem;
+        }
+
+        .third-cutoff {
+            background: var(--atlas-red);
+            color: var(--atlas-paper);
+            font-size: 0.75rem;
+            font-weight: 950;
+            letter-spacing: 0.08rem;
+            padding: 0.35rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
         .atlas-rank {
             align-items: baseline;
             border-bottom: 2px solid var(--atlas-ink);
@@ -465,6 +804,10 @@ def apply_global_styles() -> None:
 
             .atlas-analysis-hero-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .groups-hero-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
         </style>
