@@ -1,73 +1,131 @@
 # Prode Mundial 2026
 
-Motor de simulación y predicción para la Copa Mundial de la FIFA 2026 desarrollado en Python.
+Interactive World Cup Forecast Atlas for the FIFA World Cup 2026.
 
-El proyecto comenzó como una herramienta para participar en un prode entre compañeros de trabajo y evolucionó hacia un experimento de analítica deportiva e ingeniería de datos, incorporando simulación completa del torneo, clasificación de mejores terceros, implementación del Anexo C de FIFA y automatización de todas las rondas eliminatorias.
+Built with Python, Elo Ratings, Monte Carlo simulation, Expected Goals modeling, and Streamlit.
 
----
-
-## Objetivos del proyecto
-
-* Consumir y procesar datos internacionales de fútbol basados en Elo Ratings.
-* Generar predicciones de partidos utilizando métricas de fuerza relativa y forma reciente.
-* Simular la fase de grupos completa.
-* Determinar clasificados a eliminación directa según el formato oficial de FIFA 2026.
-* Construir automáticamente el cuadro eliminatorio utilizando las reglas oficiales del Anexo C.
-* Simular todas las rondas hasta la final y el partido por el tercer puesto.
-* Servir como proyecto práctico para profundizar conocimientos de Python, modelado de datos, testing y arquitectura de pipelines.
+The project started as a simple office prediction pool and evolved into a complete tournament forecasting platform capable of simulating the entire FIFA World Cup 2026, including group-stage qualification, best third-placed teams, official FIFA Annex C knockout paths, and probabilistic tournament outcomes.
 
 ---
 
-## Características principales
+## Atlas Experience
 
-### Ingesta y procesamiento
+The project includes an editorial-style interactive Atlas that transforms simulation outputs into a digital tournament magazine.
 
-* Ingesta automatizada de datasets externos.
-* Conversión y normalización de archivos TSV.
-* Construcción de datasets procesados para análisis y simulación.
-* Cálculo de fuerza de selección mediante Elo Ratings.
-* Cálculo de forma reciente utilizando resultados históricos.
+### Included Sections
 
-### Predicción de partidos
+* Portada
+* Atlas
+* Grupos
+* Cuadro
+* Partidos
+* Método
 
-* Probabilidad de victoria basada en Elo.
-* Ajuste mediante forma reciente.
-* Probabilidad dinámica de empate.
-* Predicción de marcador.
-* Clasificación de confianza.
-* Clasificación de riesgo de sorpresa (upset risk).
-
-### Simulación del Mundial 2026
-
-* Simulación completa de fase de grupos.
-* Tabla de posiciones por grupo.
-* Clasificación de primeros y segundos.
-* Selección de los 8 mejores terceros.
-* Desempate por enfrentamiento directo entre dos equipos.
-* Implementación del formato oficial de 48 selecciones.
-
-### Eliminación directa
-
-* Implementación del Anexo C de FIFA.
-* Generación automática de dieciseisavos de final (Round of 32).
-* Simulación de octavos, cuartos, semifinales, tercer puesto y final.
-* Resolución de empates mediante tiempo suplementario o penales.
-* Orquestador único para ejecutar toda la simulación.
-
-### Calidad y mantenibilidad
-
-* Arquitectura modular.
-* Logging centralizado.
-* Validaciones y manejo de errores.
-* Tests automatizados con pytest.
-* Documentación técnica del pipeline.
+Instead of presenting predictions as tables and dashboards, the Atlas organizes forecasts, standings, probabilities, and knockout projections into a narrative experience inspired by classic World Cup guides and tournament publications.
 
 ---
 
-## Estructura del proyecto
+## Project Goals
+
+* Consume and process international football datasets based on Elo Ratings.
+* Generate match forecasts using team strength and recent form.
+* Simulate the complete FIFA World Cup 2026.
+* Determine qualification using the official 48-team format.
+* Implement FIFA Annex C knockout mapping.
+* Simulate all knockout rounds through the Final.
+* Explore tournament outcomes through Monte Carlo simulation.
+* Serve as a practical project for Python, data engineering, simulation modeling, testing, and product design.
+
+---
+
+## Key Features
+
+### Forecast Engine
+
+* Elo-based team strength
+* Recent form adjustment
+* Dynamic draw probability
+* Expected Goals estimation
+* Poisson score modeling
+* Confidence scoring
+* Upset risk detection
+
+### Tournament Simulation
+
+* Full group-stage simulation
+* Group standings generation
+* Best third-place qualification
+* Official FIFA 2026 tournament format
+* FIFA Annex C implementation
+* Complete knockout simulation
+* Extra-time and penalty resolution
+* Tournament champion prediction
+
+### Monte Carlo Analytics
+
+* Stochastic score generation
+* Tournament reruns
+* Champion probabilities
+* Most likely finals
+* Team progression probabilities
+
+### Editorial Atlas
+
+* Interactive tournament cover
+* Championship probability rankings
+* Group-stage storytelling
+* Third-place qualification race
+* Knockout wall chart
+* Match forecast archive
+* Methodology guide
+
+---
+
+## Architecture
+
+### Data Pipeline
+
+```text
+External Datasets
+        ↓
+Ingestion
+        ↓
+Processing
+        ↓
+Team Strength + Recent Form
+        ↓
+Match Forecasts
+        ↓
+Group Simulation
+        ↓
+Qualification
+        ↓
+FIFA Annex C
+        ↓
+Knockout Simulation
+        ↓
+Monte Carlo Analysis
+        ↓
+Atlas Experience
+```
+
+---
+
+## Project Structure
 
 ```text
 prode-mundial-2026/
+│
+├── app/
+│   ├── atlas_app/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── data.py
+│   │   ├── formatting.py
+│   │   └── styles.py
+│   │
+│   ├── legacy_dashboard.py
+│   └── streamlit_app.py
 │
 ├── data/
 │   ├── raw/
@@ -83,7 +141,8 @@ prode-mundial-2026/
 │   ├── ingestion/
 │   ├── knockout/
 │   ├── predictor/
-│   └── processing/
+│   ├── processing/
+│   └── simulation/
 │
 ├── tests/
 │
@@ -94,49 +153,88 @@ prode-mundial-2026/
 
 ---
 
-## Flujo de simulación
+## Atlas Pages
 
-```text
-Datasets externos
-        ↓
-Ingesta
-        ↓
-Procesamiento
-        ↓
-Fuerza de equipos y forma reciente
-        ↓
-Predicciones de fase de grupos
-        ↓
-Clasificación
-        ↓
-Mejores terceros
-        ↓
-Anexo C FIFA
-        ↓
-Round of 32
-        ↓
-Round of 16
-        ↓
-Quarterfinals
-        ↓
-Semifinals
-        ↓
-Third Place Match
-        ↓
-Final
-```
+### Portada
+
+Editorial front page of the tournament.
+
+Highlights:
+
+* Tournament favorite
+* Most likely final
+* Group dispatch overview
+* Championship teaser
+
+### Atlas
+
+Big-picture tournament forecast.
+
+Highlights:
+
+* Champion probabilities
+* Most likely finals
+* Contenders and challengers
+* Tournament narratives
+
+### Grupos
+
+Complete group-stage analysis.
+
+Highlights:
+
+* Group standings
+* Qualification projections
+* Best third-place race
+* Group match forecasts
+
+### Cuadro
+
+Knockout stage visualization.
+
+Highlights:
+
+* Round of 32
+* Round of 16
+* Quarterfinals
+* Semifinals
+* Final
+* Third-place match
+
+### Partidos
+
+Forecast archive.
+
+Highlights:
+
+* Match predictions
+* Confidence indicators
+* Upset watch
+* Editorial filtering
+
+### Método
+
+Methodology and model explanation.
+
+Highlights:
+
+* Elo Ratings
+* Recent Form
+* Expected Goals
+* Poisson Modeling
+* Monte Carlo Simulation
 
 ---
 
-## Ejecución
+## Installation
 
-### Crear entorno virtual
+### Create Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-### Activar entorno
+### Activate Environment
 
 #### Windows
 
@@ -144,19 +242,33 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-#### Linux / Mac
+#### Linux / macOS
 
 ```bash
 source .venv/bin/activate
 ```
 
-### Instalar dependencias
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Ejecutar simulación completa
+---
+
+## Running The Atlas
+
+Launch the Streamlit application:
+
+```bash
+streamlit run app/streamlit_app.py
+```
+
+---
+
+## Running Tournament Simulation
+
+Execute the complete tournament pipeline:
 
 ```bash
 python -m src.knockout.tournament
@@ -166,43 +278,85 @@ python -m src.knockout.tournament
 
 ## Testing
 
-Ejecutar todos los tests:
+Run all tests:
 
 ```bash
 pytest
 ```
 
-Actualmente se incluyen pruebas para:
+Current coverage includes:
 
-* Resolución de ganadores en eliminación directa.
-* Construcción de rondas posteriores.
-* Implementación del Anexo C de FIFA.
-
----
-
-## Documentación adicional
-
-* `docs/knockout_pipeline.md`
-* `docs/annex_c.md`
+* Knockout winner resolution
+* Stage construction
+* FIFA Annex C implementation
+* Elo updates
+* Score simulation
+* Probability calculations
 
 ---
 
-## Roadmap
+## Documentation
 
-### Mejoras futuras
+Additional technical documentation:
 
-### Próximas mejoras
-
-* Desempates entre tres o más equipos.
-* Fair Play como criterio de desempate.
-* Ranking FIFA como criterio de desempate.
-* Integración de Elo dinámico en fase de grupos.
-* Actualización automática diaria de datasets.
-* Visualización avanzada del cuadro eliminatorio.
-* Frontend Next.js.
+* docs/annex_c.md
+* docs/knockout_pipeline.md
 
 ---
 
-## Descargo
+## Screenshots
 
-Las predicciones generadas por el proyecto tienen fines educativos, experimentales y recreativos. No constituyen recomendaciones de apuestas ni garantías sobre resultados reales.
+### Screenshot — Portada
+
+![Cover](docs/screenshots/cover.png)
+
+### Screenshot — Atlas
+
+![Atlas](docs/screenshots/atlas.png)
+
+### Screenshot — Grupos
+
+![Groups](docs/screenshots/groups.png)
+
+### Screenshot — Cuadro
+
+![Bracket](docs/screenshots/bracket.png)
+
+### Screenshot — Método
+
+![Method](docs/screenshots/method.png)
+
+---
+
+## Current Roadmap
+
+### Release Preparation
+
+* Documentation review
+* Screenshot gallery
+* Streamlit deployment
+* Regression testing
+
+### Simulation Improvements
+
+* Three-team tie breakers
+* Fair Play tie breakers
+* FIFA Ranking tie breakers
+* Dynamic Elo in group stage
+* Probability calibration
+
+### Future Product Ideas
+
+* Interactive bracket
+* Scenario explorer
+* Historical World Cup mode
+* Team path explorer
+* Next.js frontend
+
+---
+
+## Disclaimer
+
+This project is intended for educational, analytical, and entertainment purposes.
+
+Forecasts are generated through simulation models and probabilistic methods. They do not constitute betting advice and should not be interpreted as predictions of actual future results.
