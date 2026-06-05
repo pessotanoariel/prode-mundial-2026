@@ -825,6 +825,172 @@ def apply_global_styles() -> None:
             max-width: 28rem;
         }
 
+        .matches-hero {
+            border-bottom: 3px solid var(--atlas-ink);
+            border-top: 3px solid var(--atlas-ink);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 0 1.5rem;
+        }
+
+        .matches-hero h1 {
+            color: var(--atlas-ink);
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 950;
+            letter-spacing: 0;
+            line-height: 0.9;
+            margin: 0.25rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .matches-hero p {
+            color: var(--atlas-ink);
+            font-size: 1.05rem;
+            max-width: 52rem;
+        }
+
+        .matches-hero-grid {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+            margin-top: 1.2rem;
+        }
+
+        .matches-hero-grid > div {
+            border: 2px solid var(--atlas-ink);
+            padding: 1rem;
+        }
+
+        .matches-hero-grid strong,
+        .matches-hero-grid span {
+            color: var(--atlas-ink);
+            display: block;
+            font-size: clamp(1.45rem, 3vw, 2.8rem);
+            font-weight: 950;
+            line-height: 1;
+            margin-top: 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .match-index-panel {
+            background: rgba(255, 255, 255, 0.14);
+            border-bottom: 2px solid var(--atlas-ink);
+            border-top: 2px solid var(--atlas-ink);
+            margin-bottom: 0.9rem;
+            padding: 0.75rem 0.65rem 0.1rem;
+        }
+
+        .match-index-panel label {
+            color: var(--atlas-ink);
+            font-weight: 950;
+        }
+
+        .match-filter-label {
+            color: var(--atlas-red);
+            font-size: 0.74rem;
+            font-weight: 950;
+            letter-spacing: 0.06rem;
+            line-height: 1;
+            margin-bottom: 0.22rem;
+            text-transform: uppercase;
+        }
+
+        .match-forecast-card {
+            background: rgba(255, 255, 255, 0.16);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            height: 14.75rem;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            overflow: hidden;
+            padding: 0.78rem;
+        }
+
+        .match-card-date {
+            color: var(--atlas-red);
+            font-size: 0.72rem;
+            font-weight: 950;
+            letter-spacing: 0.06rem;
+            text-transform: uppercase;
+        }
+
+        .match-forecast-card h3 {
+            color: var(--atlas-ink);
+            font-size: clamp(1.12rem, 2vw, 1.55rem);
+            font-weight: 950;
+            line-height: 1;
+            margin: 0.32rem 0;
+            text-transform: uppercase;
+        }
+
+        .match-forecast-card h3 span {
+            color: var(--atlas-red);
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.08rem;
+            margin: 0.18rem 0;
+        }
+
+        .match-card-score {
+            color: var(--atlas-red);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .match-card-winner {
+            color: var(--atlas-ink);
+            font-size: 0.84rem;
+            font-weight: 800;
+        }
+
+        .match-card-winner strong {
+            text-transform: uppercase;
+        }
+
+        .match-card-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .match-card-badges span {
+            border: 2px solid var(--atlas-ink);
+            color: var(--atlas-ink);
+            font-size: 0.64rem;
+            font-weight: 950;
+            letter-spacing: 0.04rem;
+            padding: 0.08rem 0.28rem;
+            text-transform: uppercase;
+        }
+
+        .match-callout {
+            border-bottom: 2px solid var(--atlas-ink);
+            color: var(--atlas-ink);
+            padding: 0.75rem 0;
+        }
+
+        .match-callout strong {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 950;
+            line-height: 1.05;
+            text-transform: uppercase;
+        }
+
+        .match-callout span {
+            display: block;
+            font-weight: 850;
+            margin-top: 0.25rem;
+        }
+
+        .match-callout-yellow {
+            background: rgba(242, 194, 48, 0.16);
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
         .atlas-rank {
             align-items: baseline;
             border-bottom: 2px solid var(--atlas-ink);
@@ -989,6 +1155,10 @@ def apply_global_styles() -> None:
             }
 
             .bracket-hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .matches-hero-grid {
                 grid-template-columns: 1fr;
             }
         }
