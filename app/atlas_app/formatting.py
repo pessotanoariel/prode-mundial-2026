@@ -3,7 +3,7 @@ from config.translations import TEAM_TRANSLATIONS
 
 def translate_team(team: str) -> str:
     if team is None:
-        return "TBD"
+        return "Pendiente"
 
     return TEAM_TRANSLATIONS.get(
         team,

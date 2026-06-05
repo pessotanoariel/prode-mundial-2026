@@ -19,12 +19,12 @@ from app.atlas_app.styles import apply_global_styles
 
 
 PAGES = {
-    "Cover": cover.render,
+    "Portada": cover.render,
     "Atlas": atlas.render,
-    "Groups": groups.render,
-    "Bracket": bracket.render,
-    "Matches": matches.render,
-    "Method": method.render,
+    "Grupos": groups.render,
+    "Cuadro": bracket.render,
+    "Partidos": matches.render,
+    "Método": method.render,
 }
 
 
@@ -35,14 +35,14 @@ def render_navigation() -> str:
             <div class="atlas-sidebar-kicker">World Cup</div>
             <div class="atlas-sidebar-title">Forecast<br>Atlas</div>
             <div class="atlas-sidebar-year">2026</div>
-            <div class="atlas-sidebar-deck">A simulated tournament magazine</div>
+            <div class="atlas-sidebar-deck">Una revista de simulación mundialista</div>
         </div>
         """,
         unsafe_allow_html=True
     )
 
     return st.sidebar.radio(
-        "Sections",
+        "Secciones",
         list(PAGES.keys()),
         label_visibility="visible"
     )

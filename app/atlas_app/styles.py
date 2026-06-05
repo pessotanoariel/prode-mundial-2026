@@ -991,6 +991,121 @@ def apply_global_styles() -> None:
             padding-right: 0.5rem;
         }
 
+        .method-hero {
+            border-bottom: 3px solid var(--atlas-ink);
+            border-top: 3px solid var(--atlas-ink);
+            margin-bottom: 1.5rem;
+            padding: 1.25rem 0 1.5rem;
+        }
+
+        .method-hero h1 {
+            color: var(--atlas-ink);
+            font-size: clamp(2.8rem, 7vw, 6rem);
+            font-weight: 950;
+            letter-spacing: 0;
+            line-height: 0.9;
+            margin: 0.25rem 0 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .method-hero p {
+            color: var(--atlas-ink);
+            font-size: 1.05rem;
+            max-width: 52rem;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.16);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            display: grid;
+            gap: 0.55rem;
+            grid-template-columns: 3.2rem minmax(0, 1fr);
+            margin-bottom: 0.9rem;
+            min-height: 8.6rem;
+            padding: 0.9rem;
+        }
+
+        .method-card-number {
+            color: var(--atlas-red);
+            font-size: 2rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .method-card h3 {
+            color: var(--atlas-ink);
+            font-size: 1.2rem;
+            font-weight: 950;
+            line-height: 1;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .method-card p {
+            color: var(--atlas-ink);
+            font-weight: 760;
+            grid-column: 2;
+            line-height: 1.35;
+            margin: 0;
+        }
+
+        .method-flow {
+            align-items: stretch;
+            display: grid;
+            gap: 0.45rem;
+            grid-template-columns: repeat(11, auto);
+            margin: 0.6rem 0 1rem;
+            overflow-x: auto;
+        }
+
+        .method-flow div {
+            background: var(--atlas-yellow);
+            border: 2px solid var(--atlas-ink);
+            color: var(--atlas-ink);
+            font-size: 0.78rem;
+            font-weight: 950;
+            min-width: 8rem;
+            padding: 0.45rem 0.55rem;
+            text-align: center;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .method-flow span {
+            align-self: center;
+            background: var(--atlas-red);
+            display: block;
+            height: 0.2rem;
+            width: 1.2rem;
+        }
+
+        .method-editorial-note {
+            background: var(--atlas-violet);
+            border: 3px solid var(--atlas-ink);
+            color: var(--atlas-paper);
+            padding: 1.1rem;
+        }
+
+        .method-editorial-note strong {
+            color: var(--atlas-yellow);
+            display: block;
+            font-size: clamp(1.6rem, 3vw, 2.7rem);
+            font-weight: 950;
+            line-height: 0.95;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
+        }
+
+        .method-editorial-note p {
+            color: var(--atlas-paper);
+            font-size: 1.05rem;
+            font-weight: 760;
+            line-height: 1.45;
+            margin: 0;
+            max-width: 62rem;
+        }
+
         .atlas-rank {
             align-items: baseline;
             border-bottom: 2px solid var(--atlas-ink);

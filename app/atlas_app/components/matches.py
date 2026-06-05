@@ -79,7 +79,7 @@ def render_editorial_hero(predictions_df) -> None:
         _html(f"""
         <section class="matches-hero">
             <div class="atlas-kicker">05 / Archivo de partidos</div>
-            <h1>Archivo de pronósticos</h1>
+            <h1>Archivo de partidos</h1>
             <p>
                 Una colección editorial de resultados proyectados desde la
                 simulación actual de la fase de grupos.
@@ -279,7 +279,7 @@ def render_forecast_cards(
         '<div class="atlas-section-number">05</div>',
         unsafe_allow_html=True
     )
-    st.header("Archivo de tarjetas")
+    st.header("Partidos proyectados")
 
     if _is_empty(filtered_df):
         st.info("No hay partidos para los filtros seleccionados.")

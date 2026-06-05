@@ -94,7 +94,7 @@ def render_knockout_overview(
         _html(f"""
         <section class="bracket-hero">
             <div class="atlas-kicker">01 / Cuadro eliminatorio</div>
-            <h1>La pared del campeonato</h1>
+            <h1>El camino al título</h1>
             <p>
                 El tramo directo del torneo, leído como una lámina de revista:
                 rutas, cruces y el último partido de la simulación.
