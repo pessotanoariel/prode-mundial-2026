@@ -1,142 +1,201 @@
-# ⚠️ README_EN pending update
+# Prode Mundial 2026
 
-Current implementation includes:
+Interactive World Cup Forecast Atlas for the FIFA World Cup 2026.
 
-- Full World Cup 2026 simulation
-- FIFA Annex C implementation
-- Dynamic Elo ratings
-- Poisson score model
-- Monte Carlo tournament simulation
-- Streamlit dashboard
+Built with Python, Elo Ratings, Monte Carlo simulation, Expected Goals modeling, and Streamlit.
 
-## Prode Mundial 2026 Predictor
-
-A modular football prediction pipeline built for the FIFA World Cup 2026.
-
-The project consumes live Elo-based football datasets, processes international team statistics, and generates automated match predictions for World Cup fixtures.
-
-Initially created as a hobby side-project for a workplace betting pool ("prode"), the project evolved into a small-scale sports analytics and data engineering experiment.
+The project started as a simple office prediction pool and evolved into a complete tournament forecasting platform capable of simulating the entire FIFA World Cup 2026, including group-stage qualification, best third-placed teams, official FIFA Annex C knockout paths, and probabilistic tournament outcomes.
 
 ---
 
-## Features
+## Atlas Experience
 
-## Current MVP
+The project includes an editorial-style interactive Atlas that transforms simulation outputs into a digital tournament magazine.
 
-- External football dataset ingestion
-- Automated TSV → CSV pipelines
-- Team strength dataset generation
-- World Cup fixture filtering
-- Hybrid Elo-based prediction engine
-- Match winner prediction
-- Basic score prediction
-- Confidence classification
+### Included Sections
+
+- Cover
+- Atlas
+- Groups
+- Bracket
+- Matches
+- Method
+
+Instead of presenting predictions as traditional dashboards, the Atlas organizes forecasts, standings, probabilities, and knockout projections into a narrative experience inspired by classic World Cup guides.
+
+---
+
+## Project Goals
+
+- Consume and process international football datasets based on Elo Ratings.
+- Generate match forecasts using team strength and recent form.
+- Simulate the complete FIFA World Cup 2026.
+- Determine qualification using the official 48-team format.
+- Implement FIFA Annex C knockout mapping.
+- Simulate all knockout rounds through the Final.
+- Explore tournament outcomes through Monte Carlo simulation.
+- Serve as a practical project for Python, data engineering, simulation modeling, testing, and product design.
+
+---
+
+## Key Features
+
+### Forecast Engine
+
+- Elo-based team strength
+- Recent form adjustment
+- Dynamic draw probability
+- Expected Goals estimation
+- Poisson score modeling
+- Confidence scoring
+- Upset risk detection
+
+### Tournament Simulation
+
+- Full group-stage simulation
+- Group standings generation
+- Best third-place qualification
+- Official FIFA 2026 tournament format
+- FIFA Annex C implementation
+- Complete knockout simulation
+- Extra-time and penalty resolution
+- Tournament champion prediction
+
+### Monte Carlo Analytics
+
+- Stochastic score generation
+- Tournament reruns
+- Champion probabilities
+- Most likely finals
+- Team progression probabilities
+
+### Editorial Atlas
+
+- Interactive tournament cover
+- Championship probability rankings
+- Group-stage storytelling
+- Third-place qualification race
+- Knockout wall chart
+- Match forecast archive
+- Methodology guide
+
+---
+
+## Architecture
+
+### Data Pipeline
+
+```text
+External Datasets
+        ↓
+Ingestion
+        ↓
+Processing
+        ↓
+Team Strength + Recent Form
+        ↓
+Match Forecasts
+        ↓
+Group Simulation
+        ↓
+Qualification
+        ↓
+FIFA Annex C
+        ↓
+Knockout Simulation
+        ↓
+Monte Carlo Analysis
+        ↓
+Atlas Experience
+```
 
 ---
 
 ## Project Structure
 
 ```text
-project/
+prode-mundial-2026/
+│
+├── app/
+│   ├── atlas_app/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── data.py
+│   │   ├── formatting.py
+│   │   └── styles.py
+│   │
+│   ├── legacy_dashboard.py
+│   └── streamlit_app.py
 │
 ├── data/
 │   ├── raw/
 │   ├── processed/
 │   └── output/
 │
-├── src/
-│   ├── ingestion/
-│   ├── processing/
-│   └── predictor/
+├── docs/
+│   ├── annex_c.md
+│   └── knockout_pipeline.md
 │
-├── requirements.txt
-└── README.md
+├── src/
+│   ├── analysis/
+│   ├── ingestion/
+│   ├── knockout/
+│   ├── predictor/
+│   ├── processing/
+│   └── simulation/
+│
+├── tests/
+│
+├── README.md
+├── README_EN.md
+└── requirements.txt
 ```
 
 ---
 
-## Data Sources
+## Running the Atlas
 
-The project currently uses public datasets from:
+Launch the Streamlit application:
 
-- World Football Elo Ratings
-- TSV endpoints discovered through browser network inspection
-
-Main datasets:
-
-| Dataset | Purpose |
-
-|---|---|
-
-| `World.tsv` | Global Elo rankings and team statistics |
-| `en.teams.tsv` | Team name lookup |
-| `fixtures.tsv` | Upcoming fixtures and Elo probabilities |
-| `latest.tsv` | Recent international match results |
-
----
-
-## Pipeline Overview
-
-```text
-External TSV datasets
-        ↓
-Ingestion scripts
-        ↓
-Raw CSV storage
-        ↓
-Processing & feature engineering
-        ↓
-Prediction engine
-        ↓
-World Cup predictions
+```bash
+streamlit run app/streamlit_app.py
 ```
 
 ---
 
-## Current Prediction Logic
+## Running Tournament Simulation
 
-The current MVP uses a hybrid heuristic model based on:
+Execute the complete tournament pipeline:
 
-- Elo expected win probability
-- Dynamic draw probability
-- Relative team strength
-- Simple confidence rules
-
-Example:
-
-| Match | Prediction |
-
-|---|---|
-
-| Brazil vs Morocco | Brazil 2-0 |
-| Japan vs Netherlands | Draw 1-1 |
-| Argentina vs Algeria | Argentina 2-1 |
+```bash
+python -m src.knockout.tournament
+```
 
 ---
 
-## How To Run
+## Installation
 
-## 1. Create virtual environment
+### Create Virtual Environment
 
 ```bash
 python -m venv .venv
 ```
 
-## 2. Activate environment
+### Activate Environment
 
-### Windows
+#### Windows
 
 ```bash
 .venv\Scripts\activate
 ```
 
-### Linux / Mac
+#### Linux / macOS
 
 ```bash
 source .venv/bin/activate
 ```
 
-## 3. Install dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -144,115 +203,92 @@ pip install -r requirements.txt
 
 ---
 
-## Run Data Ingestion
+## Testing
+
+Run all tests:
 
 ```bash
-python -m src.ingestion.update_elo
-python -m src.ingestion.update_teams
-python -m src.ingestion.update_fixtures
-python -m src.ingestion.update_latest_results
+pytest
 ```
 
----
+Current coverage includes:
 
-## Run Processing
-
-```bash
-python -m src.processing.build_team_strength
-python -m src.processing.build_upcoming_matches
-```
-
----
-
-## Generate Predictions
-
-```bash
-python -m src.predictor.generate_predictions
-```
-
-Predictions are exported to:
-
-```text
-data/output/predictions.csv
-```
+- Knockout winner resolution
+- Stage construction
+- FIFA Annex C implementation
+- Elo updates
+- Score simulation
+- Probability calculations
 
 ---
 
-## Example Output
+## Documentation
 
-| Match | Predicted Winner | Score | Confidence |
+Additional technical documentation:
 
-|---|---|---|---|
-
-| Brazil vs Morocco | Brazil | 2-0 | High |
-| Australia vs Turkey | Turkey | 1-2 | Medium |
-| Japan vs Netherlands | Draw | 1-1 | Low |
+- `docs/annex_c.md`
+- `docs/knockout_pipeline.md`
 
 ---
 
-## Roadmap
+## Screenshots
 
-## Near-Term Improvements
+### Cover Page
 
-### V1.1 — Recent Form Adjustment
+`docs/screenshots/cover.png`
 
-- Last 5 matches
-- Momentum score
-- Recent win/loss streaks
+### Atlas Page
 
-### V1.2 — Better Score Simulation
+`docs/screenshots/atlas.png`
 
-- Poisson goal distribution
-- Expected goals estimation
+### Groups Page
 
-### V1.3 — Group Stage Simulation
+`docs/screenshots/groups.png`
 
-- Group standings
-- Qualification probabilities
-- Tournament progression
+### Bracket Page
 
----
+`docs/screenshots/bracket.png`
 
-## Mid-Term Improvements
+### Method Page
 
-### Monte Carlo Tournament Simulation
-
-- 1000+ tournament runs
-- Champion probabilities
-- Upset simulations
-
-### Streamlit Dashboard
-
-- Match explorer
-- Prediction viewer
-- Team analytics
+`docs/screenshots/method.png`
 
 ---
 
-## Long-Term Ideas
+## Current Roadmap
 
-### ML-Based Predictor
+### Simulation Improvements
 
-- Historical match training datasets
-- Feature engineering
-- Ensemble models
-- Automated calibration
+- Three-team tie breakers
+- Fair Play tie breakers
+- FIFA Ranking tie breakers
+- Dynamic Elo integration in group stage
+- Probability calibration
 
----
+### Product Improvements
 
-## Technical Notes
+- Interactive bracket
+- Tournament timeline
+- Host cities visualization
+- Mobile responsiveness
 
-This project intentionally prioritizes:
+### Deployment
 
-- reproducibility
-- modular pipelines
-- simple architecture
-- incremental experimentation
+- Streamlit Cloud deployment
+- Automated data refresh
+- Scheduled simulations
 
-over heavy ML complexity in early stages.
+### Long-Term Ideas
+
+- Next.js frontend
+- Scenario explorer
+- Historical World Cup mode
+- Team comparison tools
 
 ---
 
 ## Disclaimer
 
-Predictions are experimental and intended for educational and entertainment purposes only.
+This project is intended for educational, analytical, and entertainment purposes.
+
+Forecasts are generated through simulation models and probabilistic methods. They do not constitute betting advice and should not be interpreted as predictions of actual future results.
