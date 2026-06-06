@@ -1,0 +1,17 @@
+match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
+Round of 32,Czechia,Switzerland,1726,1889,0.281,1.4,0.4,1.0,0.081
+Round of 32,Ecuador,Scotland,1933,1767,0.722,1.4,-0.6,2.0,0.078
+Round of 32,Japan,Morocco,1904,1821,0.617,4.8,3.1,1.7,0.183
+Round of 32,Brazil,Netherlands,1984,1961,0.533,2.4,3.1,-0.7,0.25
+Round of 32,France,Australia,2081,1783,0.848,5.1,5.7,-0.6,0.03
+Round of 32,Germany,Norway,1923,1912,0.516,4.8,0.4,4.4,0.25
+Round of 32,Mexico,Cape Verde,1900,1549,0.883,7.4,0.1,7.3,0.03
+Round of 32,Croatia,Austria,1930,1827,0.644,1.8,5.7,-3.9,0.156
+Round of 32,United States,Bosnia and Herzegovina,1761,1594,0.723,-1.5,1.4,-2.9,0.077
+Round of 32,Belgium,South Korea,1867,1752,0.66,3.7,-1.5,5.2,0.14
+Round of 32,Portugal,England,1984,2020,0.448,3.4,0.4,3.0,0.248
+Round of 32,Spain,Algeria,2165,1743,0.919,3.7,4.9,-1.2,0.03
+Round of 32,Canada,Egypt,1824,1689,0.685,1.4,4.0,-2.6,0.115
+Round of 32,Argentina,Uruguay,2113,1892,0.781,6.0,1.4,4.6,0.03
+Round of 32,Colombia,Senegal,1975,1878,0.636,-0.9,5.4,-6.3,0.164
+Round of 32,Turkey,Iran,1902,1760,0.694,4.8,3.3,1.5,0.106

@@ -1,0 +1,3 @@
+match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
+Semifinals,Japan,Australia,0.599,0.149,0.252,Japan,5-4,Medium,LOW
+Semifinals,United States,Argentina,0.192,0.03,0.778,Draw,1-1,Medium,LOW

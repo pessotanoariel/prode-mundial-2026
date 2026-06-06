@@ -2,11 +2,11 @@
 __pycache__/
 *.pyc
 
-data/processed/*
-data/output/*
+# data/processed/*
+# data/output/*
 
-!data/processed/.gitkeep
-!data/output/.gitkeep
+# !data/processed/.gitkeep
+# !data/output/.gitkeep
 
 .env
 .DS_Store

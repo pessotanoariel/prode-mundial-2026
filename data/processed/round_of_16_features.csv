@@ -1,0 +1,9 @@
+match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
+Round of 16,Switzerland,Scotland,1894.62,1781.44,0.657,0.4,-0.6,1.0,0.143
+Round of 16,Japan,Brazil,1911.66,1993.34,0.385,4.8,2.4,2.4,0.185
+Round of 16,Australia,Germany,1799.95,1932.68,0.318,5.7,4.8,0.9,0.118
+Round of 16,Mexico,Croatia,1902.86,1937.12,0.451,7.4,1.8,5.6,0.25
+Round of 16,United States,Belgium,1767.5,1873.81,0.352,-1.5,3.7,-5.2,0.152
+Round of 16,Portugal,Spain,1995.03,2166.62,0.271,3.4,3.7,-0.3,0.071
+Round of 16,Canada,Argentina,1831.33,2117.38,0.162,1.4,6.0,-4.6,0.03
+Round of 16,Senegal,Iran,1890.72,1773.87,0.662,5.4,3.3,2.1,0.138

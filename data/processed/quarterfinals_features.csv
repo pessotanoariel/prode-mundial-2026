@@ -1,0 +1,5 @@
+match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
+Quarterfinals,Switzerland,Japan,1901.47,1923.97,0.468,0.4,4.8,-4.4,0.25
+Quarterfinals,Australia,Mexico,1813.59,1914.97,0.358,5.7,7.4,-1.7,0.158
+Quarterfinals,United States,Spain,1781.48,2172.05,0.095,-1.5,3.7,-5.2,0.03
+Quarterfinals,Argentina,Iran,2120.03,1787.11,0.872,6.0,3.3,2.7,0.03
