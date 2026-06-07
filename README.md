@@ -8,6 +8,10 @@ El proyecto comenzó como una herramienta para participar en un prode entre comp
 
 ---
 
+## Demo
+
+<https://world-cup-forecast-atlas.streamlit.app/>
+
 ## Experiencia Atlas
 
 El proyecto incluye un Atlas interactivo de estilo editorial que transforma los resultados de la simulación en una revista digital del torneo.

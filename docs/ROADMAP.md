@@ -181,30 +181,40 @@ Status: COMPLETED
 
 ## PHASE 5 — Release Preparation
 
-Status: NEXT
+Status: IN PROGRESS
 
-### Documentation review
+### Documentation Review
 
-* [ ] Rewrite README
-* [ ] Create screenshots gallery
-* [ ] Document simulation methodology
+* [x] Rewrite README
+* [x] Create screenshots gallery
+* [x] Document simulation methodology
 * [ ] Update architecture diagrams
-* [ ] Create installation guide
+* [x] Create installation guide
 
 ### Quality Assurance
 
 * [ ] Full tournament regression test
-* [ ] Verify FIFA Annex C outputs
-* [ ] Verify progression probabilities
-* [ ] Verify champion probabilities
-* [ ] Review translations and editorial copy
+* [x] Verify FIFA Annex C outputs
+* [x] Verify progression probabilities
+* [x] Verify champion probabilities
+* [x] Review translations and editorial copy
 
 ### Deployment
 
-* [ ] Streamlit Cloud deployment
-* [ ] Production configuration
+* [x] Streamlit Cloud deployment
+* [x] Production configuration
 * [ ] Environment variables
-* [ ] Public URL
+* [x] Public URL
+
+---
+
+### Remaining Work Before v1.0
+
+* [ ] Final regression test
+* [ ] Architecture diagram refresh
+* [ ] Optional environment variable configuration
+* [ ] Release tag v1.0
+* [ ] Add public demo URL to README
 
 ---
 
