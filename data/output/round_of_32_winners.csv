@@ -1,17 +1,17 @@
 team_1,team_2,winner,loser,resolution
-Czechia,Switzerland,Czechia,Switzerland,Regular Time
-Ecuador,Scotland,Ecuador,Scotland,Extra Time
-Japan,Morocco,Morocco,Japan,Regular Time
+Czechia,Switzerland,Switzerland,Czechia,Extra Time
+Ecuador,Scotland,Scotland,Ecuador,Regular Time
+Japan,Morocco,Japan,Morocco,Regular Time
 Brazil,Netherlands,Brazil,Netherlands,Extra Time
 France,Sweden,France,Sweden,Regular Time
 Germany,Norway,Germany,Norway,Extra Time
-Mexico,Cape Verde,Cape Verde,Mexico,Regular Time
+Mexico,Cape Verde,Mexico,Cape Verde,Regular Time
 Croatia,Austria,Austria,Croatia,Regular Time
-United States,Bosnia and Herzegovina,United States,Bosnia and Herzegovina,Regular Time
-Belgium,South Korea,Belgium,South Korea,Extra Time
-Portugal,England,Portugal,England,Extra Time
+United States,Bosnia and Herzegovina,Bosnia and Herzegovina,United States,Regular Time
+Belgium,South Korea,Belgium,South Korea,Regular Time
+Portugal,England,England,Portugal,Regular Time
 Spain,Algeria,Spain,Algeria,Regular Time
-Canada,Egypt,Canada,Egypt,Regular Time
-Argentina,Uruguay,Argentina,Uruguay,Regular Time
-Colombia,Ivory Coast,Ivory Coast,Colombia,Regular Time
+Canada,Egypt,Egypt,Canada,Regular Time
+Argentina,Uruguay,Argentina,Uruguay,Extra Time
+Colombia,Ivory Coast,Colombia,Ivory Coast,Regular Time
 Turkey,Iran,Turkey,Iran,Extra Time

@@ -1,9 +1,9 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Round of 16,Czechia,Ecuador,0.324,0.051,0.625,Ecuador,0-2,Medium,LOW
-Round of 16,Morocco,Brazil,0.367,0.084,0.549,Draw,1-1,Medium,MEDIUM
+Round of 16,Switzerland,Scotland,0.588,0.159,0.253,Switzerland,2-0,Medium,LOW
+Round of 16,Japan,Brazil,0.409,0.179,0.412,Brazil,0-5,Low,EXTREME
 Round of 16,France,Germany,0.579,0.13,0.291,Draw,3-3,Medium,LOW
-Round of 16,Cape Verde,Austria,0.272,0.03,0.698,Cape Verde,4-2,Medium,LOW
-Round of 16,United States,Belgium,0.312,0.125,0.563,Belgium,1-3,Medium,LOW
-Round of 16,Portugal,Spain,0.359,0.085,0.556,Draw,0-0,Medium,MEDIUM
-Round of 16,Canada,Argentina,0.238,0.03,0.732,Argentina,0-4,Medium,LOW
-Round of 16,Ivory Coast,Turkey,0.298,0.035,0.667,Turkey,1-4,Medium,LOW
+Round of 16,Mexico,Austria,0.587,0.193,0.22,Draw,1-1,Medium,LOW
+Round of 16,Bosnia and Herzegovina,Belgium,0.21,0.03,0.76,Belgium,2-3,Medium,LOW
+Round of 16,England,Spain,0.366,0.125,0.509,England,1-0,Medium,MEDIUM
+Round of 16,Egypt,Argentina,0.192,0.03,0.778,Draw,1-1,Medium,LOW
+Round of 16,Colombia,Turkey,0.526,0.203,0.271,Turkey,1-2,Medium,LOW

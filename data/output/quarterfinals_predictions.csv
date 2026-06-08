@@ -1,5 +1,5 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Quarterfinals,Ecuador,Brazil,0.434,0.219,0.347,Ecuador,3-1,Low,HIGH
-Quarterfinals,France,Cape Verde,0.795,0.03,0.175,France,2-1,High,LOW
-Quarterfinals,Belgium,Spain,0.319,0.03,0.651,Spain,3-4,Medium,LOW
-Quarterfinals,Argentina,Turkey,0.669,0.041,0.29,Draw,1-1,High,LOW
+Quarterfinals,Switzerland,Brazil,0.371,0.156,0.473,Draw,3-3,Medium,HIGH
+Quarterfinals,France,Mexico,0.602,0.104,0.294,Mexico,1-2,High,LOW
+Quarterfinals,Belgium,England,0.415,0.107,0.478,England,1-2,Medium,HIGH
+Quarterfinals,Argentina,Turkey,0.662,0.05,0.288,Argentina,5-1,High,LOW

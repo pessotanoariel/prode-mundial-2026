@@ -1,11 +1,13 @@
 from __future__ import annotations
 
+import csv
 import importlib
 import logging
 import sys
 import time
 import traceback
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from typing import Callable
 
@@ -121,7 +123,13 @@ EXPECTED_OUTPUTS: tuple[Path, ...] = (
 
 LOG_DIR = Path("execution_logs")
 LOG_PATH = LOG_DIR / "latest_run.log"
+HISTORY_PATH = LOG_DIR / "pipeline_history.csv"
 LOGGER_NAME = "world_cup_forecast_atlas.pipeline"
+HISTORY_COLUMNS = (
+    "execution_timestamp",
+    "status",
+    "runtime_seconds",
+)
 
 
 def print_header(title: str) -> None:
@@ -155,6 +163,35 @@ def configure_logging() -> logging.Logger:
     logger.addHandler(file_handler)
 
     return logger
+
+
+def append_execution_history(status: str, runtime_seconds: float) -> None:
+    LOG_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+    should_write_header = not HISTORY_PATH.exists()
+
+    with HISTORY_PATH.open(
+        mode="a",
+        encoding="utf-8",
+        newline="",
+    ) as history_file:
+        writer = csv.DictWriter(
+            history_file,
+            fieldnames=HISTORY_COLUMNS,
+        )
+
+        if should_write_header:
+            writer.writeheader()
+
+        writer.writerow(
+            {
+                "execution_timestamp": datetime.now().isoformat(timespec="seconds"),
+                "status": status,
+                "runtime_seconds": f"{runtime_seconds:.2f}",
+            }
+        )
 
 
 def get_step_main(module_name: str) -> Callable[[], None]:
@@ -223,6 +260,7 @@ def run_pipeline() -> int:
         print(f"Total execution time: {elapsed:.2f}s")
         logger.exception("Pipeline failed after %.2fs", elapsed)
         logger.info("Total execution time: %.2fs", elapsed)
+        append_execution_history("FAILED", elapsed)
         traceback.print_exc()
         return 1
 
@@ -230,6 +268,7 @@ def run_pipeline() -> int:
     print(f"\nSUCCESS - Pipeline completed in {elapsed:.2f}s")
     logger.info("Pipeline completed successfully")
     logger.info("Total execution time: %.2fs", elapsed)
+    append_execution_history("SUCCESS", elapsed)
     return 0
 
 
