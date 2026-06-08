@@ -31,18 +31,23 @@ def get_champion():
 
 def get_final_matchup():
 
+    return tuple(
+        sorted(
+            get_finalists()
+        )
+    )
+
+def get_finalists():
+
     df = pd.read_csv(
         FINAL_WINNERS_PATH
     )
 
-    return tuple(
-        sorted(
-            [
-                df.iloc[0]["team_1"],
-                df.iloc[0]["team_2"]
-            ]
-        )
-    )
+    return [
+        df.iloc[0]["team_1"],
+        df.iloc[0]["team_2"]
+    ]
+
 
 def get_stage_teams(
     winners_path
@@ -63,6 +68,8 @@ def run_monte_carlo(
     champions = Counter()
 
     finals = Counter()
+
+    finalists_counter = Counter()
 
     progression = defaultdict(
         lambda: {
@@ -89,6 +96,8 @@ def run_monte_carlo(
             get_final_matchup()
         )
 
+        finalists = get_finalists()
+
         finals[
             final_matchup
         ] += 1
@@ -109,12 +118,6 @@ def run_monte_carlo(
             )
         )
 
-        finalists = (
-            get_stage_teams(
-                FINAL_WINNERS
-            )
-        )
-
         for team in quarterfinalists:
 
             progression[
@@ -130,6 +133,10 @@ def run_monte_carlo(
 
 
         for team in finalists:
+
+            finalists_counter[
+                team
+            ] += 1
 
             progression[
                 team
@@ -213,6 +220,43 @@ def run_monte_carlo(
 
     print(
         finals_df.head(10)
+    )
+
+    finalist_rows = []
+
+    for team, count in (
+        finalists_counter.items()
+    ):
+
+        finalist_rows.append({
+            "team": team,
+            "final_probability": round(
+                count / simulations,
+                4
+            )
+        })
+
+    finalist_probabilities_df = (
+        pd.DataFrame(
+            finalist_rows
+        )
+        .sort_values(
+            "final_probability",
+            ascending=False
+        )
+    )
+
+    finalist_probabilities_df.to_csv(
+        "data/output/finalist_probabilities.csv",
+        index=False
+    )
+
+    print(
+        "\nFinalist Probabilities\n"
+    )
+
+    print(
+        finalist_probabilities_df.head(20)
     )
 
     progression_rows = []
