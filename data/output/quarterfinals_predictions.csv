@@ -1,5 +1,5 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Quarterfinals,Czechia,Japan,0.348,0.09,0.562,Draw,0-0,Medium,LOW
-Quarterfinals,France,Austria,0.671,0.03,0.299,France,2-1,High,LOW
-Quarterfinals,Belgium,Portugal,0.425,0.151,0.424,Draw,1-1,Low,EXTREME
-Quarterfinals,Argentina,Turkey,0.663,0.049,0.288,Turkey,1-4,High,LOW
+Quarterfinals,Ecuador,Brazil,0.434,0.219,0.347,Ecuador,3-1,Low,HIGH
+Quarterfinals,France,Cape Verde,0.795,0.03,0.175,France,2-1,High,LOW
+Quarterfinals,Belgium,Spain,0.319,0.03,0.651,Spain,3-4,Medium,LOW
+Quarterfinals,Argentina,Turkey,0.669,0.041,0.29,Draw,1-1,High,LOW
