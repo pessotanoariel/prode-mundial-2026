@@ -1,12 +1,13 @@
 from collections import Counter
+from collections import defaultdict
+import logging
+from pathlib import Path
 
 import pandas as pd
 
 from src.knockout.tournament import (
     simulation_main
 )
-
-from collections import defaultdict
 
 from src.knockout.paths import (
     QUARTERFINALS_WINNERS,
@@ -19,7 +20,12 @@ FINAL_WINNERS_PATH = (
     "data/output/final_winners.csv"
 )
 
-DEFAULT_SIMULATIONS = 100
+PREDICTIONS_PATH = Path("data/output/predictions.csv")
+CALIBRATION_REPORT_PATH = Path("data/output/calibration_report.csv")
+LOG_PATH = Path("execution_logs/latest_run.log")
+LOGGER_NAME = "world_cup_forecast_atlas.pipeline"
+
+DEFAULT_SIMULATIONS = 1000
 
 def get_champion():
 
@@ -59,6 +65,149 @@ def get_stage_teams(
 
     return df["winner"].tolist()
 
+
+def build_calibration_report(
+    predictions_path=PREDICTIONS_PATH,
+    simulations=DEFAULT_SIMULATIONS
+):
+    predictions_df = pd.read_csv(
+        predictions_path
+    )
+
+    confidence_counts = (
+        predictions_df["confidence"]
+        .str.upper()
+        .value_counts()
+    )
+
+    rows = [
+        {
+            "metric": "average_draw_probability",
+            "value": round(
+                predictions_df["draw_probability"].mean(),
+                4
+            )
+        },
+        {
+            "metric": "median_draw_probability",
+            "value": round(
+                predictions_df["draw_probability"].median(),
+                4
+            )
+        },
+        {
+            "metric": "minimum_draw_probability",
+            "value": round(
+                predictions_df["draw_probability"].min(),
+                4
+            )
+        },
+        {
+            "metric": "maximum_draw_probability",
+            "value": round(
+                predictions_df["draw_probability"].max(),
+                4
+            )
+        },
+        {
+            "metric": "high_confidence_matches",
+            "value": int(confidence_counts.get("HIGH", 0))
+        },
+        {
+            "metric": "medium_confidence_matches",
+            "value": int(confidence_counts.get("MEDIUM", 0))
+        },
+        {
+            "metric": "low_confidence_matches",
+            "value": int(confidence_counts.get("LOW", 0))
+        },
+        {
+            "metric": "simulation_runs",
+            "value": int(simulations)
+        },
+    ]
+
+    return pd.DataFrame(
+        rows,
+        columns=[
+            "metric",
+            "value"
+        ]
+    )
+
+
+def get_calibration_logger():
+    LOG_PATH.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+
+    logger = logging.getLogger(
+        LOGGER_NAME
+    )
+
+    if not logger.handlers:
+        logger.setLevel(
+            logging.INFO
+        )
+        logger.propagate = False
+
+        file_handler = logging.FileHandler(
+            LOG_PATH,
+            mode="a",
+            encoding="utf-8",
+        )
+        file_handler.setFormatter(
+            logging.Formatter(
+                "[%(asctime)s] %(levelname)s %(message)s",
+                datefmt="%Y-%m-%d %H:%M:%S",
+            )
+        )
+        logger.addHandler(
+            file_handler
+        )
+
+    return logger
+
+
+def write_calibration_report(
+    simulations=DEFAULT_SIMULATIONS
+):
+    report_df = build_calibration_report(
+        simulations=simulations
+    )
+
+    CALIBRATION_REPORT_PATH.parent.mkdir(
+        parents=True,
+        exist_ok=True
+    )
+    report_df.to_csv(
+        CALIBRATION_REPORT_PATH,
+        index=False
+    )
+
+    logger = get_calibration_logger()
+
+    logger.info(
+        "CALIBRATION DIAGNOSTICS"
+    )
+
+    for _, row in report_df.iterrows():
+        logger.info(
+            "%s=%s",
+            row["metric"],
+            row["value"]
+        )
+
+    print(
+        "\nCalibration Diagnostics\n"
+    )
+
+    print(
+        report_df
+    )
+
+    return report_df
 
 
 def run_monte_carlo(
@@ -306,6 +455,10 @@ def run_monte_carlo(
 
     print(
         progression_df.head(20)
+    )
+
+    write_calibration_report(
+        simulations=simulations
     )
 
     return champions

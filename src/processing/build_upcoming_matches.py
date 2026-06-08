@@ -2,6 +2,12 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.predictor.calibration import (
+    DRAW_BASE_PROBABILITY,
+    DRAW_PROBABILITY_CEILING,
+    DRAW_PROBABILITY_FLOOR,
+)
+
 RAW_RECENT_FORM_PATH = Path("data/processed/recent_form.csv")
 RAW_FIXTURES_PATH = Path("data/raw/fixtures.csv")
 RAW_TEAMS_PATH = Path("data/raw/teams_lookup.csv")
@@ -117,10 +123,13 @@ def build_upcoming_matches() -> pd.DataFrame:
 
     # dynamic draw probability
     df["draw_probability"] = (
-        0.30 - (
+        DRAW_BASE_PROBABILITY - (
             abs(df["team_1_win_expectancy"] - 0.5)
         )
-    ).clip(lower=0.03, upper=0.25)
+    ).clip(
+        lower=DRAW_PROBABILITY_FLOOR,
+        upper=DRAW_PROBABILITY_CEILING
+    )
 
     # estimated away win probability
     df["team_2_win_probability"] = (

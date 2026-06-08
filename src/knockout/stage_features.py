@@ -2,6 +2,12 @@ from pathlib import Path
 
 import pandas as pd
 
+from src.predictor.calibration import (
+    DRAW_BASE_PROBABILITY,
+    DRAW_PROBABILITY_CEILING,
+    DRAW_PROBABILITY_FLOOR,
+)
+
 TEAM_STRENGTH_PATH = Path(
     "data/processed/team_strength.csv"
 )
@@ -170,13 +176,13 @@ def build_stage_features(
         )
 
         draw_probability = (
-            0.30
+            DRAW_BASE_PROBABILITY
             - abs(expectancy - 0.5)
         )
 
         draw_probability = max(
-            min(draw_probability, 0.25),
-            0.03
+            min(draw_probability, DRAW_PROBABILITY_CEILING),
+            DRAW_PROBABILITY_FLOOR
         )
 
         rows.append({

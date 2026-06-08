@@ -14,6 +14,11 @@ from src.predictor.generate_predictions import (
 from src.predictor.ratings_lookup import (
     build_ratings_lookup,
 )
+from src.predictor.calibration import (
+    DRAW_BASE_PROBABILITY,
+    DRAW_PROBABILITY_CEILING,
+    DRAW_PROBABILITY_FLOOR,
+)
 
 
 INPUT_PATH = Path("data/processed/upcoming_matches.csv")
@@ -37,10 +42,10 @@ def calculate_draw_probability(team_1_win_expectancy: float) -> float:
     return round(
         max(
             min(
-                0.30 - abs(team_1_win_expectancy - 0.5),
-                0.25,
+                DRAW_BASE_PROBABILITY - abs(team_1_win_expectancy - 0.5),
+                DRAW_PROBABILITY_CEILING,
             ),
-            0.03,
+            DRAW_PROBABILITY_FLOOR,
         ),
         3,
     )

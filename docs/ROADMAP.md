@@ -235,7 +235,7 @@ Status: COMPLETED
 
 ## PHASE 7 — Simulation Improvements
 
-Status: FUTURE
+Status: IN PROGRESS
 
 ### FIFA Rules
 
@@ -245,7 +245,10 @@ Status: FUTURE
 
 ### Model Improvements
 
-* [ ] Dynamic Elo in group stage
+* [X] Dynamic Elo in group stage
+* [x] Generalized Elo match updates
+* [x] Finalist tracking
+* [x] Finalist probability export
 * [ ] Upset calibration tuning
 * [ ] Track actual finalists instead of final winners
 * [ ] Validate Elo evolution across tournament

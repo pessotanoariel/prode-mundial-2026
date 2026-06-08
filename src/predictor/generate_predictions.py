@@ -10,6 +10,10 @@ from src.predictor.score_model import (
 from src.predictor.expected_goals import (
     estimate_expected_goals
 )
+from src.predictor.calibration import (
+    FORM_WEIGHT,
+    PROBABILITY_SHRINK_FACTOR,
+)
 
 INPUT_PATH = Path("data/processed/upcoming_matches.csv")
 
@@ -25,7 +29,7 @@ def generate_predictions(df: pd.DataFrame, simulation_mode=False) -> pd.DataFram
         base_home_prob = row["team_1_win_expectancy"]
 
         form_adjustment = (
-            row["form_score_difference"] * 0.01
+            row["form_score_difference"] * FORM_WEIGHT
         )
 
         home_prob = (
@@ -40,7 +44,7 @@ def generate_predictions(df: pd.DataFrame, simulation_mode=False) -> pd.DataFram
 
         # probability calibration
         home_prob = 0.5 + (
-            (home_prob - 0.5) * 0.7
+            (home_prob - 0.5) * PROBABILITY_SHRINK_FACTOR
         )
 
         away_prob = (

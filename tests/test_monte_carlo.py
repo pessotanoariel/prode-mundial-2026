@@ -26,6 +26,7 @@ def test_run_monte_carlo_tracks_both_finalists(tmp_path, monkeypatch):
     quarterfinals_path = output_dir / "quarterfinals_winners.csv"
     semifinals_path = output_dir / "semifinals_winners.csv"
     final_winners_path = output_dir / "final_winners.csv"
+    predictions_path = output_dir / "predictions.csv"
 
     write_winners(
         quarterfinals_path,
@@ -40,6 +41,25 @@ def test_run_monte_carlo_tracks_both_finalists(tmp_path, monkeypatch):
             "Alpha",
             "Beta",
         ],
+    )
+    pd.DataFrame(
+        [
+            {
+                "match_date": "Final",
+                "team_1": "Alpha",
+                "team_2": "Beta",
+                "team_1_win_probability": 0.6,
+                "draw_probability": 0.1,
+                "team_2_win_probability": 0.3,
+                "predicted_winner": "Alpha",
+                "predicted_score": "2-1",
+                "confidence": "High",
+                "upset_risk": "LOW",
+            }
+        ]
+    ).to_csv(
+        predictions_path,
+        index=False,
     )
 
     def fake_simulation_main():
@@ -93,6 +113,9 @@ def test_run_monte_carlo_tracks_both_finalists(tmp_path, monkeypatch):
     champion_df = pd.read_csv(
         output_dir / "champion_probabilities.csv"
     )
+    calibration_df = pd.read_csv(
+        output_dir / "calibration_report.csv"
+    )
 
     assert finalist_df.to_dict("records") == [
         {
@@ -128,3 +151,8 @@ def test_run_monte_carlo_tracks_both_finalists(tmp_path, monkeypatch):
         merged["final_probability"]
         >= merged["championship_probability"]
     ).all()
+
+    calibration = calibration_df.set_index("metric")
+    assert calibration.loc["average_draw_probability", "value"] == 0.1
+    assert calibration.loc["high_confidence_matches", "value"] == 1.0
+    assert calibration.loc["simulation_runs", "value"] == 1.0
