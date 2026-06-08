@@ -3,7 +3,7 @@ match_id,team_a_slot,team_b_slot,stage,team_a,team_b
 74,1E,3_ABCDF,Round of 32,Ecuador,Scotland
 75,1F,2C,Round of 32,Japan,Morocco
 76,1C,2F,Round of 32,Brazil,Netherlands
-77,1I,3_CDFGH,Round of 32,France,Australia
+77,1I,3_CDFGH,Round of 32,France,Sweden
 78,2E,2I,Round of 32,Germany,Norway
 79,1A,3_CEFHI,Round of 32,Mexico,Cape Verde
 80,1L,3_EHIJK,Round of 32,Croatia,Austria
@@ -13,5 +13,5 @@ match_id,team_a_slot,team_b_slot,stage,team_a,team_b
 84,1H,2J,Round of 32,Spain,Algeria
 85,1B,3_EFGIJ,Round of 32,Canada,Egypt
 86,1J,2H,Round of 32,Argentina,Uruguay
-87,1K,3_DEIJL,Round of 32,Colombia,Senegal
+87,1K,3_DEIJL,Round of 32,Colombia,Ivory Coast
 88,2D,2G,Round of 32,Turkey,Iran

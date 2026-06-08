@@ -1,17 +1,17 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Round of 32,Czechia,Switzerland,0.354,0.081,0.565,Switzerland,0-4,Medium,LOW
-Round of 32,Ecuador,Scotland,0.669,0.078,0.253,Scotland,0-1,High,LOW
-Round of 32,Japan,Morocco,0.594,0.183,0.223,Japan,3-0,Medium,LOW
-Round of 32,Brazil,Netherlands,0.518,0.25,0.232,Brazil,5-1,Medium,LOW
-Round of 32,France,Australia,0.739,0.03,0.231,Australia,2-3,High,LOW
-Round of 32,Germany,Norway,0.542,0.25,0.208,Draw,2-2,Medium,LOW
-Round of 32,Mexico,Cape Verde,0.819,0.03,0.151,Draw,0-0,High,LOW
-Round of 32,Croatia,Austria,0.574,0.156,0.27,Croatia,4-0,Medium,LOW
-Round of 32,United States,Bosnia and Herzegovina,0.636,0.077,0.287,Draw,1-1,High,LOW
-Round of 32,Belgium,South Korea,0.648,0.14,0.212,Belgium,2-0,High,LOW
-Round of 32,Portugal,England,0.485,0.248,0.267,Draw,2-2,Medium,LOW
-Round of 32,Spain,Algeria,0.785,0.03,0.185,Spain,2-1,High,LOW
-Round of 32,Canada,Egypt,0.611,0.115,0.274,Canada,3-0,High,LOW
-Round of 32,Argentina,Uruguay,0.729,0.03,0.241,Argentina,2-1,High,LOW
-Round of 32,Colombia,Senegal,0.551,0.164,0.285,Senegal,0-2,Medium,LOW
-Round of 32,Turkey,Iran,0.646,0.106,0.248,Iran,0-1,High,LOW
+Round of 32,Czechia,Switzerland,0.373,0.095,0.532,Czechia,2-1,Medium,MEDIUM
+Round of 32,Ecuador,Scotland,0.655,0.089,0.256,Ecuador,2-1,High,LOW
+Round of 32,Japan,Morocco,0.554,0.188,0.258,Draw,1-1,Medium,LOW
+Round of 32,Brazil,Netherlands,0.584,0.233,0.183,Netherlands,0-2,Medium,LOW
+Round of 32,France,Sweden,0.765,0.03,0.205,Draw,1-1,High,LOW
+Round of 32,Germany,Norway,0.565,0.25,0.185,Norway,1-2,Medium,LOW
+Round of 32,Mexico,Cape Verde,0.788,0.03,0.182,Mexico,4-2,High,LOW
+Round of 32,Croatia,Austria,0.549,0.185,0.266,Austria,1-2,Medium,LOW
+Round of 32,United States,Bosnia and Herzegovina,0.644,0.072,0.284,Draw,1-1,High,LOW
+Round of 32,Belgium,South Korea,0.668,0.115,0.217,Draw,3-3,High,LOW
+Round of 32,Portugal,England,0.486,0.25,0.264,Portugal,1-0,Medium,LOW
+Round of 32,Spain,Algeria,0.765,0.03,0.205,Draw,3-3,High,LOW
+Round of 32,Canada,Egypt,0.618,0.119,0.263,Canada,4-2,High,LOW
+Round of 32,Argentina,Uruguay,0.748,0.03,0.222,Argentina,3-0,High,LOW
+Round of 32,Colombia,Ivory Coast,0.69,0.03,0.28,Colombia,3-1,High,LOW
+Round of 32,Turkey,Iran,0.646,0.11,0.244,Turkey,2-0,High,LOW

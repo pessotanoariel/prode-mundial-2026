@@ -4,7 +4,7 @@
 
 ## Current Branch
 
-`main`
+`feature/automation`
 
 ---
 
@@ -134,21 +134,6 @@ Status: COMPLETED
 * [x] Most likely finals
 * [x] Team progression probabilities
 
-### FIFA Rules Backlog
-
-* [ ] Head-to-head tie breaker (3+ team ties)
-* [ ] Fair Play tie breaker
-* [ ] FIFA Ranking tie breaker
-
-### Future Improvements
-
-* [ ] Upset calibration tuning
-* [ ] Track actual finalists instead of final winners
-* [ ] Integrate dynamic Elo into group stage
-* [ ] Validate Elo evolution across tournament
-* [ ] Hybrid tournament simulation
-* [ ] Correct knockout progression probabilities
-
 ---
 
 ## PHASE 4 — Editorial Atlas Experience
@@ -181,19 +166,17 @@ Status: COMPLETED
 
 ## PHASE 5 — Release Preparation
 
-Status: IN PROGRESS
+Status: COMPLETED
 
 ### Documentation Review
 
 * [x] Rewrite README
 * [x] Create screenshots gallery
 * [x] Document simulation methodology
-* [ ] Update architecture diagrams
 * [x] Create installation guide
 
 ### Quality Assurance
 
-* [ ] Full tournament regression test
 * [x] Verify FIFA Annex C outputs
 * [x] Verify progression probabilities
 * [x] Verify champion probabilities
@@ -203,38 +186,74 @@ Status: IN PROGRESS
 
 * [x] Streamlit Cloud deployment
 * [x] Production configuration
-* [ ] Environment variables
 * [x] Public URL
 
----
+### Post-Release Backlog
 
-### Remaining Work Before v1.0
-
-* [ ] Final regression test
-* [ ] Architecture diagram refresh
-* [ ] Optional environment variable configuration
-* [ ] Release tag v1.0
-* [ ] Add public demo URL to README
+* [ ] Refresh architecture diagrams
+* [ ] Environment variables
 
 ---
 
-## PHASE 6 — Simulation Improvements
+## PHASE 6 — Automation & Operations
+
+Status: IN PROGRESS
+
+### Pipeline Automation
+
+* [ ] Full tournament regression test
+* [ ] Create end-to-end pipeline orchestrator
+* [ ] Create single-command execution flow
+* [ ] Standardize pipeline logging
+* [ ] Validate full pipeline execution
+
+### Data Refresh
+
+* [ ] Automate Elo updates
+* [ ] Automate fixtures updates
+* [ ] Automate results ingestion
+* [ ] Automate feature generation
+
+### Simulation Refresh
+
+* [ ] Automate predictions generation
+* [ ] Automate tournament simulation
+* [ ] Automate Monte Carlo execution
+* [ ] Regenerate Atlas datasets
+
+### Deployment Automation
+
+* [ ] GitHub Actions workflow
+* [ ] Scheduled daily execution
+* [ ] Automatic Atlas refresh
+
+### Monitoring
+
+* [ ] Execution reports
+* [ ] Data freshness validation
+* [ ] Failure alerts
+
+---
+
+## PHASE 7 — Simulation Improvements
 
 Status: FUTURE
 
 ### FIFA Rules
 
-* [ ] Head-to-head tie breaker (3+ teams)
+* [ ] Head-to-head tie breaker (3+ team ties)
 * [ ] Fair Play tie breaker
 * [ ] FIFA Ranking tie breaker
 
 ### Model Improvements
 
 * [ ] Dynamic Elo in group stage
-* [ ] Upset calibration
-* [ ] Finalist tracking
+* [ ] Upset calibration tuning
+* [ ] Track actual finalists instead of final winners
+* [ ] Validate Elo evolution across tournament
+* [ ] Hybrid tournament simulation
+* [ ] Correct knockout progression probabilities
 * [ ] Probability calibration
-* [ ] Elo evolution validation
 
 ### Tournament Analytics
 
@@ -245,7 +264,7 @@ Status: FUTURE
 
 ---
 
-## PHASE 7 — Product Expansion
+## PHASE 8 — Product Expansion
 
 Status: IDEAS
 
@@ -277,7 +296,7 @@ Status: IDEAS
 
 * Simulation engine is considered feature-complete for v1.
 * Editorial Atlas experience is considered complete for v1.
-* Current priority is documentation, deployment, and release preparation.
+* Current priority is automation, operational stability, and data refresh workflows.
 * Streamlit remains the primary platform for v1.
 * Future work should prioritize simulation correctness over new visual features.
 * Next.js remains a possible long-term evolution, not a short-term priority.
