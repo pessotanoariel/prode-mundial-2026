@@ -4,7 +4,7 @@
 
 ## Current Branch
 
-`feature/automation`
+`main`
 
 ---
 
@@ -235,26 +235,26 @@ Status: COMPLETED
 
 ## PHASE 7 — Simulation Improvements
 
-Status: IN PROGRESS
-
-### FIFA Rules
-
-* [ ] Head-to-head tie breaker (3+ team ties)
-* [ ] Fair Play tie breaker
-* [ ] FIFA Ranking tie breaker
+Status: MOSTLY COMPLETED
 
 ### Model Improvements
 
-* [X] Dynamic Elo in group stage
 * [x] Generalized Elo match updates
+* [x] Dynamic Elo group-stage prototype
+* [ ] Dynamic Elo production integration
+
 * [x] Finalist tracking
 * [x] Finalist probability export
+
+* [x] Probability calibration (v1)
+* [x] Draw probability calibration
+* [x] Monte Carlo stability improvements
+
 * [ ] Upset calibration tuning
-* [ ] Track actual finalists instead of final winners
 * [ ] Validate Elo evolution across tournament
 * [ ] Hybrid tournament simulation
-* [ ] Correct knockout progression probabilities
-* [ ] Probability calibration
+
+* [ ] Clarify progression stage semantics
 
 ### Tournament Analytics
 
@@ -267,22 +267,28 @@ Status: IN PROGRESS
 
 ## PHASE 8 — Product Expansion
 
-Status: IDEAS
+Status: FUTURE
 
-### Product Features
+### Editorial Features
+
+* [ ] Team profile pages
+* [ ] Group profile pages
+* [ ] Favorites and dark horses section
+* [ ] Tournament storylines
+* [ ] Historical comparisons
+
+### Visual Features
 
 * [ ] Interactive bracket
-* [ ] Tournament timeline
 * [ ] Flags support
+* [ ] Improved knockout visualization
+* [ ] Interactive probability charts
+
+### Tournament Experience
+
 * [ ] Stadium information
 * [ ] Host city profiles
-
-### Community Features
-
-* [ ] User predictions
-* [ ] Leaderboards
-* [ ] Shareable forecasts
-* [ ] AI vs user predictions
+* [ ] Match venue integration
 
 ### Long-Term Platform
 
@@ -293,11 +299,46 @@ Status: IDEAS
 
 ---
 
+## PHASE 9 — Advanced Simulation
+
+Status: FUTURE
+
+### FIFA Rules
+
+* [ ] Head-to-head tie breaker (3+ teams)
+* [ ] Fair Play tie breaker
+* [ ] FIFA Ranking tie breaker
+
+### Probability Modeling
+
+* [ ] Dynamic Elo production integration
+* [ ] Advanced draw calibration
+* [ ] Draw-aware score generation
+* [ ] Probability backtesting
+
+### Simulation Quality
+
+* [ ] Elo evolution validation
+* [ ] Sensitivity analysis
+* [ ] Simulation benchmarking
+* [ ] Historical tournament replay mode
+
+### Metrics & Analytics
+
+* [ ] Progression semantics review
+* [ ] Advanced progression metrics
+* [ ] Path difficulty metrics
+* [ ] Team path analysis
+* [ ] Elimination probability analysis
+* [ ] Scenario explorer
+
+---
+
 ### Notes
 
 * Simulation engine is considered feature-complete for v1.
 * Editorial Atlas experience is considered complete for v1.
-* Current priority is automation, operational stability, and data refresh workflows.
+* Current priority is model refinement, tournament analytics, and long-term simulation quality.
 * Streamlit remains the primary platform for v1.
-* Future work should prioritize simulation correctness over new visual features.
+* Future work should prioritize simulation correctness before major model complexity increases.
 * Next.js remains a possible long-term evolution, not a short-term priority.
