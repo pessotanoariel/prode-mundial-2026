@@ -1,3 +1,3 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Semifinals,Brazil,Mexico,0.56,0.197,0.243,Draw,1-1,Medium,LOW
-Semifinals,England,Argentina,0.384,0.193,0.423,England,3-0,Low,EXTREME
+Semifinals,Japan,Germany,0.45,0.25,0.3,Japan,2-1,Medium,MEDIUM
+Semifinals,Portugal,Argentina,0.362,0.132,0.506,Draw,2-2,Medium,MEDIUM
