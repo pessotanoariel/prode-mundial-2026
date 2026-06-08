@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib
+import logging
 import sys
 import time
 import traceback
@@ -118,10 +119,42 @@ EXPECTED_OUTPUTS: tuple[Path, ...] = (
     Path("data/output/team_progression_probabilities.csv"),
 )
 
+LOG_DIR = Path("execution_logs")
+LOG_PATH = LOG_DIR / "latest_run.log"
+LOGGER_NAME = "world_cup_forecast_atlas.pipeline"
+
 
 def print_header(title: str) -> None:
     line = "=" * len(title)
     print(f"\n{line}\n{title}\n{line}")
+
+
+def configure_logging() -> logging.Logger:
+    LOG_DIR.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    logger = logging.getLogger(LOGGER_NAME)
+    logger.setLevel(logging.INFO)
+    logger.handlers.clear()
+    logger.propagate = False
+
+    file_handler = logging.FileHandler(
+        LOG_PATH,
+        mode="w",
+        encoding="utf-8",
+    )
+    file_handler.setFormatter(
+        logging.Formatter(
+            "[%(asctime)s] %(levelname)s %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+    )
+
+    logger.addHandler(file_handler)
+
+    return logger
 
 
 def get_step_main(module_name: str) -> Callable[[], None]:
@@ -133,15 +166,21 @@ def get_step_main(module_name: str) -> Callable[[], None]:
         raise RuntimeError(f"Module {module_name} does not expose main()") from exc
 
 
-def run_step(step: PipelineStep) -> None:
+def run_step(step: PipelineStep, logger: logging.Logger) -> None:
     start_time = time.perf_counter()
     print(f"\n-> {step.name}")
+    logger.info("Starting %s", step.name)
 
     main_func = get_step_main(step.module)
     main_func()
 
     elapsed = time.perf_counter() - start_time
     print(f"<- Completed {step.name} in {elapsed:.2f}s")
+    logger.info(
+        "Completed %s in %.2fs",
+        step.name,
+        elapsed,
+    )
 
 
 def verify_outputs() -> None:
@@ -163,15 +202,18 @@ def verify_outputs() -> None:
 
 
 def run_pipeline() -> int:
+    logger = configure_logging()
     total_start_time = time.perf_counter()
     print_header("WORLD CUP FORECAST ATLAS PIPELINE")
+    logger.info("Pipeline started")
 
     try:
         for section in PIPELINE:
             print_header(section.name)
+            logger.info("Starting section %s", section.name)
 
             for step in section.steps:
-                run_step(step)
+                run_step(step, logger)
 
         verify_outputs()
 
@@ -179,11 +221,15 @@ def run_pipeline() -> int:
         elapsed = time.perf_counter() - total_start_time
         print(f"\nFAILED - {exc}")
         print(f"Total execution time: {elapsed:.2f}s")
+        logger.exception("Pipeline failed after %.2fs", elapsed)
+        logger.info("Total execution time: %.2fs", elapsed)
         traceback.print_exc()
         return 1
 
     elapsed = time.perf_counter() - total_start_time
     print(f"\nSUCCESS - Pipeline completed in {elapsed:.2f}s")
+    logger.info("Pipeline completed successfully")
+    logger.info("Total execution time: %.2fs", elapsed)
     return 0
 
 
