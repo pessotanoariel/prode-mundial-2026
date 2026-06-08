@@ -1,5 +1,5 @@
 from src.predictor.elo_updates import (
-    update_elo
+    update_match_elo
 )
 
 
@@ -17,20 +17,14 @@ def update_ratings_lookup(
         loser
     ]
 
-    ratings_lookup[winner] = (
-        update_elo(
-            winner_rating,
-            loser_rating,
-            1.0
-        )
+    winner_new_rating, loser_new_rating = update_match_elo(
+        winner_rating,
+        loser_rating,
+        1.0,
+        0.0
     )
 
-    ratings_lookup[loser] = (
-        update_elo(
-            loser_rating,
-            winner_rating,
-            0.0
-        )
-    )
+    ratings_lookup[winner] = winner_new_rating
+    ratings_lookup[loser] = loser_new_rating
 
     return ratings_lookup
