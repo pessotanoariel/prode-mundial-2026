@@ -11,6 +11,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Callable
 
+from src.monitoring.data_freshness import (
+    FRESH,
+    format_freshness_result,
+    validate_data_freshness,
+)
+
 
 @dataclass(frozen=True)
 class PipelineStep:
@@ -137,6 +143,18 @@ def print_header(title: str) -> None:
     print(f"\n{line}\n{title}\n{line}")
 
 
+def configure_console_output() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            try:
+                stream.reconfigure(
+                    encoding="utf-8",
+                    errors="replace",
+                )
+            except (AttributeError, ValueError):
+                pass
+
+
 def configure_logging() -> logging.Logger:
     LOG_DIR.mkdir(
         parents=True,
@@ -238,7 +256,22 @@ def verify_outputs() -> None:
     print(f"OK - {len(EXPECTED_OUTPUTS)} expected CSV outputs found.")
 
 
+def run_data_freshness_validation(logger: logging.Logger) -> None:
+    print_header("DATA FRESHNESS")
+    logger.info("DATA FRESHNESS")
+
+    for result in validate_data_freshness():
+        summary = format_freshness_result(result)
+        print(summary)
+
+        if result.status == FRESH:
+            logger.info(summary)
+        else:
+            logger.warning(summary)
+
+
 def run_pipeline() -> int:
+    configure_console_output()
     logger = configure_logging()
     total_start_time = time.perf_counter()
     print_header("WORLD CUP FORECAST ATLAS PIPELINE")
@@ -246,6 +279,9 @@ def run_pipeline() -> int:
 
     try:
         for section in PIPELINE:
+            if section.name == "PROCESSING":
+                run_data_freshness_validation(logger)
+
             print_header(section.name)
             logger.info("Starting section %s", section.name)
 
