@@ -72,11 +72,11 @@ def render_knockout_overview(
     rounds: dict[str, pd.DataFrame]
 ) -> None:
     final = _first_row(final_df)
-    projected_champion = "Pendiente"
-    final_text = "Final pendiente"
+    simulation_champion = "Pendiente"
+    final_text = "Final simulada pendiente"
 
     if final is not None:
-        projected_champion = render_team_name(
+        simulation_champion = render_team_name(
             _forecast_winner(final)
         )
         final_text = (
@@ -93,18 +93,18 @@ def render_knockout_overview(
         _html(f"""
         <section class="bracket-hero">
             <div class="atlas-kicker">01 / Cuadro eliminatorio</div>
-            <h1>El camino al título</h1>
+            <h1>Una ruta simulada al título</h1>
             <p>
-                El tramo directo del torneo, leído como una lámina de revista:
-                rutas, cruces y el último partido de la simulación.
+                Este cuadro representa una simulación individual del torneo.
+                Las probabilidades agregadas se muestran en Atlas.
             </p>
             <div class="bracket-hero-grid">
                 <div>
-                    <div class="atlas-small-label">Campeón proyectado</div>
-                    <strong>{projected_champion}</strong>
+                    <div class="atlas-small-label">Campeón de esta simulación</div>
+                    <strong>{simulation_champion}</strong>
                 </div>
                 <div>
-                    <div class="atlas-small-label">Final actual</div>
+                    <div class="atlas-small-label">Final simulada</div>
                     <span>{final_text}</span>
                 </div>
                 <div>
@@ -147,7 +147,7 @@ def render_wall_chart(
         '<div class="atlas-section-number">02</div>',
         unsafe_allow_html=True
     )
-    st.header("El mapa de cruces")
+    st.header("Ruta simulada del cuadro")
 
     columns = st.columns(5)
 
@@ -180,12 +180,12 @@ def render_final_poster(final_df) -> None:
         '<div class="atlas-section-number">03</div>',
         unsafe_allow_html=True
     )
-    st.header("Afiche de la final")
+    st.header("Afiche de la final simulada")
 
     final = _first_row(final_df)
 
     if final is None:
-        st.info("La final proyectada todavía no está disponible.")
+        st.info("La final simulada todavía no está disponible.")
         return
 
     champion = render_team_name(
@@ -195,12 +195,12 @@ def render_final_poster(final_df) -> None:
     st.markdown(
         _html(f"""
         <section class="bracket-final-poster">
-            <div class="atlas-small-label">Final proyectada</div>
+            <div class="atlas-small-label">Final simulada</div>
             <h2>{_team(final['team_1'])}<span>vs</span>{_team(final['team_2'])}</h2>
             <div class="bracket-final-venue">{escape(venue_label(final))}</div>
             <div class="bracket-final-score">{escape(str(final['predicted_score']))}</div>
             <div class="bracket-champion-call">
-                Campeón proyectado: <strong>{champion}</strong>
+                Campeón de esta simulación: <strong>{champion}</strong>
             </div>
         </section>
         """),
@@ -249,7 +249,7 @@ def render_knockout_notes(
             _forecast_winner(final)
         )
         notes.append(
-            f"{champion} queda señalado como campeón proyectado del cuadro actual."
+            f"{champion} queda señalado como campeón de esta simulación."
         )
         notes.append(
             f"La final simulada enfrenta a {render_team_name(final['team_1'])} y {render_team_name(final['team_2'])}."
