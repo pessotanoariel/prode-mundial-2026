@@ -63,7 +63,7 @@ def render_editorial_hero(
     st.markdown(
         f"""
         <section class="atlas-analysis-hero">
-            <div class="atlas-kicker">02 / WORLD CUP FORECAST ATLAS</div>
+            <div class="atlas-kicker">02 / ATLAS DEL MUNDIAL</div>
             <h1>El mapa del torneo</h1>
             <p>
                 El centro analítico de la revista: gravedad de campeón,
@@ -71,7 +71,7 @@ def render_editorial_hero(
             </p>
             <div class="atlas-analysis-hero-grid">
                 <div>
-                    <div class="atlas-small-label">Favorito actual</div>
+                    <div class="atlas-small-label">Máximo favorito</div>
                     <div class="atlas-analysis-team">{favorite_team}</div>
                     <div class="atlas-analysis-percent">{favorite_probability}</div>
                 </div>
@@ -91,7 +91,7 @@ def render_championship_orbit(champions_df) -> None:
         '<div class="atlas-section-number">01</div>',
         unsafe_allow_html=True
     )
-    st.header("Órbita del campeonato")
+    st.header("Favoritos al título")
 
     if _is_empty(champions_df):
         st.info("Las probabilidades de campeón todavía no están disponibles.")
@@ -130,31 +130,29 @@ def render_finals_from_future(finals_df) -> None:
         '<div class="atlas-section-number">02</div>',
         unsafe_allow_html=True
     )
-    st.header("Finales del futuro")
+    st.header("Finales más probables")
 
     if _is_empty(finals_df):
         st.info("Las finales más probables todavía no están disponibles.")
         return
 
-    top_finals = finals_df.head(6).reset_index(drop=True)
+    top_finals = finals_df.head(3).reset_index(drop=True)
+    cols = st.columns(3)
 
-    for start in range(0, len(top_finals), 3):
-        cols = st.columns(3)
-
-        for offset, (col, (_, row)) in enumerate(
-            zip(cols, top_finals.iloc[start:start + 3].iterrows())
-        ):
-            with col:
-                st.markdown(
-                    f"""
-                    <article class="atlas-final-card">
-                        <div class="atlas-small-label">Final proyectada #{start + offset + 1}</div>
-                        <h3>{render_team_name(row['team_1'])}<br>vs<br>{render_team_name(row['team_2'])}</h3>
-                        <p>{format_percent(row['probability'])} de las finales simuladas</p>
-                    </article>
-                    """,
-                    unsafe_allow_html=True
-                )
+    for index, (col, (_, row)) in enumerate(
+        zip(cols, top_finals.iterrows())
+    ):
+        with col:
+            st.markdown(
+                f"""
+                <article class="atlas-final-card">
+                    <div class="atlas-small-label">#{index + 1}</div>
+                    <h3>{render_team_name(row['team_1'])}<br>vs<br>{render_team_name(row['team_2'])}</h3>
+                    <p>{format_percent(row['probability'])} de las finales simuladas</p>
+                </article>
+                """,
+                unsafe_allow_html=True
+            )
 
 
 def render_finalist_probabilities(finalists_df) -> None:
@@ -162,7 +160,7 @@ def render_finalist_probabilities(finalists_df) -> None:
         '<div class="atlas-section-number">03</div>',
         unsafe_allow_html=True
     )
-    st.header("Candidatos a finalista")
+    st.header("Probabilidad de llegar a la final")
 
     if _is_empty(finalists_df):
         st.info("Las probabilidades de finalista todavÃ­a no estÃ¡n disponibles.")
@@ -182,62 +180,6 @@ def render_finalist_probabilities(finalists_df) -> None:
         )
 
 
-def render_contenders_and_challengers(champions_df) -> None:
-    st.markdown(
-        '<div class="atlas-section-number">04</div>',
-        unsafe_allow_html=True
-    )
-    st.header("Favoritos y perseguidores")
-
-    if _is_empty(champions_df):
-        st.info("Los datos de favoritos todavía no están disponibles.")
-        return
-
-    contenders = champions_df.head(3)
-    challengers = champions_df.iloc[3:8]
-
-    contenders_col, challengers_col = st.columns(2)
-
-    with contenders_col:
-        st.markdown(
-            '<div class="atlas-kicker">Favoritos al título</div>',
-            unsafe_allow_html=True
-        )
-
-        for index, row in contenders.reset_index(drop=True).iterrows():
-            st.markdown(
-                f"""
-                <div class="atlas-tier-row atlas-tier-row-featured">
-                    <em>{index + 1:02d}</em>
-                    <strong>{render_team_name(row['team'])}</strong>
-                    <span>{format_percent(row['probability'])}</span>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-    with challengers_col:
-        st.markdown(
-            '<div class="atlas-kicker">Segunda línea</div>',
-            unsafe_allow_html=True
-        )
-
-        if challengers.empty:
-            st.caption("No hay perseguidores disponibles todavía.")
-            return
-
-        for _, row in challengers.iterrows():
-            st.markdown(
-                f"""
-                <div class="atlas-tier-row atlas-tier-row-muted">
-                    <strong>{render_team_name(row['team'])}</strong>
-                    <span>{format_percent(row['probability'])}</span>
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-
 def render_tournament_narrative(
     champions_df,
     finals_df,
@@ -245,7 +187,7 @@ def render_tournament_narrative(
     final_predictions_df
 ) -> None:
     st.markdown(
-        '<div class="atlas-section-number">05</div>',
+        '<div class="atlas-section-number">04</div>',
         unsafe_allow_html=True
     )
     st.header("Narrativa del torneo")
@@ -310,7 +252,7 @@ def render_tournament_narrative(
 
 def render_host_city_profiles(profiles_df) -> None:
     st.markdown(
-        '<div class="atlas-section-number">06</div>',
+        '<div class="atlas-section-number">05</div>',
         unsafe_allow_html=True
     )
     st.header("Ciudades sede del Mundial")
@@ -404,7 +346,7 @@ def render_host_city_profiles(profiles_df) -> None:
 
 def render_forecast_notes() -> None:
     st.markdown(
-        '<div class="atlas-section-number">07</div>',
+        '<div class="atlas-section-number">06</div>',
         unsafe_allow_html=True
     )
     st.header("Notas metodológicas")

@@ -11,9 +11,9 @@ from app.atlas_app.venues import venue_label
 
 
 CONFIDENCE_LABELS = {
-    "High": "Alto",
-    "Medium": "Medio",
-    "Low": "Bajo",
+    "High": "Alta",
+    "Medium": "Media",
+    "Low": "Baja",
 }
 
 RISK_LABELS = {
@@ -78,11 +78,11 @@ def render_editorial_hero(predictions_df) -> None:
     st.markdown(
         _html(f"""
         <section class="matches-hero">
-            <div class="atlas-kicker">05 / Archivo de partidos</div>
+            <div class="atlas-kicker">04 / Archivo de partidos</div>
             <h1>Archivo de partidos</h1>
             <p>
-                Una colección editorial de resultados proyectados desde la
-                simulación actual de la fase de grupos.
+                Archivo editorial de los partidos proyectados para la fase
+                de grupos.
             </p>
             <div class="matches-hero-grid">
                 <div>
@@ -90,7 +90,7 @@ def render_editorial_hero(predictions_df) -> None:
                     <strong>{total_matches}</strong>
                 </div>
                 <div>
-                    <div class="atlas-small-label">Cobertura actual</div>
+                    <div class="atlas-small-label">Alcance del archivo</div>
                     <span>{escape(coverage)}</span>
                 </div>
             </div>
@@ -102,7 +102,7 @@ def render_editorial_hero(predictions_df) -> None:
 
 def render_match_index(predictions_df) -> tuple[pd.DataFrame, str]:
     st.markdown(
-        '<div class="atlas-section-number">02</div>',
+        '<div class="atlas-section-number">01</div>',
         unsafe_allow_html=True
     )
     st.header("Índice de partidos")
@@ -150,22 +150,22 @@ def render_match_index(predictions_df) -> tuple[pd.DataFrame, str]:
 
     with col_1:
         st.markdown(
-            '<div class="match-filter-label">Tono del pronóstico</div>',
+            '<div class="match-filter-label">Tipo de pronóstico</div>',
             unsafe_allow_html=True
         )
         confidence_filter = st.selectbox(
-            "Tono del pronóstico",
+            "Tipo de pronóstico",
             ["Todos", "Alto", "Medio", "Bajo"],
             label_visibility="collapsed"
         )
 
     with col_2:
         st.markdown(
-            '<div class="match-filter-label">Alerta de sorpresa</div>',
+            '<div class="match-filter-label">Sorpresas potenciales</div>',
             unsafe_allow_html=True
         )
         risk_filter = st.selectbox(
-            "Alerta de sorpresa",
+            "Sorpresas potenciales",
             ["Todas", "Baja", "Media", "Alta", "Extrema"],
             label_visibility="collapsed"
         )
@@ -265,7 +265,7 @@ def render_match_card(row) -> str:
         <div class="match-card-score">{escape(str(row['predicted_score']))}</div>
         <div class="match-card-winner">Gana: <strong>{_winner(row['predicted_winner'])}</strong></div>
         <div class="match-card-badges">
-            <span>Tono {escape(confidence)}</span>
+            <span>Confianza {escape(confidence)}</span>
             <span>Sorpresa {escape(risk)}</span>
         </div>
     </article>
@@ -277,10 +277,10 @@ def render_forecast_cards(
     display_limit="12"
 ) -> None:
     st.markdown(
-        '<div class="atlas-section-number">05</div>',
+        '<div class="atlas-section-number">04</div>',
         unsafe_allow_html=True
     )
-    st.header("Partidos proyectados")
+    st.header("Todos los partidos")
 
     if _is_empty(filtered_df):
         st.info("No hay partidos para los filtros seleccionados.")
@@ -293,6 +293,7 @@ def render_forecast_cards(
             int(display_limit)
         )
 
+    st.caption("Todos los partidos proyectados de la fase de grupos.")
     st.caption(
         f"Mostrando {len(visible_df)} de {len(filtered_df)} partidos filtrados."
     )
@@ -328,16 +329,18 @@ def _risk_sorted(df) -> pd.DataFrame:
 
 def render_surprise_watch(predictions_df) -> None:
     st.markdown(
-        '<div class="atlas-section-number">03</div>',
+        '<div class="atlas-section-number">02</div>',
         unsafe_allow_html=True
     )
-    st.header("Alerta de sorpresa")
+    st.header("Sorpresas potenciales")
 
     ranked = _risk_sorted(predictions_df)
 
     if ranked.empty:
         st.info("No hay alertas de sorpresa disponibles.")
         return
+
+    st.caption("Los cruces donde el modelo detecta mayor incertidumbre.")
 
     for _, row in ranked.head(4).iterrows():
         st.markdown(
@@ -355,7 +358,7 @@ def render_surprise_watch(predictions_df) -> None:
 
 def render_strongest_forecasts(predictions_df) -> None:
     st.markdown(
-        '<div class="atlas-section-number">04</div>',
+        '<div class="atlas-section-number">03</div>',
         unsafe_allow_html=True
     )
     st.header("Pronósticos más firmes")
@@ -370,6 +373,8 @@ def render_strongest_forecasts(predictions_df) -> None:
 
     if strongest.empty:
         strongest = predictions_df.copy()
+
+    st.caption("Los resultados con mayor confianza estadística.")
 
     strongest["probability_peak"] = strongest[
         [
@@ -387,7 +392,7 @@ def render_strongest_forecasts(predictions_df) -> None:
         st.markdown(
             _html(f"""
             <div class="match-callout match-callout-yellow">
-                <div class="atlas-small-label">Tono {escape(CONFIDENCE_LABELS.get(row['confidence'], row['confidence']))}</div>
+                <div class="atlas-small-label">Confianza {escape(CONFIDENCE_LABELS.get(row['confidence'], row['confidence']))}</div>
                 <strong>{_team(row['team_1'])} vs {_team(row['team_2'])}</strong>
                 <small>{escape(venue_label(row))}</small>
                 <span>{escape(str(row['predicted_score']))} · {_winner(row['predicted_winner'])}</span>
@@ -399,10 +404,10 @@ def render_strongest_forecasts(predictions_df) -> None:
 
 def render_match_notes(filtered_df) -> None:
     st.markdown(
-        '<div class="atlas-section-number">06</div>',
+        '<div class="atlas-section-number">05</div>',
         unsafe_allow_html=True
     )
-    st.header("Notas del archivo")
+    st.header("Notas editoriales")
 
     if _is_empty(filtered_df):
         st.info("No hay notas para esta selección.")

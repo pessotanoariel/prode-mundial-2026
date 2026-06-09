@@ -10,6 +10,7 @@ from app.atlas_app.components.cover import render_tournament_teaser
 def render(data: dict) -> None:
     champions_df = data.get("champions")
     finals_df = data.get("finals")
+    most_likely_path_df = data.get("most_likely_path")
     final_predictions_df = data.get("final")
     standings_df = data.get("standings")
     qualified_df = data.get("qualified")
@@ -26,8 +27,7 @@ def render(data: dict) -> None:
 
     with final_col:
         render_most_likely_final(
-            finals_df,
-            final_predictions_df
+            most_likely_path_df
         )
 
     render_group_dispatch_grid(

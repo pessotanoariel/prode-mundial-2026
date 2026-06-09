@@ -168,7 +168,7 @@ def render_group_dispatch_grid(
         '<div class="atlas-section-number">01</div>',
         unsafe_allow_html=True
     )
-    st.header("Mapa de grupos")
+    st.header("Panorama de grupos")
 
     groups = _group_letters(
         groups_df,
@@ -220,11 +220,11 @@ def render_group_dispatch_grid(
                     <article class="groups-dispatch-card">
                         <div class="groups-dispatch-letter">{escape(str(group))}</div>
                         <div>
-                            <div class="atlas-small-label">Ganador proyectado</div>
+                            <div class="atlas-small-label">Líder proyectado</div>
                             <h3>{winner}</h3>
                         </div>
                         <div>
-                            <div class="atlas-small-label">Zona de avance</div>
+                            <div class="atlas-small-label">Clasificados directos</div>
                             <ul>{qualifier_items}</ul>
                         </div>
                     </article>
@@ -369,7 +369,7 @@ def render_group_spreads(
 
     with matches_col:
         st.markdown(
-            '<div class="atlas-kicker">Partidos simulados</div>',
+            '<div class="atlas-kicker">Resultados proyectados</div>',
             unsafe_allow_html=True
         )
         _render_match_cards(matches)

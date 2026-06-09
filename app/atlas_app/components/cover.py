@@ -30,6 +30,7 @@ def render_magazine_hero(
     final = _first_row(finals_df)
 
     final_text = "Final pendiente"
+    final_probability = "N/A"
 
     if favorite is not None:
         favorite_team = render_team_name(favorite["team"])
@@ -43,25 +44,28 @@ def render_magazine_hero(
             f"{render_team_name(final['team_1'])} vs "
             f"{render_team_name(final['team_2'])}"
         )
+        final_probability = format_percent(
+            final["probability"]
+        )
 
     st.markdown(
         f"""
         <section class="atlas-hero">
-            <div class="atlas-kicker">World Cup Forecast Atlas 2026</div>
-            <h1>World Cup<br>Forecast<br>Atlas</h1>
+            <div class="atlas-kicker">Copa del Mundo de la FIFA 2026</div>
+            <h1>Atlas<br>del<br>Mundial</h1>
             <p class="atlas-deck">
-                Una revista interactiva del Mundial futuro,
-                construida con los resultados actuales de la simulación.
+                Una edición interactiva basada en miles de simulaciones de la Copa Mundial 2026.
             </p>
             <div class="atlas-hero-strip">
                 <div class="atlas-hero-favorite">
-                    <div class="atlas-small-label">Favorito actual</div>
+                    <div class="atlas-small-label">Máximo favorito</div>
                     <div class="atlas-hero-team">{favorite_team}</div>
                     <div class="atlas-hero-percent">{favorite_probability}</div>
                 </div>
                 <div class="atlas-hero-final">
                     <div class="atlas-small-label">Final más probable</div>
                     <h3>{final_text}</h3>
+                    <p>{final_probability} de las finales simuladas</p>
                 </div>
             </div>
         </section>
@@ -72,10 +76,10 @@ def render_magazine_hero(
 
 def render_top_favorites(champions_df) -> None:
     st.markdown(
-        '<div class="atlas-kicker">Órbita del título</div>',
+        '<div class="atlas-kicker">Candidatos al título</div>',
         unsafe_allow_html=True
     )
-    st.header("Tres candidatos principales")
+    st.header("Top 3 candidatos")
 
     if _is_empty(champions_df):
         st.info("Las probabilidades de campeón todavía no están disponibles.")
@@ -94,47 +98,34 @@ def render_top_favorites(champions_df) -> None:
         )
 
 
-def render_most_likely_final(finals_df, final_predictions_df) -> None:
+def render_most_likely_final(most_likely_path_df) -> None:
     st.markdown(
-        '<div class="atlas-kicker">Una final del futuro</div>',
+        '<div class="atlas-kicker">Las finales</div>',
         unsafe_allow_html=True
     )
-    st.header("Final más probable")
+    st.header("La final del camino más probable")
 
-    likely_final = _first_row(finals_df)
-    predicted_final = _first_row(final_predictions_df)
+    predicted_final = None
 
-    if likely_final is None and predicted_final is None:
+    if not _is_empty(most_likely_path_df):
+        final_rows = most_likely_path_df[
+            most_likely_path_df["stage"] == "Final"
+        ]
+        predicted_final = _first_row(final_rows)
+
+    if predicted_final is None:
         st.info("Los datos de la final todavía no están disponibles.")
         return
 
-    if likely_final is not None:
-        team_1 = render_team_name(likely_final["team_1"])
-        team_2 = render_team_name(likely_final["team_2"])
-        probability = format_percent(likely_final["probability"])
-
-        st.markdown(
-            f"""
-            <div class="atlas-panel atlas-panel-violet">
-                <div class="atlas-small-label">Cruce Monte Carlo</div>
-                <h2>{team_1} vs {team_2}</h2>
-                <p>{probability} de las finales simuladas</p>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-
     if predicted_final is not None:
-        winner = _winner_label(predicted_final["predicted_winner"])
-        score = predicted_final["predicted_score"]
+        winner = _winner_label(predicted_final["winner"])
 
         st.markdown(
             f"""
             <div class="atlas-panel">
-                <div class="atlas-small-label">Final del cuadro actual</div>
+                <div class="atlas-small-label">Final del camino más probable</div>
                 <h3>{render_team_name(predicted_final['team_1'])} vs {render_team_name(predicted_final['team_2'])}</h3>
-                <p>Marcador proyectado: <strong>{score}</strong></p>
-                <p>Lectura del pronóstico: <strong>{winner}</strong></p>
+                <p>Ganador esperado: <strong>{winner}</strong></p>
             </div>
             """,
             unsafe_allow_html=True
@@ -146,10 +137,10 @@ def render_group_dispatch_grid(
     qualified_df
 ) -> None:
     st.markdown(
-        '<div class="atlas-kicker">Despachos de grupo</div>',
+        '<div class="atlas-kicker">FASE DE GRUPOS</div>',
         unsafe_allow_html=True
     )
-    st.header("Apuntes del primer acto")
+    st.header("Cómo quedarían los grupos")
 
     if _is_empty(standings_df):
         st.info("Las tablas de grupos todavía no están disponibles.")
@@ -219,11 +210,11 @@ def render_group_dispatch_grid(
                         <div class="atlas-group-letter">{group}</div>
                         <div class="atlas-group-body">
                             <div>
-                                <div class="atlas-small-label">Ganador proyectado</div>
+                                <div class="atlas-small-label">Líder proyectado</div>
                                 <h4>{projected_winner}</h4>
                             </div>
                             <div>
-                                <div class="atlas-small-label">Zona de avance</div>
+                                <div class="atlas-small-label">Clasificados directos</div>
                                 <ul>{qualified_items}</ul>
                             </div>
                         </div>
@@ -235,10 +226,10 @@ def render_group_dispatch_grid(
 
 def render_tournament_teaser(final_predictions_df, champions_df) -> None:
     st.markdown(
-        '<div class="atlas-kicker">Camino al título</div>',
+        '<div class="atlas-kicker">FASE ELIMINATORIA</div>',
         unsafe_allow_html=True
     )
-    st.header("El cuadro empieza acá")
+    st.header("El desenlace más probable")
 
     final = _first_row(final_predictions_df)
     champion = _first_row(champions_df)
@@ -254,7 +245,7 @@ def render_tournament_teaser(final_predictions_df, champions_df) -> None:
             st.markdown(
                 f"""
                 <div class="atlas-panel atlas-panel-red">
-                    <div class="atlas-small-label">Final proyectada del cuadro actual</div>
+                    <div class="atlas-small-label">FINAL PROYECTADA</div>
                     <h2>{render_team_name(final['team_1'])} vs {render_team_name(final['team_2'])}</h2>
                     <p>Marcador del modelo: <strong>{final['predicted_score']}</strong></p>
                 </div>
@@ -267,7 +258,7 @@ def render_tournament_teaser(final_predictions_df, champions_df) -> None:
             st.markdown(
                 f"""
                 <div class="atlas-panel atlas-panel-green">
-                    <div class="atlas-small-label">Equipo de portada</div>
+                    <div class="atlas-small-label">Favorito del torneo</div>
                     <h2>{render_team_name(champion['team'])}</h2>
                     <p>{format_percent(champion['probability'])} de probabilidad de título</p>
                 </div>

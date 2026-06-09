@@ -1,24 +1,33 @@
 team,final_probability
-Spain,0.45
-France,0.33
-Argentina,0.24
-Brazil,0.21
-Ecuador,0.17
-Portugal,0.11
-Switzerland,0.1
-Colombia,0.08
-Mexico,0.07
-Belgium,0.06
-England,0.03
-Japan,0.03
-Germany,0.02
-Croatia,0.01
-Austria,0.01
-Norway,0.01
-Sweden,0.01
-Turkey,0.01
-Netherlands,0.01
-Morocco,0.01
-Czechia,0.01
-Algeria,0.01
-Iran,0.01
+Spain,0.3753
+France,0.3134
+Argentina,0.2691
+Brazil,0.2012
+Ecuador,0.1352
+Switzerland,0.1066
+Belgium,0.0867
+Portugal,0.079
+Colombia,0.0678
+Germany,0.061
+Japan,0.0586
+Mexico,0.0545
+England,0.0424
+Turkey,0.0267
+Canada,0.0175
+Netherlands,0.0166
+Croatia,0.0136
+United States,0.0119
+Morocco,0.0106
+Norway,0.0106
+Uruguay,0.0084
+Czechia,0.0065
+Scotland,0.0053
+South Korea,0.0052
+Austria,0.0042
+Iran,0.0028
+Egypt,0.0023
+Algeria,0.0022
+Ivory Coast,0.0017
+Sweden,0.0016
+Bosnia and Herzegovina,0.001
+Cape Verde,0.0005

@@ -130,7 +130,7 @@ def render_monte_carlo() -> None:
         '<div class="atlas-section-number">03</div>',
         unsafe_allow_html=True
     )
-    st.header("Torneo Monte Carlo")
+    st.header("Miles de Mundiales simulados")
     _render_process_cards([
         {
             "number": "MC",
@@ -164,12 +164,12 @@ def render_number_meanings() -> None:
     _render_process_cards([
         {
             "number": "T",
-            "title": "Tono del pronóstico",
+            "title": "Nivel de confianza",
             "body": "Resume cuán clara aparece una lectura de partido: alto, medio o bajo.",
         },
         {
             "number": "S",
-            "title": "Alerta de sorpresa",
+            "title": "Posible sorpresa",
             "body": "Señala partidos donde la diferencia esperada se vuelve estrecha o inestable.",
         },
         {
@@ -194,7 +194,7 @@ def render_editorial_notes() -> None:
     st.markdown(
         _html("""
         <section class="method-editorial-note">
-            <strong>Este atlas es una simulación.</strong>
+            <strong>ESTE ATLAS NO PREDICE EL FUTURO.</strong>
             <p>
                 Los resultados nacen del modelo actual de pronóstico y sirven
                 para explorar escenarios, rutas y relatos posibles del Mundial.

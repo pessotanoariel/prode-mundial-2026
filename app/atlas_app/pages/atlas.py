@@ -1,5 +1,4 @@
 from app.atlas_app.components.atlas import render_championship_orbit
-from app.atlas_app.components.atlas import render_contenders_and_challengers
 from app.atlas_app.components.atlas import render_editorial_hero
 from app.atlas_app.components.atlas import render_finalist_probabilities
 from app.atlas_app.components.atlas import render_finals_from_future
@@ -31,10 +30,6 @@ def render(data: dict) -> None:
 
     render_finalist_probabilities(
         finalists_df
-    )
-
-    render_contenders_and_challengers(
-        champions_df
     )
 
     render_tournament_narrative(

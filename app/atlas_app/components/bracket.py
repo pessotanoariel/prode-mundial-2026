@@ -92,7 +92,7 @@ def render_knockout_overview(
     st.markdown(
         _html(f"""
         <section class="bracket-hero">
-            <div class="atlas-kicker">01 / Cuadro eliminatorio</div>
+            <div class="atlas-kicker">05 / Cuadro eliminatorio</div>
             <h1>Una ruta simulada al título</h1>
             <p>
                 Este cuadro representa una simulación individual del torneo.
@@ -100,7 +100,7 @@ def render_knockout_overview(
             </p>
             <div class="bracket-hero-grid">
                 <div>
-                    <div class="atlas-small-label">Campeón de esta simulación</div>
+                    <div class="atlas-small-label">Campeón de la simulación</div>
                     <strong>{simulation_champion}</strong>
                 </div>
                 <div>
@@ -108,7 +108,7 @@ def render_knockout_overview(
                     <span>{final_text}</span>
                 </div>
                 <div>
-                    <div class="atlas-small-label">Partidos del cuadro</div>
+                    <div class="atlas-small-label">Partidos eliminatorios</div>
                     <strong>{total_matches}</strong>
                 </div>
             </div>

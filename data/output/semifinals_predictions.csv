@@ -1,3 +1,3 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Semifinals,Switzerland,France,0.322,0.085,0.593,France,2-5,Medium,LOW
-Semifinals,Spain,Uruguay,0.763,0.08,0.157,Spain,3-0,High,LOW
+Semifinals,Brazil,Germany,0.54,0.226,0.234,Draw,1-1,Medium,LOW
+Semifinals,Spain,Argentina,0.536,0.239,0.225,Spain,2-1,Medium,LOW

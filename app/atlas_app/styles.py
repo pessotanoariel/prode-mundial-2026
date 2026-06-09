@@ -1505,6 +1505,41 @@ def apply_global_styles() -> None:
             color: var(--atlas-red);
         }
 
+        [data-testid="stSidebar"] [data-testid="stRadio"] {
+            margin-bottom: 0;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label {
+            align-items: center;
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            color: var(--atlas-ink);
+            display: flex;
+            height: 2.75rem;
+            justify-content: flex-start;
+            margin: 0;
+            padding: 0.45rem 0.65rem;
+            width: 100%;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label > div {
+            align-items: center;
+            display: flex;
+        }
+
+        [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label p,
+        [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] label span {
+            line-height: 1;
+            margin: 0;
+        }
+
         [data-testid="stSidebar"] label,
         [data-testid="stSidebar"] p,
         [data-testid="stSidebar"] span {
