@@ -18,6 +18,10 @@ QUALIFIED_PATH = Path(
     "data/output/qualified_teams.csv"
 )
 
+TEAM_STRENGTH_PATH = Path(
+    "data/processed/team_strength.csv"
+)
+
 def get_head_to_head_stats(
     predictions_df: pd.DataFrame,
     team_a: str,
@@ -75,6 +79,286 @@ def get_head_to_head_stats(
         "DG": goals_for - goals_against,
         "GF": goals_for
     }
+
+def build_head_to_head_table(
+    predictions_df: pd.DataFrame,
+    teams: list[str]
+) -> pd.DataFrame:
+
+    rows = []
+
+    for team in teams:
+
+        rows.append({
+            "team": team,
+            "H2H_PTS": 0,
+            "H2H_DG": 0,
+            "H2H_GF": 0
+        })
+
+    h2h_df = pd.DataFrame(rows).set_index("team")
+
+    matches = predictions_df[
+        predictions_df["team_1"].isin(teams)
+        &
+        predictions_df["team_2"].isin(teams)
+    ]
+
+    for _, match in matches.iterrows():
+
+        team_1 = match["team_1"]
+        team_2 = match["team_2"]
+        goals_1 = match["team_1_goals"]
+        goals_2 = match["team_2_goals"]
+
+        h2h_df.loc[team_1, "H2H_GF"] += goals_1
+        h2h_df.loc[team_2, "H2H_GF"] += goals_2
+        h2h_df.loc[team_1, "H2H_DG"] += goals_1 - goals_2
+        h2h_df.loc[team_2, "H2H_DG"] += goals_2 - goals_1
+
+        if goals_1 > goals_2:
+            h2h_df.loc[team_1, "H2H_PTS"] += 3
+        elif goals_1 < goals_2:
+            h2h_df.loc[team_2, "H2H_PTS"] += 3
+        else:
+            h2h_df.loc[team_1, "H2H_PTS"] += 1
+            h2h_df.loc[team_2, "H2H_PTS"] += 1
+
+    return h2h_df.reset_index()
+
+
+def load_elo_ratings(
+    path: Path = TEAM_STRENGTH_PATH
+) -> dict[str, float]:
+
+    if not path.exists():
+        return {}
+
+    ratings_df = pd.read_csv(path)
+
+    if "team_name" not in ratings_df.columns or "rating" not in ratings_df.columns:
+        return {}
+
+    return dict(
+        zip(
+            ratings_df["team_name"],
+            ratings_df["rating"]
+        )
+    )
+
+
+def sort_by_final_fallback(
+    group_df: pd.DataFrame,
+    elo_ratings: dict[str, float]
+) -> list[str]:
+
+    fallback_df = group_df.copy()
+    fallback_df["ELO_FALLBACK"] = (
+        fallback_df["team"]
+        .map(elo_ratings)
+        .fillna(0)
+    )
+
+    return (
+        fallback_df
+        .sort_values(
+            by=[
+                "DG",
+                "GF",
+                "ELO_FALLBACK",
+                "team"
+            ],
+            ascending=[
+                False,
+                False,
+                False,
+                True
+            ]
+        )
+        ["team"]
+        .tolist()
+    )
+
+
+def resolve_tied_teams(
+    predictions_df: pd.DataFrame,
+    group_df: pd.DataFrame,
+    teams: list[str],
+    elo_ratings: dict[str, float] | None = None
+) -> list[str]:
+
+    if elo_ratings is None:
+        elo_ratings = {}
+
+    if len(teams) == 1:
+        return teams
+
+    h2h_df = build_head_to_head_table(
+        predictions_df,
+        teams
+    )
+
+    h2h_df = h2h_df.sort_values(
+        by=[
+            "H2H_PTS",
+            "H2H_DG",
+            "H2H_GF",
+            "team"
+        ],
+        ascending=[
+            False,
+            False,
+            False,
+            True
+        ]
+    )
+
+    criteria = [
+        "H2H_PTS",
+        "H2H_DG",
+        "H2H_GF"
+    ]
+
+    grouped = list(
+        h2h_df.groupby(
+            criteria,
+            sort=False
+        )
+    )
+
+    if len(grouped) == 1:
+
+        fallback_df = group_df[
+            group_df["team"].isin(teams)
+        ]
+
+        return sort_by_final_fallback(
+            fallback_df,
+            elo_ratings
+        )
+
+    resolved = []
+
+    for _, tied_h2h_df in grouped:
+
+        tied_teams = tied_h2h_df["team"].tolist()
+
+        if len(tied_teams) == 1:
+            resolved.extend(tied_teams)
+        else:
+            resolved.extend(
+                resolve_tied_teams(
+                    predictions_df,
+                    group_df,
+                    tied_teams,
+                    elo_ratings
+                )
+            )
+
+    return resolved
+
+
+def apply_head_to_head_columns(
+    standings_df: pd.DataFrame,
+    predictions_df: pd.DataFrame
+) -> pd.DataFrame:
+
+    standings_df = standings_df.copy()
+
+    for _, group_df in standings_df.groupby("group"):
+
+        for _, tied_df in group_df.groupby("PTS"):
+
+            if len(tied_df) < 2:
+                continue
+
+            teams = tied_df["team"].tolist()
+            h2h_df = build_head_to_head_table(
+                predictions_df,
+                teams
+            )
+
+            for _, row in h2h_df.iterrows():
+
+                standings_df.loc[
+                    standings_df["team"] == row["team"],
+                    ["H2H_PTS", "H2H_DG", "H2H_GF"]
+                ] = [
+                    row["H2H_PTS"],
+                    row["H2H_DG"],
+                    row["H2H_GF"]
+                ]
+
+    return standings_df
+
+
+def sort_group_standings(
+    standings_df: pd.DataFrame,
+    predictions_df: pd.DataFrame,
+    elo_ratings: dict[str, float] | None = None
+) -> pd.DataFrame:
+
+    if elo_ratings is None:
+        elo_ratings = load_elo_ratings()
+
+    ordered_groups = []
+
+    for group, group_df in standings_df.groupby(
+        "group",
+        sort=True
+    ):
+
+        group_rows = []
+
+        for _, points_df in (
+            group_df
+            .sort_values(
+                by=[
+                    "PTS",
+                    "DG",
+                    "GF",
+                    "team"
+                ],
+                ascending=[
+                    False,
+                    False,
+                    False,
+                    True
+                ]
+            )
+            .groupby(
+                "PTS",
+                sort=False
+            )
+        ):
+
+            if len(points_df) == 1:
+                group_rows.append(points_df.iloc[0])
+                continue
+
+            ordered_teams = resolve_tied_teams(
+                predictions_df,
+                group_df,
+                points_df["team"].tolist(),
+                elo_ratings
+            )
+
+            for team in ordered_teams:
+                group_rows.append(
+                    points_df[
+                        points_df["team"] == team
+                    ].iloc[0]
+                )
+
+        ordered_group_df = pd.DataFrame(group_rows)
+        ordered_group_df["group"] = group
+        ordered_groups.append(ordered_group_df)
+
+    return pd.concat(
+        ordered_groups,
+        ignore_index=True
+    )
+
 
 def build_group_standings() -> pd.DataFrame:
 
@@ -241,66 +525,15 @@ def build_group_standings() -> pd.DataFrame:
         how="left"
     )
     
-    for group, group_df in standings_df.groupby("group"):
+    standings_df = apply_head_to_head_columns(
+        standings_df,
+        predictions_df
+    )
 
-        duplicated_points = group_df[
-            group_df["PTS"].duplicated(keep=False)
-        ]
-
-        if len(duplicated_points) == 2:
-
-            team_a = duplicated_points.iloc[0]["team"]
-            team_b = duplicated_points.iloc[1]["team"]
-
-            team_a_stats = get_head_to_head_stats(
-                predictions_df,
-                team_a,
-                team_b
-            )
-
-            team_b_stats = get_head_to_head_stats(
-                predictions_df,
-             team_b,
-                team_a
-            )
-
-            standings_df.loc[
-                standings_df["team"] == team_a,
-                ["H2H_PTS", "H2H_DG", "H2H_GF"]
-            ] = [
-                team_a_stats["PTS"],
-                team_a_stats["DG"],
-                team_a_stats["GF"]
-            ]
-
-            standings_df.loc[
-                standings_df["team"] == team_b,
-                ["H2H_PTS", "H2H_DG", "H2H_GF"]
-            ] = [
-                team_b_stats["PTS"],
-                team_b_stats["DG"],
-                team_b_stats["GF"]
-            ]
-    
-    standings_df = standings_df.sort_values(
-        by=[
-            "group",
-            "PTS",
-            "H2H_PTS",
-            "H2H_DG",
-            "H2H_GF",
-            "DG",
-            "GF"
-        ],
-        ascending=[
-            True,
-            False,
-            False,
-            False,
-            False,
-            False,
-            False
-        ]   
+    standings_df = sort_group_standings(
+        standings_df,
+        predictions_df,
+        load_elo_ratings()
     )
 
     standings_df["position"] = (
