@@ -140,6 +140,18 @@ def render_match_card(row) -> str:
     """)
 
 
+def _round_label_index(round_df) -> str:
+    if _is_empty(round_df):
+        return "0 partidos"
+
+    match_count = len(round_df)
+
+    if match_count == 1:
+        return "1 partido"
+
+    return f"{match_count} partidos"
+
+
 def render_wall_chart(
     rounds: dict[str, pd.DataFrame]
 ) -> None:
@@ -149,30 +161,47 @@ def render_wall_chart(
     )
     st.header("Ruta simulada del cuadro")
 
-    columns = st.columns(5)
+    stage_columns = []
 
-    for column, (key, label) in zip(columns, ROUND_LABELS):
-        with column:
-            st.markdown(
-                _html(f"""
-                <div class="bracket-round-title">
-                    <span>{escape(label)}</span>
-                </div>
-                """),
-                unsafe_allow_html=True
+    for index, (key, label) in enumerate(ROUND_LABELS, start=1):
+        round_df = rounds.get(key)
+        match_cards = []
+
+        if _is_empty(round_df):
+            match_cards.append(
+                '<div class="bracket-stage-empty">Ronda pendiente</div>'
             )
-
-            round_df = rounds.get(key)
-
-            if _is_empty(round_df):
-                st.info("Ronda pendiente.")
-                continue
-
+        else:
             for _, row in round_df.iterrows():
-                st.markdown(
-                    render_match_card(row),
-                    unsafe_allow_html=True
+                match_cards.append(
+                    render_match_card(row)
                 )
+
+        stage_columns.append(
+            _html(f"""
+            <section class="bracket-stage-column bracket-stage-{escape(key)}">
+                <div class="bracket-stage-heading">
+                    <em>{index:02d}</em>
+                    <div>
+                        <strong>{escape(label)}</strong>
+                        <span>{escape(_round_label_index(round_df))}</span>
+                    </div>
+                </div>
+                <div class="bracket-stage-matches">
+                    {''.join(match_cards)}
+                </div>
+            </section>
+            """)
+        )
+
+    st.markdown(
+        _html(f"""
+        <div class="bracket-stage-grid">
+            {''.join(stage_columns)}
+        </div>
+        """),
+        unsafe_allow_html=True
+    )
 
 
 def render_final_poster(final_df) -> None:

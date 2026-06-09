@@ -235,7 +235,7 @@ Status: COMPLETED
 
 ## PHASE 7 — Simulation Improvements
 
-Status: MOSTLY COMPLETED
+Status: IN PROGRESS
 
 ### Model Improvements
 
@@ -267,20 +267,20 @@ Status: MOSTLY COMPLETED
 
 ## PHASE 8 — Product Expansion
 
-Status: FUTURE
+Status: MOSTLY COMPLETED
 
 ### Editorial Features
 
-* [ ] Team profile pages
-* [ ] Group profile pages
 * [X] Favorites and dark horses section
 * [X] Tournament storylines
+* [ ] Team profile pages
+* [ ] Group profile pages
 * [ ] Historical comparisons
 
 ### Visual Features
 
-* [ ] Interactive bracket
 * [X] Flags support
+* [ ] Interactive bracket
 * [ ] Improved knockout visualization
 * [ ] Interactive probability charts
 

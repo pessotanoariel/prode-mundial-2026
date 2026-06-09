@@ -790,18 +790,90 @@ def apply_global_styles() -> None:
             text-transform: uppercase;
         }
 
-        .bracket-round-title {
-            background: var(--atlas-yellow);
-            border: 2px solid var(--atlas-ink);
-            margin-bottom: 0.7rem;
-            padding: 0.45rem 0.55rem;
+        .bracket-stage-grid {
+            display: grid;
+            gap: 0.85rem;
+            grid-template-columns:
+                minmax(13rem, 1.15fr)
+                minmax(13rem, 1.08fr)
+                minmax(13rem, 1fr)
+                minmax(13rem, 0.95fr)
+                minmax(14rem, 1.12fr);
+            overflow-x: auto;
+            padding-bottom: 0.35rem;
         }
 
-        .bracket-round-title span {
-            color: var(--atlas-ink);
-            font-size: 0.88rem;
+        .bracket-stage-column {
+            border-left: 3px solid var(--atlas-ink);
+            min-width: 13rem;
+            padding-left: 0.65rem;
+        }
+
+        .bracket-stage-heading {
+            align-items: center;
+            background: var(--atlas-yellow);
+            border: 2px solid var(--atlas-ink);
+            display: grid;
+            gap: 0.55rem;
+            grid-template-columns: 2.3rem minmax(0, 1fr);
+            margin-bottom: 0.7rem;
+            padding: 0.5rem 0.55rem;
+        }
+
+        .bracket-stage-heading em {
+            color: var(--atlas-red);
+            font-size: 1.8rem;
+            font-style: normal;
             font-weight: 950;
-            letter-spacing: 0.04rem;
+            line-height: 1;
+        }
+
+        .bracket-stage-heading strong,
+        .bracket-stage-heading span {
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .bracket-stage-heading strong {
+            color: var(--atlas-ink);
+            font-size: 0.9rem;
+            font-weight: 950;
+            line-height: 1;
+        }
+
+        .bracket-stage-heading span {
+            color: rgba(23, 20, 18, 0.68);
+            font-size: 0.68rem;
+            font-weight: 850;
+            margin-top: 0.1rem;
+        }
+
+        .bracket-stage-matches {
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .bracket-stage-final {
+            border-left-color: var(--atlas-red);
+        }
+
+        .bracket-stage-final .bracket-stage-heading {
+            background: var(--atlas-violet);
+            color: var(--atlas-paper);
+        }
+
+        .bracket-stage-final .bracket-stage-heading em,
+        .bracket-stage-final .bracket-stage-heading strong,
+        .bracket-stage-final .bracket-stage-heading span {
+            color: var(--atlas-paper);
+        }
+
+        .bracket-stage-empty {
+            border: 2px dashed rgba(23, 20, 18, 0.45);
+            color: rgba(23, 20, 18, 0.7);
+            font-size: 0.8rem;
+            font-weight: 850;
+            padding: 0.8rem;
             text-transform: uppercase;
         }
 
@@ -813,9 +885,18 @@ def apply_global_styles() -> None:
             flex-direction: column;
             height: 9.35rem;
             justify-content: space-between;
-            margin-bottom: 0.65rem;
             overflow: hidden;
             padding: 0.7rem;
+        }
+
+        .bracket-stage-semifinals .bracket-match-card,
+        .bracket-stage-final .bracket-match-card {
+            background: rgba(242, 194, 48, 0.18);
+        }
+
+        .bracket-stage-final .bracket-match-card {
+            border: 3px solid var(--atlas-red);
+            height: 10.6rem;
         }
 
         .bracket-card-teams {
@@ -889,7 +970,8 @@ def apply_global_styles() -> None:
             background: var(--atlas-violet);
             border: 3px solid var(--atlas-ink);
             color: var(--atlas-paper);
-            margin-bottom: 1rem;
+            box-shadow: 0.45rem 0.45rem 0 var(--atlas-red);
+            margin-bottom: 1.45rem;
             padding: 1.25rem;
         }
 
@@ -934,7 +1016,9 @@ def apply_global_styles() -> None:
         }
 
         .bracket-champion-call strong {
+            display: inline-block;
             color: var(--atlas-yellow);
+            font-size: 1.35em;
             text-transform: uppercase;
         }
 
@@ -1442,6 +1526,15 @@ def apply_global_styles() -> None:
 
             .bracket-hero-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .bracket-stage-grid {
+                grid-template-columns: 1fr;
+                overflow-x: visible;
+            }
+
+            .bracket-stage-column {
+                min-width: 0;
             }
 
             .matches-hero-grid {
