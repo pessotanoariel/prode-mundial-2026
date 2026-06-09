@@ -1,7 +1,7 @@
 import streamlit as st
 
 from app.atlas_app.formatting import format_percent
-from app.atlas_app.formatting import translate_team
+from app.atlas_app.formatting import render_team_name
 
 
 def _is_empty(df) -> bool:
@@ -19,7 +19,7 @@ def _winner_label(value: str) -> str:
     if value == "Draw":
         return "Empate"
 
-    return translate_team(value)
+    return render_team_name(value)
 
 
 def render_magazine_hero(
@@ -32,7 +32,7 @@ def render_magazine_hero(
     final_text = "Final pendiente"
 
     if favorite is not None:
-        favorite_team = translate_team(favorite["team"])
+        favorite_team = render_team_name(favorite["team"])
         favorite_probability = format_percent(favorite["probability"])
     else:
         favorite_team = "Simulación pendiente"
@@ -40,8 +40,8 @@ def render_magazine_hero(
 
     if final is not None:
         final_text = (
-            f"{translate_team(final['team_1'])} vs "
-            f"{translate_team(final['team_2'])}"
+            f"{render_team_name(final['team_1'])} vs "
+            f"{render_team_name(final['team_2'])}"
         )
 
     st.markdown(
@@ -86,7 +86,7 @@ def render_top_favorites(champions_df) -> None:
             f"""
             <div class="atlas-rank">
                 <div class="atlas-rank-number">{index + 1:02d}</div>
-                <div class="atlas-rank-team">{translate_team(row['team'])}</div>
+                <div class="atlas-rank-team">{render_team_name(row['team'])}</div>
                 <div class="atlas-rank-value">{format_percent(row['probability'])}</div>
             </div>
             """,
@@ -109,8 +109,8 @@ def render_most_likely_final(finals_df, final_predictions_df) -> None:
         return
 
     if likely_final is not None:
-        team_1 = translate_team(likely_final["team_1"])
-        team_2 = translate_team(likely_final["team_2"])
+        team_1 = render_team_name(likely_final["team_1"])
+        team_2 = render_team_name(likely_final["team_2"])
         probability = format_percent(likely_final["probability"])
 
         st.markdown(
@@ -132,7 +132,7 @@ def render_most_likely_final(finals_df, final_predictions_df) -> None:
             f"""
             <div class="atlas-panel">
                 <div class="atlas-small-label">Final del cuadro actual</div>
-                <h3>{translate_team(predicted_final['team_1'])} vs {translate_team(predicted_final['team_2'])}</h3>
+                <h3>{render_team_name(predicted_final['team_1'])} vs {render_team_name(predicted_final['team_2'])}</h3>
                 <p>Marcador proyectado: <strong>{score}</strong></p>
                 <p>Lectura del pronóstico: <strong>{winner}</strong></p>
             </div>
@@ -182,13 +182,13 @@ def render_group_dispatch_grid(
             qualified_names = []
 
             if not group_standings.empty:
-                projected_winner = translate_team(
+                projected_winner = render_team_name(
                     group_standings.iloc[0]["team"]
                 )
 
             if not _is_empty(group_qualified):
                 qualified_names = [
-                    translate_team(team)
+                    render_team_name(team)
                     for team in group_qualified["team"].tolist()
                 ]
 
@@ -255,7 +255,7 @@ def render_tournament_teaser(final_predictions_df, champions_df) -> None:
                 f"""
                 <div class="atlas-panel atlas-panel-red">
                     <div class="atlas-small-label">Final proyectada del cuadro actual</div>
-                    <h2>{translate_team(final['team_1'])} vs {translate_team(final['team_2'])}</h2>
+                    <h2>{render_team_name(final['team_1'])} vs {render_team_name(final['team_2'])}</h2>
                     <p>Marcador del modelo: <strong>{final['predicted_score']}</strong></p>
                 </div>
                 """,
@@ -268,7 +268,7 @@ def render_tournament_teaser(final_predictions_df, champions_df) -> None:
                 f"""
                 <div class="atlas-panel atlas-panel-green">
                     <div class="atlas-small-label">Equipo de portada</div>
-                    <h2>{translate_team(champion['team'])}</h2>
+                    <h2>{render_team_name(champion['team'])}</h2>
                     <p>{format_percent(champion['probability'])} de probabilidad de título</p>
                 </div>
                 """,

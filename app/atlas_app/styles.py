@@ -308,6 +308,41 @@ def apply_global_styles() -> None:
             padding: 1rem;
         }
 
+        .atlas-venues-grid {
+            display: grid;
+            gap: 0.85rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .atlas-venue-card {
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid var(--atlas-ink);
+            box-sizing: border-box;
+            min-height: 7.4rem;
+            padding: 0.85rem;
+        }
+
+        .atlas-venue-card strong,
+        .atlas-venue-card span {
+            display: block;
+        }
+
+        .atlas-venue-card strong {
+            color: var(--atlas-ink);
+            font-size: 1rem;
+            font-weight: 950;
+            line-height: 1.08;
+            margin-top: 0.45rem;
+            text-transform: uppercase;
+        }
+
+        .atlas-venue-card span {
+            color: rgba(23, 20, 18, 0.76);
+            font-size: 0.82rem;
+            font-weight: 850;
+            margin-top: 0.12rem;
+        }
+
         .groups-hero {
             border-bottom: 3px solid var(--atlas-ink);
             border-top: 3px solid var(--atlas-ink);
@@ -743,6 +778,18 @@ def apply_global_styles() -> None:
             margin: 0.12rem 0;
         }
 
+        .bracket-card-venue {
+            color: rgba(23, 20, 18, 0.72);
+            font-size: 0.68rem;
+            font-weight: 850;
+            line-height: 1.05;
+            margin-top: 0.18rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
         .bracket-card-footer {
             border-top: 1px solid rgba(23, 20, 18, 0.38);
             display: grid;
@@ -806,6 +853,14 @@ def apply_global_styles() -> None:
             font-size: clamp(2rem, 5vw, 4rem);
             font-weight: 950;
             line-height: 1;
+        }
+
+        .bracket-final-venue {
+            color: var(--atlas-paper);
+            font-size: 0.9rem;
+            font-weight: 850;
+            margin: 0.35rem 0 0.55rem;
+            text-transform: uppercase;
         }
 
         .bracket-champion-call {
@@ -939,6 +994,17 @@ def apply_global_styles() -> None:
             line-height: 1;
         }
 
+        .match-card-venue {
+            color: rgba(23, 20, 18, 0.72);
+            font-size: 0.72rem;
+            font-weight: 850;
+            line-height: 1.12;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
         .match-card-winner {
             color: var(--atlas-ink);
             font-size: 0.84rem;
@@ -983,6 +1049,15 @@ def apply_global_styles() -> None:
             display: block;
             font-weight: 850;
             margin-top: 0.25rem;
+        }
+
+        .match-callout small {
+            color: rgba(23, 20, 18, 0.72);
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 850;
+            margin-top: 0.18rem;
+            text-transform: uppercase;
         }
 
         .match-callout-yellow {
@@ -1195,6 +1270,40 @@ def apply_global_styles() -> None:
             text-transform: uppercase;
         }
 
+        .atlas-team-name {
+            align-items: center;
+            color: inherit;
+            display: inline-flex;
+            gap: 0.38em;
+            max-width: 100%;
+            min-width: 0;
+            vertical-align: -0.08em;
+        }
+
+        .atlas-team-name > span {
+            color: inherit !important;
+            display: inline !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            letter-spacing: 0 !important;
+            margin: 0 !important;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-transform: inherit !important;
+            white-space: nowrap;
+        }
+
+        .atlas-team-flag {
+            aspect-ratio: 3 / 2;
+            border: 1px solid rgba(23, 20, 18, 0.38);
+            box-shadow: 0 0 0 1px rgba(244, 232, 200, 0.28);
+            flex: 0 0 auto;
+            height: 0.86em;
+            object-fit: cover;
+            width: 1.29em;
+        }
+
         .atlas-sidebar-brand {
             border-bottom: 3px solid var(--atlas-ink);
             border-top: 3px solid var(--atlas-ink);
@@ -1275,6 +1384,10 @@ def apply_global_styles() -> None:
 
             .matches-hero-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .atlas-venues-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
         </style>

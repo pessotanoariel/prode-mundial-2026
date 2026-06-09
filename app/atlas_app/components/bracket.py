@@ -5,7 +5,8 @@ from textwrap import dedent
 import pandas as pd
 import streamlit as st
 
-from app.atlas_app.formatting import translate_team
+from app.atlas_app.formatting import render_team_name
+from app.atlas_app.venues import venue_label
 
 
 ROUND_LABELS = [
@@ -31,9 +32,7 @@ def _html(markup: str) -> str:
 
 
 def _team(team: str) -> str:
-    return escape(
-        translate_team(team)
-    )
+    return render_team_name(team)
 
 
 def _first_row(df):
@@ -77,12 +76,12 @@ def render_knockout_overview(
     final_text = "Final pendiente"
 
     if final is not None:
-        projected_champion = translate_team(
+        projected_champion = render_team_name(
             _forecast_winner(final)
         )
         final_text = (
-            f"{translate_team(final['team_1'])} vs "
-            f"{translate_team(final['team_2'])}"
+            f"{render_team_name(final['team_1'])} vs "
+            f"{render_team_name(final['team_2'])}"
         )
 
     total_matches = sum(
@@ -102,11 +101,11 @@ def render_knockout_overview(
             <div class="bracket-hero-grid">
                 <div>
                     <div class="atlas-small-label">Campeón proyectado</div>
-                    <strong>{escape(projected_champion)}</strong>
+                    <strong>{projected_champion}</strong>
                 </div>
                 <div>
                     <div class="atlas-small-label">Final actual</div>
-                    <span>{escape(final_text)}</span>
+                    <span>{final_text}</span>
                 </div>
                 <div>
                     <div class="atlas-small-label">Partidos del cuadro</div>
@@ -120,7 +119,7 @@ def render_knockout_overview(
 
 
 def render_match_card(row) -> str:
-    winner = translate_team(
+    winner = render_team_name(
         _forecast_winner(row)
     )
 
@@ -131,9 +130,10 @@ def render_match_card(row) -> str:
             <span>vs</span>
             <div>{_team(row['team_2'])}</div>
         </div>
+        <div class="bracket-card-venue">{escape(venue_label(row))}</div>
         <div class="bracket-card-footer">
             <strong>{escape(str(row['predicted_score']))}</strong>
-            <span>{escape(winner)}</span>
+            <span>{winner}</span>
             <em>{escape(_confidence_label(row['confidence']))}</em>
         </div>
     </article>
@@ -188,7 +188,7 @@ def render_final_poster(final_df) -> None:
         st.info("La final proyectada todavía no está disponible.")
         return
 
-    champion = translate_team(
+    champion = render_team_name(
         _forecast_winner(final)
     )
 
@@ -197,9 +197,10 @@ def render_final_poster(final_df) -> None:
         <section class="bracket-final-poster">
             <div class="atlas-small-label">Final proyectada</div>
             <h2>{_team(final['team_1'])}<span>vs</span>{_team(final['team_2'])}</h2>
+            <div class="bracket-final-venue">{escape(venue_label(final))}</div>
             <div class="bracket-final-score">{escape(str(final['predicted_score']))}</div>
             <div class="bracket-champion-call">
-                Campeón proyectado: <strong>{escape(champion)}</strong>
+                Campeón proyectado: <strong>{champion}</strong>
             </div>
         </section>
         """),
@@ -244,14 +245,14 @@ def render_knockout_notes(
     final = _first_row(final_df)
 
     if final is not None:
-        champion = translate_team(
+        champion = render_team_name(
             _forecast_winner(final)
         )
         notes.append(
             f"{champion} queda señalado como campeón proyectado del cuadro actual."
         )
         notes.append(
-            f"La final simulada enfrenta a {translate_team(final['team_1'])} y {translate_team(final['team_2'])}."
+            f"La final simulada enfrenta a {render_team_name(final['team_1'])} y {render_team_name(final['team_2'])}."
         )
 
     winners = Counter()
@@ -261,7 +262,7 @@ def render_knockout_notes(
             continue
 
         for _, row in df.iterrows():
-            winners[translate_team(_forecast_winner(row))] += 1
+            winners[render_team_name(_forecast_winner(row))] += 1
 
     if winners:
         recurring_team, count = winners.most_common(1)[0]
@@ -277,7 +278,7 @@ def render_knockout_notes(
         st.markdown(
             _html(f"""
             <div class="atlas-narrative-note">
-                {escape(note)}
+                {note}
             </div>
             """),
             unsafe_allow_html=True

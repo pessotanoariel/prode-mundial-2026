@@ -4,10 +4,14 @@ from app.atlas_app.components.matches import render_match_index
 from app.atlas_app.components.matches import render_match_notes
 from app.atlas_app.components.matches import render_strongest_forecasts
 from app.atlas_app.components.matches import render_surprise_watch
+from app.atlas_app.venues import enrich_matches_with_venues
 
 
 def render(data: dict) -> None:
-    predictions_df = data.get("predictions")
+    predictions_df = enrich_matches_with_venues(
+        data.get("predictions"),
+        "group"
+    )
 
     render_editorial_hero(
         predictions_df

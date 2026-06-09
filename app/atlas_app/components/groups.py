@@ -4,7 +4,7 @@ from textwrap import dedent
 import pandas as pd
 import streamlit as st
 
-from app.atlas_app.formatting import translate_team
+from app.atlas_app.formatting import render_team_name
 
 
 def _is_empty(df) -> bool:
@@ -12,9 +12,7 @@ def _is_empty(df) -> bool:
 
 
 def _team_name(team: str) -> str:
-    return escape(
-        translate_team(team)
-    )
+    return render_team_name(team)
 
 
 def _html(markup: str) -> str:
@@ -198,18 +196,18 @@ def render_group_dispatch_grid(
             qualifiers = []
 
             if not standings.empty:
-                winner = translate_team(
+                winner = render_team_name(
                     standings.iloc[0]["team"]
                 )
 
             if not qualified.empty:
                 qualifiers = [
-                    translate_team(team)
+                    render_team_name(team)
                     for team in qualified["team"].head(3)
                 ]
 
             qualifier_items = "".join(
-                f"<li>{escape(team)}</li>"
+                f"<li>{team}</li>"
                 for team in qualifiers
             )
 
@@ -223,7 +221,7 @@ def render_group_dispatch_grid(
                         <div class="groups-dispatch-letter">{escape(str(group))}</div>
                         <div>
                             <div class="atlas-small-label">Ganador proyectado</div>
-                            <h3>{escape(winner)}</h3>
+                            <h3>{winner}</h3>
                         </div>
                         <div>
                             <div class="atlas-small-label">Zona de avance</div>
@@ -285,7 +283,7 @@ def _render_match_cards(matches: pd.DataFrame) -> None:
         winner = (
             "Empate"
             if row["predicted_winner"] == "Draw"
-            else translate_team(row["predicted_winner"])
+            else render_team_name(row["predicted_winner"])
         )
 
         st.markdown(
@@ -293,7 +291,7 @@ def _render_match_cards(matches: pd.DataFrame) -> None:
             <div class="groups-match-card">
                 <div class="atlas-small-label">{escape(str(row['match_date']))}</div>
                 <h4>{_team_name(row['team_1'])} vs {_team_name(row['team_2'])}</h4>
-                <p><strong>{escape(str(row['predicted_score']))}</strong> · {escape(winner)}</p>
+                <p><strong>{escape(str(row['predicted_score']))}</strong> · {winner}</p>
             </div>
             """,
             unsafe_allow_html=True
@@ -474,7 +472,7 @@ def render_qualification_notes(
 
     for _, row in group_winners.head(3).iterrows():
         notes.append(
-            f"{translate_team(row['team'])} lidera el Grupo {row['group']} con {int(row['PTS'])} puntos."
+            f"{render_team_name(row['team'])} lidera el Grupo {row['group']} con {int(row['PTS'])} puntos."
         )
 
     thirds = (
@@ -492,7 +490,7 @@ def render_qualification_notes(
         eighth = thirds.iloc[7]
         ninth = thirds.iloc[8]
         notes.append(
-            f"El corte de mejores terceros queda entre {translate_team(eighth['team'])} y {translate_team(ninth['team'])}."
+            f"El corte de mejores terceros queda entre {render_team_name(eighth['team'])} y {render_team_name(ninth['team'])}."
         )
 
     if len(notes) < 4 and not group_winners.empty:
@@ -501,14 +499,14 @@ def render_qualification_notes(
             ascending=[False, False, False]
         ).iloc[0]
         notes.append(
-            f"{translate_team(strongest['team'])} firma una de las fases de grupo más sólidas del mapa."
+            f"{render_team_name(strongest['team'])} firma una de las fases de grupo más sólidas del mapa."
         )
 
     for note in notes[:4]:
         st.markdown(
             f"""
             <div class="atlas-narrative-note">
-                {escape(note)}
+                {note}
             </div>
             """,
             unsafe_allow_html=True

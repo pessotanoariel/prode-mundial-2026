@@ -7,10 +7,12 @@ import streamlit as st
 DATA_ROOT = Path("data")
 RAW_DIR = DATA_ROOT / "raw"
 OUTPUT_DIR = DATA_ROOT / "output"
+PROCESSED_DIR = DATA_ROOT / "processed"
 
 CSV_PATHS = {
     "predictions": OUTPUT_DIR / "predictions.csv",
     "champions": OUTPUT_DIR / "champion_probabilities.csv",
+    "finalists": OUTPUT_DIR / "finalist_probabilities.csv",
     "finals": OUTPUT_DIR / "most_likely_finals.csv",
     "progression": OUTPUT_DIR / "team_progression_probabilities.csv",
     "groups": RAW_DIR / "world_cup_groups.csv",
@@ -22,6 +24,8 @@ CSV_PATHS = {
     "semifinals": OUTPUT_DIR / "semifinals_predictions.csv",
     "third_place": OUTPUT_DIR / "third_place_predictions.csv",
     "final": OUTPUT_DIR / "final_predictions.csv",
+    "stadiums": PROCESSED_DIR / "stadiums.csv",
+    "match_venues": PROCESSED_DIR / "match_venues.csv",
 }
 
 

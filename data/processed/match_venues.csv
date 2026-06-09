@@ -1,0 +1,105 @@
+match_number,match_date,stage,venue_code,stadium,host_city,country
+1,2026-06-11,Group Stage,mexico-city,Estadio Azteca,Ciudad de México,Mexico
+2,2026-06-11,Group Stage,guadalajara,Estadio Guadalajara,Guadalajara,Mexico
+3,2026-06-12,Group Stage,toronto,Toronto Stadium,Toronto,Canada
+4,2026-06-12,Group Stage,los-angeles,Los Angeles Stadium,Los Angeles,United States
+5,2026-06-13,Group Stage,boston,Boston Stadium,Boston,United States
+6,2026-06-13,Group Stage,vancouver,BC Place,Vancouver,Canada
+7,2026-06-13,Group Stage,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+8,2026-06-13,Group Stage,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+9,2026-06-14,Group Stage,philadelphia,Philadelphia Stadium,Philadelphia,United States
+10,2026-06-14,Group Stage,houston,Houston Stadium,Houston,United States
+11,2026-06-14,Group Stage,dallas,Dallas Stadium,Dallas,United States
+12,2026-06-14,Group Stage,monterrey,Estadio Monterrey,Monterrey,Mexico
+13,2026-06-15,Group Stage,miami,Miami Stadium,Miami,United States
+14,2026-06-15,Group Stage,atlanta,Atlanta Stadium,Atlanta,United States
+15,2026-06-15,Group Stage,los-angeles,Los Angeles Stadium,Los Angeles,United States
+16,2026-06-15,Group Stage,seattle,Seattle Stadium,Seattle,United States
+17,2026-06-16,Group Stage,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+18,2026-06-16,Group Stage,boston,Boston Stadium,Boston,United States
+19,2026-06-16,Group Stage,kansas-city,Kansas City Stadium,Kansas City,United States
+20,2026-06-16,Group Stage,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+21,2026-06-17,Group Stage,toronto,Toronto Stadium,Toronto,Canada
+22,2026-06-17,Group Stage,dallas,Dallas Stadium,Dallas,United States
+23,2026-06-17,Group Stage,houston,Houston Stadium,Houston,United States
+24,2026-06-17,Group Stage,mexico-city,Estadio Azteca,Ciudad de México,Mexico
+25,2026-06-18,Group Stage,atlanta,Atlanta Stadium,Atlanta,United States
+26,2026-06-18,Group Stage,los-angeles,Los Angeles Stadium,Los Angeles,United States
+27,2026-06-18,Group Stage,vancouver,BC Place,Vancouver,Canada
+28,2026-06-18,Group Stage,guadalajara,Estadio Guadalajara,Guadalajara,Mexico
+29,2026-06-19,Group Stage,philadelphia,Philadelphia Stadium,Philadelphia,United States
+30,2026-06-19,Group Stage,boston,Boston Stadium,Boston,United States
+31,2026-06-19,Group Stage,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+32,2026-06-19,Group Stage,seattle,Seattle Stadium,Seattle,United States
+33,2026-06-20,Group Stage,toronto,Toronto Stadium,Toronto,Canada
+34,2026-06-20,Group Stage,kansas-city,Kansas City Stadium,Kansas City,United States
+35,2026-06-20,Group Stage,houston,Houston Stadium,Houston,United States
+36,2026-06-20,Group Stage,monterrey,Estadio Monterrey,Monterrey,Mexico
+37,2026-06-21,Group Stage,miami,Miami Stadium,Miami,United States
+38,2026-06-21,Group Stage,atlanta,Atlanta Stadium,Atlanta,United States
+39,2026-06-21,Group Stage,los-angeles,Los Angeles Stadium,Los Angeles,United States
+40,2026-06-21,Group Stage,vancouver,BC Place,Vancouver,Canada
+41,2026-06-22,Group Stage,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+42,2026-06-22,Group Stage,philadelphia,Philadelphia Stadium,Philadelphia,United States
+43,2026-06-22,Group Stage,dallas,Dallas Stadium,Dallas,United States
+44,2026-06-22,Group Stage,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+45,2026-06-23,Group Stage,boston,Boston Stadium,Boston,United States
+46,2026-06-23,Group Stage,toronto,Toronto Stadium,Toronto,Canada
+47,2026-06-23,Group Stage,houston,Houston Stadium,Houston,United States
+48,2026-06-23,Group Stage,guadalajara,Estadio Guadalajara,Guadalajara,Mexico
+49,2026-06-24,Group Stage,miami,Miami Stadium,Miami,United States
+50,2026-06-24,Group Stage,atlanta,Atlanta Stadium,Atlanta,United States
+51,2026-06-24,Group Stage,vancouver,BC Place,Vancouver,Canada
+52,2026-06-24,Group Stage,seattle,Seattle Stadium,Seattle,United States
+53,2026-06-24,Group Stage,mexico-city,Estadio Azteca,Ciudad de México,Mexico
+54,2026-06-24,Group Stage,monterrey,Estadio Monterrey,Monterrey,Mexico
+55,2026-06-25,Group Stage,philadelphia,Philadelphia Stadium,Philadelphia,United States
+56,2026-06-25,Group Stage,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+57,2026-06-25,Group Stage,dallas,Dallas Stadium,Dallas,United States
+58,2026-06-25,Group Stage,kansas-city,Kansas City Stadium,Kansas City,United States
+59,2026-06-25,Group Stage,los-angeles,Los Angeles Stadium,Los Angeles,United States
+60,2026-06-25,Group Stage,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+61,2026-06-26,Group Stage,boston,Boston Stadium,Boston,United States
+62,2026-06-26,Group Stage,toronto,Toronto Stadium,Toronto,Canada
+63,2026-06-26,Group Stage,seattle,Seattle Stadium,Seattle,United States
+64,2026-06-26,Group Stage,vancouver,BC Place,Vancouver,Canada
+65,2026-06-26,Group Stage,houston,Houston Stadium,Houston,United States
+66,2026-06-26,Group Stage,guadalajara,Estadio Guadalajara,Guadalajara,Mexico
+67,2026-06-27,Group Stage,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+68,2026-06-27,Group Stage,philadelphia,Philadelphia Stadium,Philadelphia,United States
+69,2026-06-27,Group Stage,kansas-city,Kansas City Stadium,Kansas City,United States
+70,2026-06-27,Group Stage,dallas,Dallas Stadium,Dallas,United States
+71,2026-06-27,Group Stage,miami,Miami Stadium,Miami,United States
+72,2026-06-27,Group Stage,atlanta,Atlanta Stadium,Atlanta,United States
+73,2026-06-28,Round of 32,los-angeles,Los Angeles Stadium,Los Angeles,United States
+74,2026-06-28,Round of 32,boston,Boston Stadium,Boston,United States
+75,2026-06-28,Round of 32,mexico-city,Estadio Azteca,Ciudad de México,Mexico
+76,2026-06-29,Round of 32,monterrey,Estadio Monterrey,Monterrey,Mexico
+77,2026-06-29,Round of 32,houston,Houston Stadium,Houston,United States
+78,2026-06-29,Round of 32,dallas,Dallas Stadium,Dallas,United States
+79,2026-06-30,Round of 32,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+80,2026-06-30,Round of 32,atlanta,Atlanta Stadium,Atlanta,United States
+81,2026-06-30,Round of 32,san-francisco-bay-area,San Francisco Bay Area Stadium,San Francisco Bay Area,United States
+82,2026-07-01,Round of 32,seattle,Seattle Stadium,Seattle,United States
+83,2026-07-01,Round of 32,miami,Miami Stadium,Miami,United States
+84,2026-07-01,Round of 32,toronto,Toronto Stadium,Toronto,Canada
+85,2026-07-02,Round of 32,dallas,Dallas Stadium,Dallas,United States
+86,2026-07-02,Round of 32,vancouver,BC Place,Vancouver,Canada
+87,2026-07-03,Round of 32,atlanta,Atlanta Stadium,Atlanta,United States
+88,2026-07-03,Round of 32,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+89,2026-07-04,Round of 16,philadelphia,Philadelphia Stadium,Philadelphia,United States
+90,2026-07-04,Round of 16,houston,Houston Stadium,Houston,United States
+91,2026-07-05,Round of 16,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States
+92,2026-07-05,Round of 16,mexico-city,Estadio Azteca,Ciudad de México,Mexico
+93,2026-07-06,Round of 16,dallas,Dallas Stadium,Dallas,United States
+94,2026-07-06,Round of 16,seattle,Seattle Stadium,Seattle,United States
+95,2026-07-07,Round of 16,atlanta,Atlanta Stadium,Atlanta,United States
+96,2026-07-07,Round of 16,vancouver,BC Place,Vancouver,Canada
+97,2026-07-09,Quarterfinals,boston,Boston Stadium,Boston,United States
+98,2026-07-09,Quarterfinals,los-angeles,Los Angeles Stadium,Los Angeles,United States
+99,2026-07-10,Quarterfinals,miami,Miami Stadium,Miami,United States
+100,2026-07-10,Quarterfinals,kansas-city,Kansas City Stadium,Kansas City,United States
+101,2026-07-14,Semifinals,dallas,Dallas Stadium,Dallas,United States
+102,2026-07-15,Semifinals,atlanta,Atlanta Stadium,Atlanta,United States
+103,2026-07-18,Third Place,miami,Miami Stadium,Miami,United States
+104,2026-07-19,Final,new-york-new-jersey,New York New Jersey Stadium,New York New Jersey,United States

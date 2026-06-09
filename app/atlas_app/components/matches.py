@@ -5,7 +5,9 @@ from textwrap import dedent
 import pandas as pd
 import streamlit as st
 
+from app.atlas_app.formatting import render_team_name
 from app.atlas_app.formatting import translate_team
+from app.atlas_app.venues import venue_label
 
 
 CONFIDENCE_LABELS = {
@@ -43,16 +45,14 @@ def _html(markup: str) -> str:
 
 
 def _team(team: str) -> str:
-    return escape(
-        translate_team(team)
-    )
+    return render_team_name(team)
 
 
 def _winner(value: str) -> str:
     if value == "Draw":
         return "Empate"
 
-    return translate_team(value)
+    return render_team_name(value)
 
 
 def _format_date(value) -> str:
@@ -261,8 +261,9 @@ def render_match_card(row) -> str:
     <article class="match-forecast-card">
         <div class="match-card-date">{escape(_format_date(row['match_date']))}</div>
         <h3>{_team(row['team_1'])}<span>vs</span>{_team(row['team_2'])}</h3>
+        <div class="match-card-venue">{escape(venue_label(row))}</div>
         <div class="match-card-score">{escape(str(row['predicted_score']))}</div>
-        <div class="match-card-winner">Gana: <strong>{escape(_winner(row['predicted_winner']))}</strong></div>
+        <div class="match-card-winner">Gana: <strong>{_winner(row['predicted_winner'])}</strong></div>
         <div class="match-card-badges">
             <span>Tono {escape(confidence)}</span>
             <span>Sorpresa {escape(risk)}</span>
@@ -344,6 +345,7 @@ def render_surprise_watch(predictions_df) -> None:
             <div class="match-callout">
                 <div class="atlas-small-label">{escape(RISK_LABELS.get(row['upset_risk'], row['upset_risk']))}</div>
                 <strong>{_team(row['team_1'])} vs {_team(row['team_2'])}</strong>
+                <small>{escape(venue_label(row))}</small>
                 <span>{escape(str(row['predicted_score']))} · {_winner(row['predicted_winner'])}</span>
             </div>
             """),
@@ -387,6 +389,7 @@ def render_strongest_forecasts(predictions_df) -> None:
             <div class="match-callout match-callout-yellow">
                 <div class="atlas-small-label">Tono {escape(CONFIDENCE_LABELS.get(row['confidence'], row['confidence']))}</div>
                 <strong>{_team(row['team_1'])} vs {_team(row['team_2'])}</strong>
+                <small>{escape(venue_label(row))}</small>
                 <span>{escape(str(row['predicted_score']))} · {_winner(row['predicted_winner'])}</span>
             </div>
             """),
@@ -420,7 +423,7 @@ def render_match_notes(filtered_df) -> None:
         )
         team, count = winners.most_common(1)[0]
         notes.append(
-            f"{translate_team(team)} aparece en {count} de los pronósticos más firmes de esta selección."
+            f"{render_team_name(team)} aparece en {count} de los pronósticos más firmes de esta selección."
         )
 
     if not surprise_matches.empty:
@@ -431,14 +434,14 @@ def render_match_notes(filtered_df) -> None:
     if len(filtered_df) > 0:
         first = filtered_df.iloc[0]
         notes.append(
-            f"{translate_team(first['team_1'])} vs {translate_team(first['team_2'])} abre esta página del archivo."
+            f"{render_team_name(first['team_1'])} vs {render_team_name(first['team_2'])} abre esta página del archivo."
         )
 
     for note in notes[:4]:
         st.markdown(
             _html(f"""
             <div class="atlas-narrative-note">
-                {escape(note)}
+                {note}
             </div>
             """),
             unsafe_allow_html=True

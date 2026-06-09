@@ -273,22 +273,22 @@ Status: FUTURE
 
 * [ ] Team profile pages
 * [ ] Group profile pages
-* [ ] Favorites and dark horses section
-* [ ] Tournament storylines
+* [X] Favorites and dark horses section
+* [X] Tournament storylines
 * [ ] Historical comparisons
 
 ### Visual Features
 
 * [ ] Interactive bracket
-* [ ] Flags support
+* [X] Flags support
 * [ ] Improved knockout visualization
 * [ ] Interactive probability charts
 
 ### Tournament Experience
 
-* [ ] Stadium information
+* [X] Stadium information
 * [ ] Host city profiles
-* [ ] Match venue integration
+* [x] Match venue integration
 
 ### Long-Term Platform
 
