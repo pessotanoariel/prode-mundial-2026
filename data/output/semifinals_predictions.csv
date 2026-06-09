@@ -1,3 +1,3 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Semifinals,Brazil,Croatia,0.613,0.183,0.204,Brazil,4-2,High,LOW
-Semifinals,Bosnia and Herzegovina,Argentina,0.15,0.08,0.77,Bosnia and Herzegovina,3-0,Medium,LOW
+Semifinals,Morocco,France,0.351,0.08,0.569,France,1-3,Medium,LOW
+Semifinals,Spain,Uruguay,0.732,0.08,0.188,Spain,1-0,High,LOW

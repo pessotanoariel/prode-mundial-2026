@@ -239,6 +239,7 @@ Status: IN PROGRESS
 
 ### Model Improvements
 
+* [x] Most likely path generation
 * [x] Generalized Elo match updates
 * [x] Dynamic Elo group-stage prototype
 * [ ] Dynamic Elo production integration

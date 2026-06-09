@@ -1,2 +1,2 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Final,Brazil,Bosnia and Herzegovina,0.81,0.08,0.11,Brazil,2-1,High,LOW
+Final,France,Spain,0.415,0.175,0.41,France,3-1,Low,EXTREME

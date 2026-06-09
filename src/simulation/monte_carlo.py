@@ -10,9 +10,23 @@ from src.knockout.tournament import (
 )
 
 from src.knockout.paths import (
+    ROUND_OF_32_COMPLETE,
+    ROUND_OF_32_WINNERS,
+    ROUND_OF_16,
+    ROUND_OF_16_WINNERS,
+    QUARTERFINALS,
     QUARTERFINALS_WINNERS,
+    SEMIFINALS,
     SEMIFINALS_WINNERS,
+    FINAL,
     FINAL_WINNERS
+)
+
+from src.knockout.structures import (
+    ROUND_OF_16_STRUCTURE,
+    QUARTERFINAL_STRUCTURE,
+    SEMIFINAL_STRUCTURE,
+    FINAL_STRUCTURE
 )
 
 
@@ -26,6 +40,44 @@ LOG_PATH = Path("execution_logs/latest_run.log")
 LOGGER_NAME = "world_cup_forecast_atlas.pipeline"
 
 DEFAULT_SIMULATIONS = 1000
+
+MATCH_SLOT_PROBABILITIES_PATH = (
+    "data/output/knockout_match_slot_probabilities.csv"
+)
+MOST_LIKELY_TOURNAMENT_PATH = (
+    "data/output/most_likely_tournament_path.csv"
+)
+MOST_LIKELY_PATH_METHOD = (
+    "monte_carlo_match_slot_consensus"
+)
+
+KNOCKOUT_STAGES = [
+    {
+        "stage": "Round of 32",
+        "matches_path": ROUND_OF_32_COMPLETE,
+        "winners_path": ROUND_OF_32_WINNERS,
+    },
+    {
+        "stage": "Round of 16",
+        "matches_path": ROUND_OF_16,
+        "winners_path": ROUND_OF_16_WINNERS,
+    },
+    {
+        "stage": "Quarterfinals",
+        "matches_path": QUARTERFINALS,
+        "winners_path": QUARTERFINALS_WINNERS,
+    },
+    {
+        "stage": "Semifinals",
+        "matches_path": SEMIFINALS,
+        "winners_path": SEMIFINALS_WINNERS,
+    },
+    {
+        "stage": "Final",
+        "matches_path": FINAL,
+        "winners_path": FINAL_WINNERS,
+    },
+]
 
 def get_champion():
 
@@ -64,6 +116,423 @@ def get_stage_teams(
     )
 
     return df["winner"].tolist()
+
+
+def get_team_column(
+    row,
+    preferred,
+    fallback
+):
+
+    if preferred in row.index:
+        return row[preferred]
+
+    return row[fallback]
+
+
+def collect_match_slot_results(
+    match_slot_appearances,
+    match_slot_wins,
+    matchup_appearances
+):
+
+    for stage_config in KNOCKOUT_STAGES:
+
+        matches_df = pd.read_csv(
+            stage_config["matches_path"]
+        )
+        winners_df = pd.read_csv(
+            stage_config["winners_path"]
+        )
+
+        for (_, match_row), (_, winner_row) in zip(
+            matches_df.iterrows(),
+            winners_df.iterrows()
+        ):
+
+            stage = stage_config["stage"]
+            match_id = int(
+                match_row["match_id"]
+            )
+            team_1 = get_team_column(
+                match_row,
+                "team_a",
+                "team_1"
+            )
+            team_2 = get_team_column(
+                match_row,
+                "team_b",
+                "team_2"
+            )
+            winner = winner_row["winner"]
+
+            for team in [
+                team_1,
+                team_2
+            ]:
+
+                match_slot_appearances[
+                    (
+                        stage,
+                        match_id,
+                        team
+                    )
+                ] += 1
+
+            match_slot_wins[
+                (
+                    stage,
+                    match_id,
+                    winner
+                )
+            ] += 1
+
+            matchup_appearances[
+                (
+                    stage,
+                    match_id,
+                    team_1,
+                    team_2
+                )
+            ] += 1
+
+
+def build_match_slot_probabilities(
+    match_slot_appearances,
+    match_slot_wins,
+    simulations
+):
+
+    rows = []
+
+    slot_keys = sorted(
+        match_slot_appearances.keys(),
+        key=lambda item: (
+            item[1],
+            item[2]
+        )
+    )
+
+    for (
+        stage,
+        match_id,
+        team
+    ) in slot_keys:
+
+        appearances = match_slot_appearances[
+            (
+                stage,
+                match_id,
+                team
+            )
+        ]
+        wins = match_slot_wins.get(
+            (
+                stage,
+                match_id,
+                team
+            ),
+            0
+        )
+
+        rows.append({
+            "stage": stage,
+            "match_id": match_id,
+            "team": team,
+            "appearances": appearances,
+            "appearance_probability": round(
+                appearances / simulations,
+                4
+            ),
+            "wins": wins,
+            "slot_win_probability": round(
+                wins / simulations,
+                4
+            ),
+            "conditional_win_probability": round(
+                wins / appearances,
+                4
+            ),
+            "simulations": simulations
+        })
+
+    return pd.DataFrame(
+        rows,
+        columns=[
+            "stage",
+            "match_id",
+            "team",
+            "appearances",
+            "appearance_probability",
+            "wins",
+            "slot_win_probability",
+            "conditional_win_probability",
+            "simulations"
+        ]
+    )
+
+
+def get_slot_win_probability(
+    slot_probabilities_df,
+    stage,
+    match_id,
+    team
+):
+
+    match = slot_probabilities_df[
+        (
+            slot_probabilities_df["stage"] == stage
+        )
+        & (
+            slot_probabilities_df["match_id"] == match_id
+        )
+        & (
+            slot_probabilities_df["team"] == team
+        )
+    ]
+
+    if match.empty:
+        return 0.0
+
+    return float(
+        match.iloc[0]["slot_win_probability"]
+    )
+
+
+def choose_slot_winner(
+    slot_probabilities_df,
+    stage,
+    match_id,
+    team_1,
+    team_2
+):
+
+    team_1_probability = get_slot_win_probability(
+        slot_probabilities_df,
+        stage,
+        match_id,
+        team_1
+    )
+    team_2_probability = get_slot_win_probability(
+        slot_probabilities_df,
+        stage,
+        match_id,
+        team_2
+    )
+
+    if team_2_probability > team_1_probability:
+        return (
+            team_2,
+            team_1,
+            team_2_probability,
+            team_1_probability,
+            team_2_probability
+        )
+
+    return (
+        team_1,
+        team_2,
+        team_1_probability,
+        team_1_probability,
+        team_2_probability
+    )
+
+
+def get_most_common_round_of_32_matchups(
+    matchup_appearances
+):
+
+    matchups = {}
+
+    for (
+        stage,
+        match_id,
+        team_1,
+        team_2
+    ), count in matchup_appearances.items():
+
+        if stage != "Round of 32":
+            continue
+
+        existing = matchups.get(
+            match_id
+        )
+
+        if (
+            existing is None
+            or count > existing["count"]
+        ):
+
+            matchups[
+                match_id
+            ] = {
+                "team_1": team_1,
+                "team_2": team_2,
+                "count": count
+            }
+
+    return matchups
+
+
+def append_consensus_match(
+    rows,
+    winners_by_match_id,
+    slot_probabilities_df,
+    stage,
+    match_id,
+    team_1,
+    team_2,
+    simulations
+):
+
+    (
+        winner,
+        loser,
+        winner_probability,
+        team_1_probability,
+        team_2_probability
+    ) = choose_slot_winner(
+        slot_probabilities_df,
+        stage,
+        match_id,
+        team_1,
+        team_2
+    )
+
+    rows.append({
+        "stage": stage,
+        "match_id": match_id,
+        "team_1": team_1,
+        "team_2": team_2,
+        "winner": winner,
+        "loser": loser,
+        "winner_slot_probability": round(
+            winner_probability,
+            4
+        ),
+        "team_1_slot_win_probability": round(
+            team_1_probability,
+            4
+        ),
+        "team_2_slot_win_probability": round(
+            team_2_probability,
+            4
+        ),
+        "simulations": simulations,
+        "method": MOST_LIKELY_PATH_METHOD
+    })
+
+    winners_by_match_id[
+        match_id
+    ] = winner
+
+
+def build_most_likely_tournament_path(
+    slot_probabilities_df,
+    matchup_appearances,
+    simulations
+):
+
+    rows = []
+    winners_by_match_id = {}
+
+    round_of_32_matchups = (
+        get_most_common_round_of_32_matchups(
+            matchup_appearances
+        )
+    )
+
+    if not round_of_32_matchups:
+        return pd.DataFrame(
+            rows,
+            columns=[
+                "stage",
+                "match_id",
+                "team_1",
+                "team_2",
+                "winner",
+                "loser",
+                "winner_slot_probability",
+                "team_1_slot_win_probability",
+                "team_2_slot_win_probability",
+                "simulations",
+                "method"
+            ]
+        )
+
+    for match_id in sorted(
+        round_of_32_matchups
+    ):
+
+        matchup = round_of_32_matchups[
+            match_id
+        ]
+
+        append_consensus_match(
+            rows,
+            winners_by_match_id,
+            slot_probabilities_df,
+            "Round of 32",
+            match_id,
+            matchup["team_1"],
+            matchup["team_2"],
+            simulations
+        )
+
+    stage_structures = [
+        (
+            "Round of 16",
+            ROUND_OF_16_STRUCTURE
+        ),
+        (
+            "Quarterfinals",
+            QUARTERFINAL_STRUCTURE
+        ),
+        (
+            "Semifinals",
+            SEMIFINAL_STRUCTURE
+        ),
+        (
+            "Final",
+            FINAL_STRUCTURE
+        ),
+    ]
+
+    for stage, structure in stage_structures:
+
+        for (
+            match_id,
+            previous_1,
+            previous_2
+        ) in structure:
+
+            append_consensus_match(
+                rows,
+                winners_by_match_id,
+                slot_probabilities_df,
+                stage,
+                match_id,
+                winners_by_match_id[previous_1],
+                winners_by_match_id[previous_2],
+                simulations
+            )
+
+    return pd.DataFrame(
+        rows,
+        columns=[
+            "stage",
+            "match_id",
+            "team_1",
+            "team_2",
+            "winner",
+            "loser",
+            "winner_slot_probability",
+            "team_1_slot_win_probability",
+            "team_2_slot_win_probability",
+            "simulations",
+            "method"
+        ]
+    )
 
 
 def build_calibration_report(
@@ -220,6 +689,12 @@ def run_monte_carlo(
 
     finalists_counter = Counter()
 
+    match_slot_appearances = Counter()
+
+    match_slot_wins = Counter()
+
+    matchup_appearances = Counter()
+
     progression = defaultdict(
         lambda: {
             "qf": 0,
@@ -238,6 +713,12 @@ def run_monte_carlo(
         )
 
         simulation_main()
+
+        collect_match_slot_results(
+            match_slot_appearances,
+            match_slot_wins,
+            matchup_appearances
+        )
 
         champion = get_champion()
 
@@ -455,6 +936,48 @@ def run_monte_carlo(
 
     print(
         progression_df.head(20)
+    )
+
+    slot_probabilities_df = (
+        build_match_slot_probabilities(
+            match_slot_appearances,
+            match_slot_wins,
+            simulations
+        )
+    )
+
+    slot_probabilities_df.to_csv(
+        MATCH_SLOT_PROBABILITIES_PATH,
+        index=False
+    )
+
+    print(
+        "\nKnockout Match Slot Probabilities\n"
+    )
+
+    print(
+        slot_probabilities_df.head(20)
+    )
+
+    most_likely_path_df = (
+        build_most_likely_tournament_path(
+            slot_probabilities_df,
+            matchup_appearances,
+            simulations
+        )
+    )
+
+    most_likely_path_df.to_csv(
+        MOST_LIKELY_TOURNAMENT_PATH,
+        index=False
+    )
+
+    print(
+        "\nMost Likely Tournament Path\n"
+    )
+
+    print(
+        most_likely_path_df
     )
 
     write_calibration_report(

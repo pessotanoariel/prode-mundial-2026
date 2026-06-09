@@ -1,0 +1,32 @@
+stage,match_id,team_1,team_2,winner,loser,winner_slot_probability,team_1_slot_win_probability,team_2_slot_win_probability,simulations,method
+Round of 32,73,Czechia,Switzerland,Switzerland,Czechia,0.7,0.3,0.7,100,monte_carlo_match_slot_consensus
+Round of 32,74,Ecuador,Scotland,Ecuador,Scotland,0.78,0.78,0.22,100,monte_carlo_match_slot_consensus
+Round of 32,75,Japan,Morocco,Japan,Morocco,0.76,0.76,0.24,100,monte_carlo_match_slot_consensus
+Round of 32,76,Brazil,Netherlands,Brazil,Netherlands,0.79,0.79,0.21,100,monte_carlo_match_slot_consensus
+Round of 32,77,France,Sweden,France,Sweden,0.86,0.86,0.14,100,monte_carlo_match_slot_consensus
+Round of 32,78,Germany,Norway,Germany,Norway,0.81,0.81,0.19,100,monte_carlo_match_slot_consensus
+Round of 32,79,Mexico,Cape Verde,Mexico,Cape Verde,0.81,0.81,0.19,100,monte_carlo_match_slot_consensus
+Round of 32,80,Croatia,Austria,Croatia,Austria,0.7,0.7,0.3,100,monte_carlo_match_slot_consensus
+Round of 32,81,United States,Bosnia and Herzegovina,United States,Bosnia and Herzegovina,0.76,0.76,0.24,100,monte_carlo_match_slot_consensus
+Round of 32,82,Belgium,South Korea,Belgium,South Korea,0.75,0.75,0.25,100,monte_carlo_match_slot_consensus
+Round of 32,83,Portugal,England,Portugal,England,0.69,0.69,0.31,100,monte_carlo_match_slot_consensus
+Round of 32,84,Spain,Algeria,Spain,Algeria,0.79,0.79,0.21,100,monte_carlo_match_slot_consensus
+Round of 32,85,Canada,Egypt,Canada,Egypt,0.76,0.76,0.24,100,monte_carlo_match_slot_consensus
+Round of 32,86,Argentina,Uruguay,Argentina,Uruguay,0.82,0.82,0.18,100,monte_carlo_match_slot_consensus
+Round of 32,87,Colombia,Ivory Coast,Colombia,Ivory Coast,0.79,0.79,0.21,100,monte_carlo_match_slot_consensus
+Round of 32,88,Turkey,Iran,Turkey,Iran,0.7,0.7,0.3,100,monte_carlo_match_slot_consensus
+Round of 16,89,Switzerland,Ecuador,Switzerland,Ecuador,0.5,0.5,0.36,100,monte_carlo_match_slot_consensus
+Round of 16,90,Japan,Brazil,Brazil,Japan,0.47,0.39,0.47,100,monte_carlo_match_slot_consensus
+Round of 16,91,France,Germany,France,Germany,0.53,0.53,0.34,100,monte_carlo_match_slot_consensus
+Round of 16,92,Mexico,Croatia,Mexico,Croatia,0.63,0.63,0.25,100,monte_carlo_match_slot_consensus
+Round of 16,93,United States,Belgium,Belgium,United States,0.55,0.29,0.55,100,monte_carlo_match_slot_consensus
+Round of 16,94,Portugal,Spain,Spain,Portugal,0.5,0.32,0.5,100,monte_carlo_match_slot_consensus
+Round of 16,95,Canada,Argentina,Argentina,Canada,0.68,0.17,0.68,100,monte_carlo_match_slot_consensus
+Round of 16,96,Colombia,Turkey,Colombia,Turkey,0.55,0.55,0.29,100,monte_carlo_match_slot_consensus
+Quarterfinals,97,Switzerland,Brazil,Brazil,Switzerland,0.29,0.26,0.29,100,monte_carlo_match_slot_consensus
+Quarterfinals,98,France,Mexico,France,Mexico,0.44,0.44,0.15,100,monte_carlo_match_slot_consensus
+Quarterfinals,99,Belgium,Spain,Spain,Belgium,0.41,0.19,0.41,100,monte_carlo_match_slot_consensus
+Quarterfinals,100,Argentina,Colombia,Argentina,Colombia,0.54,0.54,0.25,100,monte_carlo_match_slot_consensus
+Semifinals,101,Brazil,France,France,Brazil,0.23,0.21,0.23,100,monte_carlo_match_slot_consensus
+Semifinals,102,Spain,Argentina,Spain,Argentina,0.35,0.35,0.29,100,monte_carlo_match_slot_consensus
+Final,103,France,Spain,Spain,France,0.23,0.11,0.23,100,monte_carlo_match_slot_consensus
