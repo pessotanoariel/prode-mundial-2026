@@ -15,7 +15,15 @@ CRITICAL_OUTPUTS = (
     ),
     (
         Path("data/output/team_progression_probabilities.csv"),
-        {"team", "qf", "sf", "final", "champion"},
+        {
+            "team",
+            "round_of_32",
+            "round_of_16",
+            "quarterfinal",
+            "semifinal",
+            "final",
+            "champion",
+        },
     ),
     (
         Path("data/output/group_standings.csv"),

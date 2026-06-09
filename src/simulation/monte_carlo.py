@@ -79,6 +79,14 @@ KNOCKOUT_STAGES = [
     },
 ]
 
+PROGRESSION_STAGE_COLUMNS = {
+    "Round of 32": "round_of_32",
+    "Round of 16": "round_of_16",
+    "Quarterfinals": "quarterfinal",
+    "Semifinals": "semifinal",
+    "Final": "final",
+}
+
 def get_champion():
 
     df = pd.read_csv(
@@ -195,6 +203,49 @@ def collect_match_slot_results(
                     team_2
                 )
             ] += 1
+
+
+def collect_stage_progression_appearances(
+    progression
+):
+
+    for stage_config in KNOCKOUT_STAGES:
+
+        stage = stage_config["stage"]
+        progression_column = (
+            PROGRESSION_STAGE_COLUMNS.get(
+                stage
+            )
+        )
+
+        if progression_column is None:
+            continue
+
+        matches_df = pd.read_csv(
+            stage_config["matches_path"]
+        )
+
+        for _, match_row in matches_df.iterrows():
+
+            team_1 = get_team_column(
+                match_row,
+                "team_a",
+                "team_1"
+            )
+            team_2 = get_team_column(
+                match_row,
+                "team_b",
+                "team_2"
+            )
+
+            for team in [
+                team_1,
+                team_2
+            ]:
+
+                progression[
+                    team
+                ][progression_column] += 1
 
 
 def build_match_slot_probabilities(
@@ -697,8 +748,10 @@ def run_monte_carlo(
 
     progression = defaultdict(
         lambda: {
-            "qf": 0,
-            "sf": 0,
+            "round_of_32": 0,
+            "round_of_16": 0,
+            "quarterfinal": 0,
+            "semifinal": 0,
             "final": 0,
             "champion": 0
         }
@@ -720,6 +773,10 @@ def run_monte_carlo(
             matchup_appearances
         )
 
+        collect_stage_progression_appearances(
+            progression
+        )
+
         champion = get_champion()
 
         final_matchup = (
@@ -736,42 +793,11 @@ def run_monte_carlo(
             champion
         ] += 1
 
-        quarterfinalists = (
-            get_stage_teams(
-                QUARTERFINALS_WINNERS
-            )
-        )
-
-        semifinalists = (
-            get_stage_teams(
-                SEMIFINALS_WINNERS
-            )
-        )
-
-        for team in quarterfinalists:
-
-            progression[
-                team
-            ]["qf"] += 1
-
-
-        for team in semifinalists:
-
-            progression[
-                team
-            ]["sf"] += 1
-
-
         for team in finalists:
 
             finalists_counter[
                 team
             ] += 1
-
-            progression[
-                team
-            ]["final"] += 1
-
 
         progression[
             champion
@@ -897,12 +923,20 @@ def run_monte_carlo(
 
         progression_rows.append({
             "team": team,
-            "qf": round(
-                stats["qf"] / simulations,
+            "round_of_32": round(
+                stats["round_of_32"] / simulations,
                 4
             ),
-            "sf": round(
-                stats["sf"] / simulations,
+            "round_of_16": round(
+                stats["round_of_16"] / simulations,
+                4
+            ),
+            "quarterfinal": round(
+                stats["quarterfinal"] / simulations,
+                4
+            ),
+            "semifinal": round(
+                stats["semifinal"] / simulations,
                 4
             ),
             "final": round(
@@ -912,7 +946,7 @@ def run_monte_carlo(
             "champion": round(
                 stats["champion"] / simulations,
                 4
-            )
+            ),
         })
 
     progression_df = (

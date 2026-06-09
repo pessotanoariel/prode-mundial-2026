@@ -1,5 +1,5 @@
 match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
-Quarterfinals,Switzerland,Morocco,1908.25,1852.46,0.58,4.1,10.7,-6.6,0.22
+Quarterfinals,Switzerland,Morocco,1908.25,1853.55,0.578,4.1,10.7,-6.6,0.222
 Quarterfinals,France,Mexico,2070.95,1929.22,0.693,4.8,9.8,-5.0,0.107
-Quarterfinals,South Korea,Spain,1777.32,2163.37,0.098,4.5,4.4,0.1,0.08
-Quarterfinals,Uruguay,Turkey,1912.47,1929.13,0.476,1.4,10.5,-9.1,0.25
+Quarterfinals,Belgium,Spain,1904.83,2162.57,0.185,10.0,4.4,5.6,0.08
+Quarterfinals,Uruguay,Colombia,1914.52,1993.29,0.389,1.4,4.5,-3.1,0.189

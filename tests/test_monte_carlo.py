@@ -152,6 +152,17 @@ def test_run_monte_carlo_tracks_both_finalists(tmp_path, monkeypatch):
     ]
 
     progression = progression_df.set_index("team")
+    assert list(progression_df.columns) == [
+        "team",
+        "round_of_32",
+        "round_of_16",
+        "quarterfinal",
+        "semifinal",
+        "final",
+        "champion",
+    ]
+    assert progression.loc["Alpha", "round_of_32"] == 0.0
+    assert progression.loc["Beta", "round_of_32"] == 0.0
     assert progression.loc["Alpha", "final"] == 1.0
     assert progression.loc["Beta", "final"] == 1.0
     assert progression.loc["Alpha", "champion"] == 1.0

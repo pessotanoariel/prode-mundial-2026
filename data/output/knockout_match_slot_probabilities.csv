@@ -1,148 +1,151 @@
 stage,match_id,team,appearances,appearance_probability,wins,slot_win_probability,conditional_win_probability,simulations
-Round of 32,73,Czechia,100,1.0,30,0.3,0.3,100
-Round of 32,73,Switzerland,100,1.0,70,0.7,0.7,100
-Round of 32,74,Ecuador,100,1.0,78,0.78,0.78,100
-Round of 32,74,Scotland,100,1.0,22,0.22,0.22,100
-Round of 32,75,Japan,100,1.0,76,0.76,0.76,100
-Round of 32,75,Morocco,100,1.0,24,0.24,0.24,100
-Round of 32,76,Brazil,100,1.0,79,0.79,0.79,100
-Round of 32,76,Netherlands,100,1.0,21,0.21,0.21,100
-Round of 32,77,France,100,1.0,86,0.86,0.86,100
-Round of 32,77,Sweden,100,1.0,14,0.14,0.14,100
-Round of 32,78,Germany,100,1.0,81,0.81,0.81,100
-Round of 32,78,Norway,100,1.0,19,0.19,0.19,100
-Round of 32,79,Cape Verde,100,1.0,19,0.19,0.19,100
-Round of 32,79,Mexico,100,1.0,81,0.81,0.81,100
-Round of 32,80,Austria,100,1.0,30,0.3,0.3,100
-Round of 32,80,Croatia,100,1.0,70,0.7,0.7,100
+Round of 32,73,Czechia,100,1.0,36,0.36,0.36,100
+Round of 32,73,Switzerland,100,1.0,64,0.64,0.64,100
+Round of 32,74,Ecuador,100,1.0,73,0.73,0.73,100
+Round of 32,74,Scotland,100,1.0,27,0.27,0.27,100
+Round of 32,75,Japan,100,1.0,69,0.69,0.69,100
+Round of 32,75,Morocco,100,1.0,31,0.31,0.31,100
+Round of 32,76,Brazil,100,1.0,81,0.81,0.81,100
+Round of 32,76,Netherlands,100,1.0,19,0.19,0.19,100
+Round of 32,77,France,100,1.0,83,0.83,0.83,100
+Round of 32,77,Sweden,100,1.0,17,0.17,0.17,100
+Round of 32,78,Germany,100,1.0,70,0.7,0.7,100
+Round of 32,78,Norway,100,1.0,30,0.3,0.3,100
+Round of 32,79,Cape Verde,100,1.0,22,0.22,0.22,100
+Round of 32,79,Mexico,100,1.0,78,0.78,0.78,100
+Round of 32,80,Austria,100,1.0,28,0.28,0.28,100
+Round of 32,80,Croatia,100,1.0,72,0.72,0.72,100
 Round of 32,81,Bosnia and Herzegovina,100,1.0,24,0.24,0.24,100
 Round of 32,81,United States,100,1.0,76,0.76,0.76,100
-Round of 32,82,Belgium,100,1.0,75,0.75,0.75,100
-Round of 32,82,South Korea,100,1.0,25,0.25,0.25,100
-Round of 32,83,England,100,1.0,31,0.31,0.31,100
-Round of 32,83,Portugal,100,1.0,69,0.69,0.69,100
-Round of 32,84,Algeria,100,1.0,21,0.21,0.21,100
-Round of 32,84,Spain,100,1.0,79,0.79,0.79,100
-Round of 32,85,Canada,100,1.0,76,0.76,0.76,100
-Round of 32,85,Egypt,100,1.0,24,0.24,0.24,100
-Round of 32,86,Argentina,100,1.0,82,0.82,0.82,100
-Round of 32,86,Uruguay,100,1.0,18,0.18,0.18,100
-Round of 32,87,Colombia,100,1.0,79,0.79,0.79,100
-Round of 32,87,Ivory Coast,100,1.0,21,0.21,0.21,100
-Round of 32,88,Iran,100,1.0,30,0.3,0.3,100
-Round of 32,88,Turkey,100,1.0,70,0.7,0.7,100
-Round of 16,89,Czechia,30,0.3,10,0.1,0.3333,100
-Round of 16,89,Ecuador,78,0.78,36,0.36,0.4615,100
-Round of 16,89,Scotland,22,0.22,4,0.04,0.1818,100
-Round of 16,89,Switzerland,70,0.7,50,0.5,0.7143,100
-Round of 16,90,Brazil,79,0.79,47,0.47,0.5949,100
-Round of 16,90,Japan,76,0.76,39,0.39,0.5132,100
-Round of 16,90,Morocco,24,0.24,8,0.08,0.3333,100
-Round of 16,90,Netherlands,21,0.21,6,0.06,0.2857,100
-Round of 16,91,France,86,0.86,53,0.53,0.6163,100
-Round of 16,91,Germany,81,0.81,34,0.34,0.4198,100
-Round of 16,91,Norway,19,0.19,11,0.11,0.5789,100
-Round of 16,91,Sweden,14,0.14,2,0.02,0.1429,100
-Round of 16,92,Austria,30,0.3,9,0.09,0.3,100
-Round of 16,92,Cape Verde,19,0.19,3,0.03,0.1579,100
-Round of 16,92,Croatia,70,0.7,25,0.25,0.3571,100
-Round of 16,92,Mexico,81,0.81,63,0.63,0.7778,100
-Round of 16,93,Belgium,75,0.75,55,0.55,0.7333,100
-Round of 16,93,Bosnia and Herzegovina,24,0.24,7,0.07,0.2917,100
-Round of 16,93,South Korea,25,0.25,9,0.09,0.36,100
-Round of 16,93,United States,76,0.76,29,0.29,0.3816,100
-Round of 16,94,Algeria,21,0.21,4,0.04,0.1905,100
-Round of 16,94,England,31,0.31,14,0.14,0.4516,100
-Round of 16,94,Portugal,69,0.69,32,0.32,0.4638,100
-Round of 16,94,Spain,79,0.79,50,0.5,0.6329,100
-Round of 16,95,Argentina,82,0.82,68,0.68,0.8293,100
-Round of 16,95,Canada,76,0.76,17,0.17,0.2237,100
-Round of 16,95,Egypt,24,0.24,6,0.06,0.25,100
-Round of 16,95,Uruguay,18,0.18,9,0.09,0.5,100
-Round of 16,96,Colombia,79,0.79,55,0.55,0.6962,100
-Round of 16,96,Iran,30,0.3,9,0.09,0.3,100
-Round of 16,96,Ivory Coast,21,0.21,7,0.07,0.3333,100
-Round of 16,96,Turkey,70,0.7,29,0.29,0.4143,100
-Quarterfinals,97,Brazil,47,0.47,29,0.29,0.617,100
-Quarterfinals,97,Czechia,10,0.1,2,0.02,0.2,100
-Quarterfinals,97,Ecuador,36,0.36,24,0.24,0.6667,100
-Quarterfinals,97,Japan,39,0.39,14,0.14,0.359,100
-Quarterfinals,97,Morocco,8,0.08,2,0.02,0.25,100
-Quarterfinals,97,Netherlands,6,0.06,3,0.03,0.5,100
-Quarterfinals,97,Scotland,4,0.04,0,0.0,0.0,100
-Quarterfinals,97,Switzerland,50,0.5,26,0.26,0.52,100
-Quarterfinals,98,Austria,9,0.09,4,0.04,0.4444,100
+Round of 32,82,Belgium,100,1.0,82,0.82,0.82,100
+Round of 32,82,South Korea,100,1.0,18,0.18,0.18,100
+Round of 32,83,England,100,1.0,35,0.35,0.35,100
+Round of 32,83,Portugal,100,1.0,65,0.65,0.65,100
+Round of 32,84,Algeria,100,1.0,17,0.17,0.17,100
+Round of 32,84,Spain,100,1.0,83,0.83,0.83,100
+Round of 32,85,Canada,100,1.0,73,0.73,0.73,100
+Round of 32,85,Egypt,100,1.0,27,0.27,0.27,100
+Round of 32,86,Argentina,100,1.0,86,0.86,0.86,100
+Round of 32,86,Uruguay,100,1.0,14,0.14,0.14,100
+Round of 32,87,Colombia,100,1.0,81,0.81,0.81,100
+Round of 32,87,Ivory Coast,100,1.0,19,0.19,0.19,100
+Round of 32,88,Iran,100,1.0,23,0.23,0.23,100
+Round of 32,88,Turkey,100,1.0,77,0.77,0.77,100
+Round of 16,89,Czechia,36,0.36,8,0.08,0.2222,100
+Round of 16,89,Ecuador,73,0.73,37,0.37,0.5068,100
+Round of 16,89,Scotland,27,0.27,9,0.09,0.3333,100
+Round of 16,89,Switzerland,64,0.64,46,0.46,0.7188,100
+Round of 16,90,Brazil,81,0.81,56,0.56,0.6914,100
+Round of 16,90,Japan,69,0.69,31,0.31,0.4493,100
+Round of 16,90,Morocco,31,0.31,5,0.05,0.1613,100
+Round of 16,90,Netherlands,19,0.19,8,0.08,0.4211,100
+Round of 16,91,France,83,0.83,72,0.72,0.8675,100
+Round of 16,91,Germany,70,0.7,16,0.16,0.2286,100
+Round of 16,91,Norway,30,0.3,5,0.05,0.1667,100
+Round of 16,91,Sweden,17,0.17,7,0.07,0.4118,100
+Round of 16,92,Austria,28,0.28,12,0.12,0.4286,100
+Round of 16,92,Cape Verde,22,0.22,3,0.03,0.1364,100
+Round of 16,92,Croatia,72,0.72,33,0.33,0.4583,100
+Round of 16,92,Mexico,78,0.78,52,0.52,0.6667,100
+Round of 16,93,Belgium,82,0.82,63,0.63,0.7683,100
+Round of 16,93,Bosnia and Herzegovina,24,0.24,5,0.05,0.2083,100
+Round of 16,93,South Korea,18,0.18,7,0.07,0.3889,100
+Round of 16,93,United States,76,0.76,25,0.25,0.3289,100
+Round of 16,94,Algeria,17,0.17,4,0.04,0.2353,100
+Round of 16,94,England,35,0.35,10,0.1,0.2857,100
+Round of 16,94,Portugal,65,0.65,24,0.24,0.3692,100
+Round of 16,94,Spain,83,0.83,62,0.62,0.747,100
+Round of 16,95,Argentina,86,0.86,70,0.7,0.814,100
+Round of 16,95,Canada,73,0.73,20,0.2,0.274,100
+Round of 16,95,Egypt,27,0.27,5,0.05,0.1852,100
+Round of 16,95,Uruguay,14,0.14,5,0.05,0.3571,100
+Round of 16,96,Colombia,81,0.81,62,0.62,0.7654,100
+Round of 16,96,Iran,23,0.23,5,0.05,0.2174,100
+Round of 16,96,Ivory Coast,19,0.19,7,0.07,0.3684,100
+Round of 16,96,Turkey,77,0.77,26,0.26,0.3377,100
+Quarterfinals,97,Brazil,56,0.56,30,0.3,0.5357,100
+Quarterfinals,97,Czechia,8,0.08,2,0.02,0.25,100
+Quarterfinals,97,Ecuador,37,0.37,29,0.29,0.7838,100
+Quarterfinals,97,Japan,31,0.31,10,0.1,0.3226,100
+Quarterfinals,97,Morocco,5,0.05,1,0.01,0.2,100
+Quarterfinals,97,Netherlands,8,0.08,1,0.01,0.125,100
+Quarterfinals,97,Scotland,9,0.09,1,0.01,0.1111,100
+Quarterfinals,97,Switzerland,46,0.46,26,0.26,0.5652,100
+Quarterfinals,98,Austria,12,0.12,3,0.03,0.25,100
 Quarterfinals,98,Cape Verde,3,0.03,0,0.0,0.0,100
-Quarterfinals,98,Croatia,25,0.25,4,0.04,0.16,100
-Quarterfinals,98,France,53,0.53,44,0.44,0.8302,100
-Quarterfinals,98,Germany,34,0.34,26,0.26,0.7647,100
-Quarterfinals,98,Mexico,63,0.63,15,0.15,0.2381,100
-Quarterfinals,98,Norway,11,0.11,6,0.06,0.5455,100
-Quarterfinals,98,Sweden,2,0.02,1,0.01,0.5,100
-Quarterfinals,99,Algeria,4,0.04,1,0.01,0.25,100
-Quarterfinals,99,Belgium,55,0.55,19,0.19,0.3455,100
-Quarterfinals,99,Bosnia and Herzegovina,7,0.07,3,0.03,0.4286,100
-Quarterfinals,99,England,14,0.14,10,0.1,0.7143,100
-Quarterfinals,99,Portugal,32,0.32,17,0.17,0.5312,100
-Quarterfinals,99,South Korea,9,0.09,2,0.02,0.2222,100
-Quarterfinals,99,Spain,50,0.5,41,0.41,0.82,100
-Quarterfinals,99,United States,29,0.29,7,0.07,0.2414,100
-Quarterfinals,100,Argentina,68,0.68,54,0.54,0.7941,100
-Quarterfinals,100,Canada,17,0.17,7,0.07,0.4118,100
-Quarterfinals,100,Colombia,55,0.55,25,0.25,0.4545,100
-Quarterfinals,100,Egypt,6,0.06,2,0.02,0.3333,100
-Quarterfinals,100,Iran,9,0.09,0,0.0,0.0,100
-Quarterfinals,100,Ivory Coast,7,0.07,2,0.02,0.2857,100
-Quarterfinals,100,Turkey,29,0.29,7,0.07,0.2414,100
-Quarterfinals,100,Uruguay,9,0.09,3,0.03,0.3333,100
-Semifinals,101,Austria,4,0.04,0,0.0,0.0,100
-Semifinals,101,Brazil,29,0.29,21,0.21,0.7241,100
-Semifinals,101,Croatia,4,0.04,1,0.01,0.25,100
+Quarterfinals,98,Croatia,33,0.33,7,0.07,0.2121,100
+Quarterfinals,98,France,72,0.72,54,0.54,0.75,100
+Quarterfinals,98,Germany,16,0.16,13,0.13,0.8125,100
+Quarterfinals,98,Mexico,52,0.52,19,0.19,0.3654,100
+Quarterfinals,98,Norway,5,0.05,3,0.03,0.6,100
+Quarterfinals,98,Sweden,7,0.07,1,0.01,0.1429,100
+Quarterfinals,99,Algeria,4,0.04,4,0.04,1.0,100
+Quarterfinals,99,Belgium,63,0.63,13,0.13,0.2063,100
+Quarterfinals,99,Bosnia and Herzegovina,5,0.05,1,0.01,0.2,100
+Quarterfinals,99,England,10,0.1,7,0.07,0.7,100
+Quarterfinals,99,Portugal,24,0.24,18,0.18,0.75,100
+Quarterfinals,99,South Korea,7,0.07,1,0.01,0.1429,100
+Quarterfinals,99,Spain,62,0.62,53,0.53,0.8548,100
+Quarterfinals,99,United States,25,0.25,3,0.03,0.12,100
+Quarterfinals,100,Argentina,70,0.7,56,0.56,0.8,100
+Quarterfinals,100,Canada,20,0.2,4,0.04,0.2,100
+Quarterfinals,100,Colombia,62,0.62,25,0.25,0.4032,100
+Quarterfinals,100,Egypt,5,0.05,3,0.03,0.6,100
+Quarterfinals,100,Iran,5,0.05,1,0.01,0.2,100
+Quarterfinals,100,Ivory Coast,7,0.07,1,0.01,0.1429,100
+Quarterfinals,100,Turkey,26,0.26,8,0.08,0.3077,100
+Quarterfinals,100,Uruguay,5,0.05,2,0.02,0.4,100
+Semifinals,101,Austria,3,0.03,1,0.01,0.3333,100
+Semifinals,101,Brazil,30,0.3,21,0.21,0.7,100
+Semifinals,101,Croatia,7,0.07,1,0.01,0.1429,100
 Semifinals,101,Czechia,2,0.02,1,0.01,0.5,100
-Semifinals,101,Ecuador,24,0.24,18,0.18,0.75,100
-Semifinals,101,France,44,0.44,23,0.23,0.5227,100
-Semifinals,101,Germany,26,0.26,8,0.08,0.3077,100
-Semifinals,101,Japan,14,0.14,7,0.07,0.5,100
-Semifinals,101,Mexico,15,0.15,4,0.04,0.2667,100
-Semifinals,101,Morocco,2,0.02,0,0.0,0.0,100
-Semifinals,101,Netherlands,3,0.03,2,0.02,0.6667,100
-Semifinals,101,Norway,6,0.06,2,0.02,0.3333,100
-Semifinals,101,Sweden,1,0.01,0,0.0,0.0,100
-Semifinals,101,Switzerland,26,0.26,13,0.13,0.5,100
-Semifinals,102,Algeria,1,0.01,1,0.01,1.0,100
-Semifinals,102,Argentina,54,0.54,29,0.29,0.537,100
-Semifinals,102,Belgium,19,0.19,12,0.12,0.6316,100
-Semifinals,102,Bosnia and Herzegovina,3,0.03,1,0.01,0.3333,100
-Semifinals,102,Canada,7,0.07,0,0.0,0.0,100
-Semifinals,102,Colombia,25,0.25,4,0.04,0.16,100
-Semifinals,102,Egypt,2,0.02,0,0.0,0.0,100
-Semifinals,102,England,10,0.1,5,0.05,0.5,100
-Semifinals,102,Ivory Coast,2,0.02,0,0.0,0.0,100
-Semifinals,102,Portugal,17,0.17,9,0.09,0.5294,100
-Semifinals,102,South Korea,2,0.02,1,0.01,0.5,100
-Semifinals,102,Spain,41,0.41,35,0.35,0.8537,100
-Semifinals,102,Turkey,7,0.07,2,0.02,0.2857,100
-Semifinals,102,United States,7,0.07,1,0.01,0.1429,100
-Semifinals,102,Uruguay,3,0.03,0,0.0,0.0,100
+Semifinals,101,Ecuador,29,0.29,17,0.17,0.5862,100
+Semifinals,101,France,54,0.54,33,0.33,0.6111,100
+Semifinals,101,Germany,13,0.13,2,0.02,0.1538,100
+Semifinals,101,Japan,10,0.1,3,0.03,0.3,100
+Semifinals,101,Mexico,19,0.19,7,0.07,0.3684,100
+Semifinals,101,Morocco,1,0.01,1,0.01,1.0,100
+Semifinals,101,Netherlands,1,0.01,1,0.01,1.0,100
+Semifinals,101,Norway,3,0.03,1,0.01,0.3333,100
+Semifinals,101,Scotland,1,0.01,0,0.0,0.0,100
+Semifinals,101,Sweden,1,0.01,1,0.01,1.0,100
+Semifinals,101,Switzerland,26,0.26,10,0.1,0.3846,100
+Semifinals,102,Algeria,4,0.04,1,0.01,0.25,100
+Semifinals,102,Argentina,56,0.56,24,0.24,0.4286,100
+Semifinals,102,Belgium,13,0.13,6,0.06,0.4615,100
+Semifinals,102,Bosnia and Herzegovina,1,0.01,0,0.0,0.0,100
+Semifinals,102,Canada,4,0.04,0,0.0,0.0,100
+Semifinals,102,Colombia,25,0.25,8,0.08,0.32,100
+Semifinals,102,Egypt,3,0.03,0,0.0,0.0,100
+Semifinals,102,England,7,0.07,3,0.03,0.4286,100
+Semifinals,102,Iran,1,0.01,1,0.01,1.0,100
+Semifinals,102,Ivory Coast,1,0.01,0,0.0,0.0,100
+Semifinals,102,Portugal,18,0.18,11,0.11,0.6111,100
+Semifinals,102,South Korea,1,0.01,0,0.0,0.0,100
+Semifinals,102,Spain,53,0.53,45,0.45,0.8491,100
+Semifinals,102,Turkey,8,0.08,1,0.01,0.125,100
+Semifinals,102,United States,3,0.03,0,0.0,0.0,100
+Semifinals,102,Uruguay,2,0.02,0,0.0,0.0,100
 Final,103,Algeria,1,0.01,0,0.0,0.0,100
-Final,103,Argentina,29,0.29,19,0.19,0.6552,100
-Final,103,Belgium,12,0.12,4,0.04,0.3333,100
-Final,103,Bosnia and Herzegovina,1,0.01,0,0.0,0.0,100
+Final,103,Argentina,24,0.24,12,0.12,0.5,100
+Final,103,Austria,1,0.01,0,0.0,0.0,100
+Final,103,Belgium,6,0.06,0,0.0,0.0,100
 Final,103,Brazil,21,0.21,10,0.1,0.4762,100
-Final,103,Colombia,4,0.04,2,0.02,0.5,100
-Final,103,Croatia,1,0.01,0,0.0,0.0,100
+Final,103,Colombia,8,0.08,1,0.01,0.125,100
+Final,103,Croatia,1,0.01,1,0.01,1.0,100
 Final,103,Czechia,1,0.01,1,0.01,1.0,100
-Final,103,Ecuador,18,0.18,8,0.08,0.4444,100
-Final,103,England,5,0.05,3,0.03,0.6,100
-Final,103,France,23,0.23,11,0.11,0.4783,100
-Final,103,Germany,8,0.08,4,0.04,0.5,100
-Final,103,Japan,7,0.07,3,0.03,0.4286,100
-Final,103,Mexico,4,0.04,2,0.02,0.5,100
-Final,103,Netherlands,2,0.02,2,0.02,1.0,100
-Final,103,Norway,2,0.02,0,0.0,0.0,100
-Final,103,Portugal,9,0.09,2,0.02,0.2222,100
-Final,103,South Korea,1,0.01,0,0.0,0.0,100
-Final,103,Spain,35,0.35,23,0.23,0.6571,100
-Final,103,Switzerland,13,0.13,4,0.04,0.3077,100
-Final,103,Turkey,2,0.02,2,0.02,1.0,100
-Final,103,United States,1,0.01,0,0.0,0.0,100
+Final,103,Ecuador,17,0.17,10,0.1,0.5882,100
+Final,103,England,3,0.03,2,0.02,0.6667,100
+Final,103,France,33,0.33,21,0.21,0.6364,100
+Final,103,Germany,2,0.02,1,0.01,0.5,100
+Final,103,Iran,1,0.01,0,0.0,0.0,100
+Final,103,Japan,3,0.03,0,0.0,0.0,100
+Final,103,Mexico,7,0.07,4,0.04,0.5714,100
+Final,103,Morocco,1,0.01,0,0.0,0.0,100
+Final,103,Netherlands,1,0.01,0,0.0,0.0,100
+Final,103,Norway,1,0.01,0,0.0,0.0,100
+Final,103,Portugal,11,0.11,2,0.02,0.1818,100
+Final,103,Spain,45,0.45,32,0.32,0.7111,100
+Final,103,Sweden,1,0.01,0,0.0,0.0,100
+Final,103,Switzerland,10,0.1,3,0.03,0.3,100
+Final,103,Turkey,1,0.01,0,0.0,0.0,100
