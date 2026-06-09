@@ -287,7 +287,7 @@ Status: FUTURE
 ### Tournament Experience
 
 * [X] Stadium information
-* [ ] Host city profiles
+* [X] Host city profiles
 * [x] Match venue integration
 
 ### Long-Term Platform

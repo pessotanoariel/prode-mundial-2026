@@ -308,39 +308,101 @@ def apply_global_styles() -> None:
             padding: 1rem;
         }
 
-        .atlas-venues-grid {
-            display: grid;
-            gap: 0.85rem;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
+        .atlas-city-summary {
+            border-bottom: 3px solid var(--atlas-ink);
+            border-top: 3px solid var(--atlas-ink);
+            padding: 0.9rem 0;
         }
 
-        .atlas-venue-card {
+        .atlas-city-summary-stats {
+            display: grid;
+            gap: 0.6rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            margin-bottom: 0.85rem;
+        }
+
+        .atlas-city-summary-stats div,
+        .atlas-city-summary-card {
             background: rgba(255, 255, 255, 0.18);
             border: 2px solid var(--atlas-ink);
             box-sizing: border-box;
-            min-height: 7.4rem;
-            padding: 0.85rem;
+            padding: 0.68rem;
         }
 
-        .atlas-venue-card strong,
-        .atlas-venue-card span {
+        .atlas-city-summary-stats strong {
+            color: var(--atlas-red);
             display: block;
+            font-size: 2rem;
+            font-weight: 950;
+            line-height: 1;
         }
 
-        .atlas-venue-card strong {
+        .atlas-city-summary-stats span {
             color: var(--atlas-ink);
-            font-size: 1rem;
+            display: block;
+            font-size: 0.74rem;
             font-weight: 950;
-            line-height: 1.08;
-            margin-top: 0.45rem;
+            letter-spacing: 0.04rem;
+            margin-top: 0.18rem;
             text-transform: uppercase;
         }
 
-        .atlas-venue-card span {
-            color: rgba(23, 20, 18, 0.76);
-            font-size: 0.82rem;
+        .atlas-city-summary-grid {
+            display: grid;
+            gap: 0.75rem;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .atlas-city-summary-card {
+            min-height: 8.2rem;
+        }
+
+        .atlas-city-summary-card h3,
+        .atlas-city-summary-card strong,
+        .atlas-city-summary-card span,
+        .atlas-city-summary-card small {
+            display: block;
+        }
+
+        .atlas-city-summary-card h3 {
+            color: var(--atlas-ink);
+            font-size: 1.12rem;
+            font-weight: 950;
+            line-height: 1;
+            margin: 0.34rem 0 0.35rem;
+            text-transform: uppercase;
+        }
+
+        .atlas-city-summary-card strong {
+            color: var(--atlas-ink);
+            font-size: 0.86rem;
             font-weight: 850;
-            margin-top: 0.12rem;
+            line-height: 1.12;
+        }
+
+        .atlas-city-summary-card span {
+            color: var(--atlas-red);
+            font-size: 1.15rem;
+            font-weight: 950;
+            line-height: 1;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .atlas-city-summary-card small {
+            color: rgba(23, 20, 18, 0.72);
+            font-size: 0.72rem;
+            font-weight: 850;
+            margin-top: 0.18rem;
+            text-transform: uppercase;
+        }
+
+        .atlas-city-summary p {
+            color: var(--atlas-ink);
+            font-size: 0.95rem;
+            font-weight: 760;
+            line-height: 1.35;
+            margin: 0.75rem 0 0;
         }
 
         .groups-hero {
@@ -1386,8 +1448,9 @@ def apply_global_styles() -> None:
                 grid-template-columns: 1fr;
             }
 
-            .atlas-venues-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+            .atlas-city-summary-stats,
+            .atlas-city-summary-grid {
+                grid-template-columns: 1fr;
             }
         }
         </style>

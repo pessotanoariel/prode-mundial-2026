@@ -26,6 +26,7 @@ CSV_PATHS = {
     "final": OUTPUT_DIR / "final_predictions.csv",
     "stadiums": PROCESSED_DIR / "stadiums.csv",
     "match_venues": PROCESSED_DIR / "match_venues.csv",
+    "host_city_profiles": PROCESSED_DIR / "host_city_profiles.csv",
 }
 
 

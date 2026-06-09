@@ -1,0 +1,17 @@
+host_city,country,stadium,matches,group_matches,knockout_matches,is_final_venue,is_opening_match_venue
+Toronto,Canada,Toronto Stadium,6,5,1,False,False
+Vancouver,Canada,BC Place,7,5,2,False,False
+Ciudad de México,Mexico,Estadio Azteca,5,3,2,False,True
+Guadalajara,Mexico,Estadio Guadalajara,4,4,0,False,False
+Monterrey,Mexico,Estadio Monterrey,4,3,1,False,False
+Atlanta,United States,Atlanta Stadium,9,5,4,False,False
+Boston,United States,Boston Stadium,7,5,2,False,False
+Dallas,United States,Dallas Stadium,9,5,4,False,False
+Houston,United States,Houston Stadium,7,5,2,False,False
+Kansas City,United States,Kansas City Stadium,5,4,1,False,False
+Los Angeles,United States,Los Angeles Stadium,7,5,2,False,False
+Miami,United States,Miami Stadium,7,4,3,False,False
+New York New Jersey,United States,New York New Jersey Stadium,9,5,4,True,False
+Philadelphia,United States,Philadelphia Stadium,6,5,1,False,False
+San Francisco Bay Area,United States,San Francisco Bay Area Stadium,6,5,1,False,False
+Seattle,United States,Seattle Stadium,6,4,2,False,False

@@ -4,8 +4,8 @@ from app.atlas_app.components.atlas import render_editorial_hero
 from app.atlas_app.components.atlas import render_finalist_probabilities
 from app.atlas_app.components.atlas import render_finals_from_future
 from app.atlas_app.components.atlas import render_forecast_notes
+from app.atlas_app.components.atlas import render_host_city_profiles
 from app.atlas_app.components.atlas import render_tournament_narrative
-from app.atlas_app.components.atlas import render_world_cup_venues
 
 
 def render(data: dict) -> None:
@@ -14,7 +14,7 @@ def render(data: dict) -> None:
     finals_df = data.get("finals")
     progression_df = data.get("progression")
     final_predictions_df = data.get("final")
-    stadiums_df = data.get("stadiums")
+    host_city_profiles_df = data.get("host_city_profiles")
 
     render_editorial_hero(
         champions_df,
@@ -44,8 +44,8 @@ def render(data: dict) -> None:
         final_predictions_df
     )
 
-    render_world_cup_venues(
-        stadiums_df
+    render_host_city_profiles(
+        host_city_profiles_df
     )
 
     render_forecast_notes()

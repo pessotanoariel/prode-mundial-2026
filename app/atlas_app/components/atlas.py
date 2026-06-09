@@ -6,6 +6,7 @@ import streamlit as st
 
 from app.atlas_app.formatting import format_percent
 from app.atlas_app.formatting import render_team_name
+from app.atlas_app.cities import host_city_narratives
 
 
 def _is_empty(df) -> bool:
@@ -307,39 +308,96 @@ def render_tournament_narrative(
         )
 
 
-def render_world_cup_venues(stadiums_df) -> None:
+def render_host_city_profiles(profiles_df) -> None:
     st.markdown(
         '<div class="atlas-section-number">06</div>',
         unsafe_allow_html=True
     )
-    st.header("World Cup Venues")
+    st.header("Ciudades sede del Mundial")
 
-    if _is_empty(stadiums_df):
-        st.info("Venue TBD")
+    if _is_empty(profiles_df):
+        st.info("Sede por confirmar")
         return
 
-    venues = stadiums_df.sort_values(
-        ["country", "host_city"]
-    )
+    profiles = profiles_df.copy()
+    total_cities = profiles["host_city"].nunique()
+    total_stadiums = profiles["stadium"].nunique()
+    host_countries = profiles["country"].nunique()
+
+    final_city = profiles[
+        profiles["is_final_venue"].astype(bool)
+    ].head(1)
+    opening_city = profiles[
+        profiles["is_opening_match_venue"].astype(bool)
+    ].head(1)
+    busiest_city = profiles.sort_values(
+        ["matches", "knockout_matches"],
+        ascending=False
+    ).head(1)
+
+    featured = [
+        ("Final", final_city),
+        ("Inauguración", opening_city),
+        ("Sede con más partidos", busiest_city),
+    ]
 
     cards = []
 
-    for _, row in venues.iterrows():
+    for label, city_df in featured:
+        if city_df.empty:
+            cards.append(
+                _html(f"""
+                    <article class="atlas-city-summary-card">
+                        <div class="atlas-small-label">{label}</div>
+                        <h3>Sede por confirmar</h3>
+                    <strong>Sede por confirmar</strong>
+                        <span>Calendario pendiente</span>
+                    </article>
+                """)
+            )
+            continue
+
+        row = city_df.iloc[0]
         cards.append(
             _html(f"""
-            <article class="atlas-venue-card">
-                <div class="atlas-small-label">{escape(str(row['country']))}</div>
+            <article class="atlas-city-summary-card">
+                <div class="atlas-small-label">{escape(label)}</div>
+                <h3>{escape(str(row['host_city']))}</h3>
                 <strong>{escape(str(row['stadium']))}</strong>
-                <span>{escape(str(row['host_city']))}</span>
+                <span>{int(row['matches'])} partidos</span>
+                <small>{escape(str(row['country']))}</small>
             </article>
             """)
         )
 
+    notes = host_city_narratives(profiles)[:3]
+    narrative = " ".join(
+        escape(str(note))
+        for note in notes
+    )
+
     st.markdown(
         _html(f"""
-        <div class="atlas-venues-grid">
-            {''.join(cards)}
-        </div>
+        <section class="atlas-city-summary">
+            <div class="atlas-city-summary-stats">
+                <div>
+                    <strong>{total_cities}</strong>
+                    <span>ciudades sede</span>
+                </div>
+                <div>
+                    <strong>{total_stadiums}</strong>
+                    <span>estadios</span>
+                </div>
+                <div>
+                    <strong>{host_countries}</strong>
+                    <span>países anfitriones</span>
+                </div>
+            </div>
+            <div class="atlas-city-summary-grid">
+                {''.join(cards)}
+            </div>
+            <p>{narrative}</p>
+        </section>
         """),
         unsafe_allow_html=True
     )
