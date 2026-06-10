@@ -1,2 +1,2 @@
 match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_probability,predicted_winner,predicted_score,confidence,upset_risk
-Final,France,Spain,0.406,0.179,0.415,France,4-3,Low,EXTREME
+Final,Morocco,Belgium,0.443,0.222,0.335,Morocco,2-1,Low,HIGH

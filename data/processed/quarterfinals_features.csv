@@ -1,5 +1,5 @@
 match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
-Quarterfinals,Scotland,Netherlands,1809.03,1965.91,0.288,5.7,5.2,0.5,0.088
-Quarterfinals,France,Croatia,2071.92,1926.74,0.698,7.5,3.6,3.9,0.102
-Quarterfinals,United States,Spain,1786.89,2164.44,0.102,0.6,7.1,-6.5,0.08
-Quarterfinals,Argentina,Turkey,2121.06,1929.13,0.751,8.7,10.5,-1.8,0.08
+Quarterfinals,Switzerland,Morocco,1908.25,1853.56,0.578,4.1,10.7,-6.6,0.222
+Quarterfinals,France,Algeria,2071.92,1785.09,0.839,7.5,7.3,0.2,0.08
+Quarterfinals,Belgium,England,1905.78,2043.63,0.311,10.0,2.8,7.2,0.111
+Quarterfinals,Argentina,Turkey,2121.06,1929.13,0.751,11.7,10.5,1.2,0.08
