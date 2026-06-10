@@ -1,10 +1,14 @@
-# Prode Mundial 2026
+# World Cup Forecast Atlas
 
-Interactive World Cup Forecast Atlas for the FIFA World Cup 2026.
+Interactive simulation and forecasting platform for the FIFA World Cup 2026.
 
-Built with Python, Elo Ratings, Monte Carlo simulation, Expected Goals modeling, and Streamlit.
+Built with Python, Elo Ratings, Monte Carlo simulation, Expected Goals (xG), Poisson score modeling, and Streamlit.
 
-The project started as a simple office prediction pool and evolved into a complete tournament forecasting platform capable of simulating the entire FIFA World Cup 2026, including group-stage qualification, best third-placed teams, official FIFA Annex C knockout paths, and probabilistic tournament outcomes.
+---
+
+## Live Demo
+
+<https://world-cup-forecast-atlas.streamlit.app/>
 
 ---
 
@@ -40,15 +44,16 @@ Instead of presenting predictions as traditional dashboards, the Atlas organizes
 
 ## Key Features
 
-### Forecast Engine
+### Simulation Engine
 
-- Elo-based team strength
-- Recent form adjustment
-- Dynamic draw probability
-- Expected Goals estimation
-- Poisson score modeling
-- Confidence scoring
-- Upset risk detection
+- Elo Ratings
+- Recent Form
+- Host Advantage
+- Expected Goals (xG)
+- Poisson Distribution
+- Monte Carlo Simulation
+- Dynamic Elo Updates
+- FIFA Tiebreakers
 
 ### Tournament Simulation
 
@@ -60,6 +65,9 @@ Instead of presenting predictions as traditional dashboards, the Atlas organizes
 - Complete knockout simulation
 - Extra-time and penalty resolution
 - Tournament champion prediction
+- FIFA-compliant two-team tiebreakers
+- FIFA-style three-team mini-table tiebreakers
+- Deterministic Elo fallback for unresolved ties
 
 ### Monte Carlo Analytics
 
@@ -78,6 +86,15 @@ Instead of presenting predictions as traditional dashboards, the Atlas organizes
 - Knockout wall chart
 - Match forecast archive
 - Methodology guide
+
+### Automation & Operations
+
+- End-to-end tournament pipeline
+- Automated data ingestion
+- Scheduled execution via GitHub Actions
+- Data freshness validation
+- Execution logging and monitoring
+- Resilient fallback for external Elo sources
 
 ---
 
@@ -211,14 +228,17 @@ Run all tests:
 pytest
 ```
 
-Current coverage includes:
+Current coverage includes more than 60 automated tests covering:
 
-- Knockout winner resolution
-- Stage construction
-- FIFA Annex C implementation
+- FIFA tiebreakers
+- FIFA Annex C
+- Group-stage simulation
+- Knockout simulation
+- Monte Carlo execution
 - Elo updates
-- Score simulation
-- Probability calculations
+- Data ingestion
+- External source resilience
+- Output validation
 
 ---
 
@@ -228,6 +248,20 @@ Additional technical documentation:
 
 - `docs/annex_c.md`
 - `docs/knockout_pipeline.md`
+
+---
+
+## Technical Summary
+
+- 48 national teams
+- 104 tournament matches
+- Official FIFA 2026 format
+- FIFA Annex C implementation (495 combinations)
+- Monte Carlo simulation engine
+- Dynamic Elo updates
+- Editorial Atlas experience
+- GitHub Actions automation
+- 60+ automated tests
 
 ---
 
@@ -255,35 +289,27 @@ Additional technical documentation:
 
 ---
 
-## Current Roadmap
+## Project Status
 
-### Simulation Improvements
+Version: v1.0
 
-- Three-team tie breakers
-- Fair Play tie breakers
-- FIFA Ranking tie breakers
-- Dynamic Elo integration in group stage
-- Probability calibration
+Completed:
 
-### Product Improvements
+- Full FIFA World Cup 2026 simulation
+- Official 48-team format
+- FIFA Annex C implementation
+- Monte Carlo tournament engine
+- Editorial Atlas experience
+- GitHub Actions automation
+- FIFA-compliant group tiebreakers
+
+Possible future evolutions:
 
 - Interactive bracket
-- Tournament timeline
-- Host cities visualization
-- Mobile responsiveness
-
-### Deployment
-
-- Streamlit Cloud deployment
-- Automated data refresh
-- Scheduled simulations
-
-### Long-Term Ideas
-
-- Next.js frontend
-- Scenario explorer
 - Historical World Cup mode
 - Team comparison tools
+- Dedicated Next.js frontend
+- Public simulation API
 
 ---
 

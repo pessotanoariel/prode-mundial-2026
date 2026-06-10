@@ -188,11 +188,6 @@ Status: COMPLETED
 * [x] Production configuration
 * [x] Public URL
 
-### Post-Release Backlog
-
-* [ ] Refresh architecture diagrams
-* [ ] Environment variables
-
 ---
 
 ## PHASE 6 — Automation & Operations
@@ -235,40 +230,27 @@ Status: COMPLETED
 
 ## PHASE 7 — Simulation Improvements
 
-Status: IN PROGRESS
+Status: COMPLETED
 
 ### Model Improvements
 
 * [x] Most likely path generation
 * [x] Generalized Elo match updates
 * [x] Dynamic Elo group-stage prototype
-* [ ] Dynamic Elo production integration
-
 * [x] Finalist tracking
 * [x] Finalist probability export
-
 * [x] Probability calibration (v1)
 * [x] Draw probability calibration
 * [x] Monte Carlo stability improvements
-
-* [ ] Upset calibration tuning
-* [ ] Validate Elo evolution across tournament
-* [ ] Hybrid tournament simulation
-
-* [ ] Clarify progression stage semantics
-
-### Tournament Analytics
-
-* [ ] Team path analysis
-* [ ] Elimination probability analysis
-* [ ] Scenario explorer
-* [ ] Sensitivity testing
+* [x] Progression semantics correction
+* [x] Head-to-head tie breaker (3+ teams)
+* [x] Deterministic Elo fallback
 
 ---
 
 ## PHASE 8 — Product Expansion
 
-Status: MOSTLY COMPLETED
+Status: COMPLETED
 
 ### Editorial Features
 
@@ -282,7 +264,7 @@ Status: MOSTLY COMPLETED
 
 * [X] Flags support
 * [ ] Interactive bracket
-* [ ] Improved knockout visualization
+* [X] Improved knockout visualization
 * [ ] Interactive probability charts
 
 ### Tournament Experience
@@ -300,46 +282,64 @@ Status: MOSTLY COMPLETED
 
 ---
 
-## PHASE 9 — Advanced Simulation
+## PHASE 9 — Future Research
 
 Status: FUTURE
 
-### FIFA Rules
-
-* [ ] Head-to-head tie breaker (3+ teams)
-* [ ] Fair Play tie breaker
-* [ ] FIFA Ranking tie breaker
-
-### Probability Modeling
+### Model Research
 
 * [ ] Dynamic Elo production integration
-* [ ] Advanced draw calibration
-* [ ] Draw-aware score generation
+* [ ] Upset calibration tuning
+* [ ] Elo evolution validation
+* [ ] Hybrid tournament simulation
 * [ ] Probability backtesting
 
-### Simulation Quality
+### Tournament Analytics
 
-* [ ] Elo evolution validation
-* [ ] Sensitivity analysis
-* [ ] Simulation benchmarking
-* [ ] Historical tournament replay mode
-
-### Metrics & Analytics
-
-* [ ] Progression semantics review
-* [ ] Advanced progression metrics
-* [ ] Path difficulty metrics
 * [ ] Team path analysis
 * [ ] Elimination probability analysis
 * [ ] Scenario explorer
+* [ ] Sensitivity testing
+* [ ] Path difficulty metrics
+
+### Historical Modes
+
+* [ ] Historical World Cup replay mode
+* [ ] Alternative tournament formats
+
+---
+
+## VERSION 1.0 STATUS
+
+Status: RELEASE
+
+Completed:
+
+[x] Official FIFA 2026 format
+[x] FIFA Annex C
+[x] Monte Carlo simulation
+[x] Editorial Atlas
+[x] GitHub Actions automation
+[x] FIFA-compliant tiebreakers
+[x] Host cities and venues
+[x] SVG flags
+[x] Most likely tournament path
+[x] Model audit
+
+Remaining before final release:
+
+[ ] README final review
+[ ] Screenshot refresh
+[ ] Release tag v1.0
 
 ---
 
 ### Notes
 
-* Simulation engine is considered feature-complete for v1.
-* Editorial Atlas experience is considered complete for v1.
-* Current priority is model refinement, tournament analytics, and long-term simulation quality.
+* Version 1.0 is considered complete.
+* The simulation engine is considered feature-complete for v1.
+* The Editorial Atlas experience is considered feature-complete for v1.
+* FIFA 2026 tournament rules and qualification paths are implemented for v1.
 * Streamlit remains the primary platform for v1.
-* Future work should prioritize simulation correctness before major model complexity increases.
+* Future work is optional and focused on experimentation, research, and product evolution.
 * Next.js remains a possible long-term evolution, not a short-term priority.

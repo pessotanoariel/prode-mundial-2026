@@ -1,4 +1,4 @@
-# Prode Mundial 2026
+# World Cup Forecast Atlas
 
 Atlas interactivo de simulación y pronóstico para la Copa Mundial de la FIFA 2026.
 
@@ -44,15 +44,16 @@ En lugar de presentar predicciones mediante tablas y dashboards tradicionales, e
 
 ## Características Principales
 
-### Motor de Pronóstico
+### Motor de Simulación
 
-* Fuerza de selección basada en Elo
-* Ajuste por forma reciente
-* Probabilidad dinámica de empate
-* Estimación de goles esperados (xG)
-* Modelado de marcadores mediante Poisson
-* Clasificación por confianza
-* Detección de riesgo de sorpresa
+* Elo Ratings
+* Forma reciente
+* Ventaja de local
+* Goles esperados (xG)
+* Distribución de Poisson
+* Monte Carlo
+* Actualización dinámica de Elo
+* Desempates FIFA
 
 ### Simulación del Torneo
 
@@ -64,6 +65,9 @@ En lugar de presentar predicciones mediante tablas y dashboards tradicionales, e
 * Simulación completa de eliminación directa
 * Resolución de empates mediante tiempo suplementario o penales
 * Proyección de campeón
+* Desempates FIFA para empates entre 2 equipos
+* Mini-tablas FIFA para empates entre 3 o más equipos
+* Fallback determinístico basado en Elo
 
 ### Analítica Monte Carlo
 
@@ -82,6 +86,14 @@ En lugar de presentar predicciones mediante tablas y dashboards tradicionales, e
 * Visualización del cuadro eliminatorio
 * Archivo de partidos proyectados
 * Guía metodológica
+
+### Operación y Automatización
+
+* Pipeline automatizado end-to-end
+* Actualización automática de datasets
+* GitHub Actions para ejecución programada
+* Validación de frescura de datos
+* Logging y monitoreo de ejecución
 
 ---
 
@@ -284,14 +296,17 @@ Ejecutar todas las pruebas:
 pytest
 ```
 
-Actualmente se incluyen pruebas para:
+Actualmente el proyecto incluye más de 60 pruebas automatizadas cubriendo:
 
-* Resolución de ganadores en eliminación directa
-* Construcción de rondas
-* Implementación del Anexo C
+* Desempates FIFA
+* Anexo C
+* Simulación de grupos
+* Eliminación directa
+* Monte Carlo
 * Actualización Elo
-* Simulación de marcadores
-* Cálculo de probabilidades
+* Ingesta de datos
+* Resiliencia ante fallos externos
+* Validación de outputs
 
 ---
 
@@ -328,30 +343,38 @@ Documentación técnica adicional:
 
 ---
 
-## Hoja de Ruta Actual
+## Estado del Proyecto
 
-### Próximos Pasos
+Versión actual: v1.0
 
-* Revisión de documentación
-* Despliegue en Streamlit Cloud
-* Pruebas de regresión
-* Ajustes de probabilidades
+Completado:
 
-### Mejoras de Simulación
+* Simulación completa del Mundial 2026
+* Formato FIFA de 48 selecciones
+* Anexo C FIFA
+* Motor Monte Carlo
+* Atlas editorial interactivo
+* Automatización mediante GitHub Actions
+* Desempates FIFA para grupos
 
-* Desempates entre tres o más equipos
-* Criterio Fair Play
-* Criterio Ranking FIFA
-* Elo dinámico en fase de grupos
-* Calibración de probabilidades
-
-### Evolución del Producto
+Posibles evoluciones futuras:
 
 * Cuadro interactivo
-* Explorador de escenarios
-* Modo Mundial histórico
-* Análisis de caminos al título
-* Frontend en Next.js
+* Comparaciones históricas
+* Frontend dedicado en Next.js
+* API pública de simulación
+
+---
+
+## Resumen Técnico
+
+* 48 selecciones
+* 104 partidos
+* Formato oficial FIFA 2026
+* 495 combinaciones del Anexo C
+* Simulación Monte Carlo configurable
+* Más de 60 pruebas automatizadas
+* Pipeline automatizado mediante GitHub Actions
 
 ---
 

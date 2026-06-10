@@ -94,3 +94,31 @@ If a prediction results in a draw:
 * stage_predictions.py
 * resolve_knockout_winners.py
 * annex_c.py
+
+## Monte Carlo Tournament Simulation
+
+The project includes a Monte Carlo engine that repeatedly executes the full tournament simulation.
+
+Each simulation:
+
+1. Simulates the entire group stage.
+2. Resolves qualification.
+3. Applies FIFA Annex C mappings.
+4. Simulates the complete knockout stage.
+5. Records progression and champion outcomes.
+
+Outputs include:
+
+* champion_probabilities.csv
+* finalist_probabilities.csv
+* team_progression_probabilities.csv
+* most_likely_finals.csv
+* most_likely_tournament_path.csv
+
+## Most Likely Tournament Path
+
+The Atlas does not display the final sampled tournament from Monte Carlo.
+
+Instead, it generates a consensus bracket reconstructed from aggregate knockout-slot outcomes across simulations.
+
+This produces a representative tournament path aligned with overall champion and finalist probabilities.

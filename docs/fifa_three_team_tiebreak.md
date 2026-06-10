@@ -1,5 +1,7 @@
 # FIFA Three-Team Group Tiebreak Implementation
 
+Status: Implemented in v1.0
+
 ## Mini-Table Approach
 
 When three or more teams finish level on overall group points, FIFA rules apply head-to-head criteria using only matches played between the tied teams.
@@ -57,3 +59,6 @@ The test suite covers:
 - A regression case proving overall goal difference remains ahead of the Elo fallback
 
 The tests use synthetic standings and match results so the tiebreak behavior is isolated from the current tournament data.
+
+This implementation is considered complete for Version 1.
+Future versions may add Fair Play and FIFA Ranking criteria if disciplinary data becomes available.

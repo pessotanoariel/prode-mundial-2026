@@ -2,7 +2,7 @@
 
 ## Release Review Notes
 
-Date: 2026-06-07
+Date: 2026-06-09
 
 ---
 
@@ -41,7 +41,6 @@ Notes:
 
 Potential future improvements:
 
-- Add flags.
 - Add tournament update date.
 
 ---
@@ -77,7 +76,6 @@ Notes:
 
 Potential future improvements:
 
-- Team flags.
 - Qualification probability percentages.
 
 ---
@@ -96,7 +94,6 @@ Notes:
 Potential future improvements:
 
 - Interactive bracket.
-- Team badges.
 
 ---
 
@@ -166,25 +163,27 @@ Verified:
 
 Current version does not yet include:
 
-- Three-team tie breakers.
-- Fair Play tie breakers.
-- FIFA Ranking tie breakers.
-- Dynamic Elo updates during group stage.
-- Automated daily data refresh.
+- Fair Play tie breakers
+- Official FIFA Ranking tie breakers
+- Interactive bracket
+- Interactive probability charts
+- Historical tournament replay mode
 
-These limitations are documented and do not block v1 release.
+These limitations do not affect the core World Cup 2026 simulation.
 
 ---
 
 ## Release Decision
 
-APPROVED FOR V1 RELEASE
+RELEASED — VERSION 1.0
 
-The application is considered feature-complete for Version 1 and suitable for portfolio presentation, public sharing, and demonstration purposes.
+The project reached Version 1.0 after completing:
 
-Next focus:
-
-- Documentation polish
-- Automated refresh pipeline
-- Production monitoring
-- Future simulation improvements
+- FIFA 2026 format implementation
+- FIFA Annex C implementation
+- Monte Carlo simulation engine
+- Editorial Atlas experience
+- GitHub Actions automation
+- FIFA-compliant group tiebreakers
+- Most likely tournament path generation
+- Model audit and validation
