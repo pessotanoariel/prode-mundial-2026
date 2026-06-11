@@ -2,7 +2,7 @@ rank,country_code,team_name,rating,wins,losses,draws,goals_for,goals_against,win
 1,ES,Spain,2157,462,138,182,1595,699,0.591,896
 2,AR,Argentina,2115,612,228,271,2117,1136,0.551,981
 3,FR,France,2063,475,270,195,1710,1275,0.505,435
-4,EN,England,2021,684,215,262,2720,1118,0.589,1602
+4,EN,England,2024,685,215,262,2723,1118,0.59,1605
 5,BR,Brazil,1991,672,172,223,2302,957,0.63,1345
 6,PT,Portugal,1989,348,189,159,1226,781,0.5,445
 7,CO,Colombia,1982,267,205,178,847,742,0.411,105
@@ -60,7 +60,7 @@ rank,country_code,team_name,rating,wins,losses,draws,goals_for,goals_against,win
 59,TN,Tunisia,1628,330,231,216,1105,845,0.425,260
 60,AL,Albania,1616,116,209,85,396,604,0.283,-208
 61,CM,Cameroon,1614,287,172,202,952,712,0.434,240
-62,CR,Costa Rica,1611,356,243,191,1369,919,0.451,450
+62,CR,Costa Rica,1608,356,244,191,1369,922,0.45,447
 63,IQ,Iraq,1607,360,190,212,1204,710,0.472,494
 64,EI,Northern Ireland,1605,172,290,150,645,928,0.281,-283
 65,BA,Bosnia and Herzegovina,1595,104,111,66,394,386,0.37,8

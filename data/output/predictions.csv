@@ -20,7 +20,7 @@ match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_prob
 2026-06-16,France,Senegal,0.722,0.08,0.198,France,2-1,High,LOW
 2026-06-16,Iraq,Norway,0.229,0.08,0.691,Norway,1-2,Medium,LOW
 2026-06-17,Colombia,Uzbekistan,0.772,0.08,0.148,Colombia,2-1,High,LOW
-2026-06-17,Croatia,England,0.386,0.15,0.464,England,1-2,Medium,HIGH
+2026-06-17,Croatia,England,0.354,0.14,0.506,England,1-2,Medium,MEDIUM
 2026-06-17,DR Congo,Portugal,0.182,0.08,0.738,Portugal,1-2,Medium,LOW
 2026-06-17,Ghana,Panama,0.222,0.08,0.698,Panama,1-2,Medium,LOW
 2026-06-18,Bosnia and Herzegovina,Switzerland,0.21,0.08,0.71,Switzerland,1-2,Medium,LOW
@@ -45,7 +45,7 @@ match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_prob
 2026-06-22,Norway,Senegal,0.548,0.22,0.232,Norway,2-1,Medium,LOW
 2026-06-23,Colombia,DR Congo,0.788,0.08,0.132,Colombia,2-1,High,LOW
 2026-06-23,Croatia,Panama,0.678,0.08,0.242,Croatia,2-1,High,LOW
-2026-06-23,England,Ghana,0.894,0.08,0.026,England,2-0,High,LOW
+2026-06-23,England,Ghana,0.9,0.08,0.02,England,2-0,High,LOW
 2026-06-23,Portugal,Uzbekistan,0.81,0.08,0.11,Portugal,2-1,High,LOW
 2026-06-24,Bosnia and Herzegovina,Qatar,0.703,0.08,0.217,Bosnia and Herzegovina,2-1,High,LOW
 2026-06-24,Brazil,Scotland,0.735,0.08,0.185,Brazil,2-1,High,LOW
@@ -70,4 +70,4 @@ match_date,team_1,team_2,team_1_win_probability,draw_probability,team_2_win_prob
 2026-06-27,Colombia,Portugal,0.462,0.25,0.288,Colombia,2-1,Medium,MEDIUM
 2026-06-27,Croatia,Ghana,0.868,0.08,0.052,Croatia,2-0,High,LOW
 2026-06-27,DR Congo,Uzbekistan,0.452,0.21,0.338,DR Congo,2-1,Medium,HIGH
-2026-06-27,England,Panama,0.752,0.08,0.168,England,2-1,High,LOW
+2026-06-27,England,Panama,0.776,0.08,0.144,England,2-1,High,LOW

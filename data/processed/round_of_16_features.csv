@@ -1,9 +1,9 @@
 match_date,team_1_name,team_2_name,team_1_rating,team_2_rating,team_1_win_expectancy,team_1_form_score,team_2_form_score,form_score_difference,draw_probability
 Round of 16,Switzerland,Ecuador,1896.91,1943.79,0.433,4.1,6.8,-2.7,0.233
-Round of 16,Morocco,Brazil,1839.24,1999.77,0.284,10.7,8.1,2.6,0.084
+Round of 16,Japan,Brazil,1913.76,1999.77,0.379,7.2,8.1,-0.9,0.179
 Round of 16,France,Germany,2065.34,1941.48,0.671,7.5,10.5,-3.0,0.129
 Round of 16,Mexico,Algeria,1918.06,1772.13,0.698,9.8,7.3,2.5,0.102
 Round of 16,United States,Belgium,1772.4,1900.27,0.324,0.6,10.0,-9.4,0.124
-Round of 16,England,Spain,2030.08,2158.99,0.323,2.8,7.1,-4.3,0.123
-Round of 16,Egypt,Argentina,1708.59,2119.34,0.086,6.1,11.7,-5.6,0.08
+Round of 16,Portugal,Spain,2000.0,2158.99,0.286,8.2,7.1,1.1,0.086
+Round of 16,Canada,Argentina,1835.41,2119.34,0.163,4.8,11.7,-6.9,0.08
 Round of 16,Colombia,Turkey,1985.22,1917.2,0.597,4.5,10.5,-6.0,0.203
